@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jake Ginesin - Admin</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <ul class="flex p-4" style="height:10vh;">
+      <li class="flex-1 mr-2">
+        <!-- <a class="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" href="#">Active Item</a> -->
+        <a class="text-center block border border-white rounded border-gray-200 hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="/admin/addblog">Add Blog</a>
+      </li>
+      <li class="flex-1 mr-2">
+        <a class="text-center block border border-white rounded border-gray-200 hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="/admin/analytics">Analytics</a>
+      </li>
+      <li class="text-center flex-1" onclick="adminLogOut()">
+        <a class="text-center block border border-white rounded border-gray-200 hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="">Log Out</a>
+      </li>
+    </ul>
+    <div class="flex w-full h-full overflow-hidden" style="height: 80vh;">
+      <div class="text-6xl sm:text-8xl md:text-8xl" style="margin:auto;">
+        Welcome, Admin :D
+      </div>
+    </div>
+    <script>
+      async function adminLogOut(){
+        let response = await fetch('/logout', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+        });
+        window.location = "/";
+      }
+
+
+    </script>
+  </body>
+</html>

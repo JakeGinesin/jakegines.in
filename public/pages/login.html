@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jake Ginesin</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/loginstyles.css" />
+    <link rel="icon" href="../icons/world.png">
+  </head>
+  <body>
+    <script src="../js/loginscripts.js"></script>
+    <div id="hold" style="width:57ch;" class="mx-auto max-w-full p-4 mt-9 pt-10">
+      <a class="post__back" href="/">←</a>
+      <h1 id="sign_in_title" class="title pt-6">User Sign In</h1>
+      <div class="font-bold hidden" id="fail">Incorrect Login Information</div>
+      <form>
+        <input type="text" id="username" autocomplete="username" class="input mt-3" placeholder="username"/>
+        <br />
+        <input type="password" id="password" autocomplete="password" class="input mt-4" placeholder="password"/>
+        </br>
+      </form>
+      <button id='login_btn' class="mt-6 login_button" onclick="login()">login</button>
+    </div>
+  </body>
+</html>

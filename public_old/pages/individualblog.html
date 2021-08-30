@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Jake Ginesin - Blog</title> -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body onload="grabpost()">
+    <script src="../js/topbarscript.js"></script>
+    <script src="../js/individualblogscripts.js"></script>
+    <div class="relative z-50">
+      <div class="flex text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-white">
+         <a class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3.5 px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 text-blue-500 hover:bg-gray-200 transition" href="/">Jake Ginesin</a>
+         <div class="flex-1"></div>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/about">About</a>
+         <a class="bg-blue-500 hover:bg-blue-600 text-white flex items-center px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/blog">Blog</a>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/contact">Contact</a>
+      </div>
+     </div>
+     <div class="fixed -top-24 shadow-2xl z-40 w-full">
+        <div class="m-10 h-5"></div>
+     </div>
+     <div class="sticky top-0 h-1 z-50 bg-blue-300">
+        <div id='topbardark' class="h-full bg-blue-500 transition-all ease-out" style="width:0%"></div>
+     </div>
+     <div id="bloghold" style="width:70ch;" class="mx-auto max-w-full p-4 pt-10 md:text-lg lg:text-xl">
+
+
+
+     </div>
+     <div class="mx-auto max-w-full p-4 pb-0 md:text-lg lg:text-xl" style="width:70ch;">
+       <a class="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-700 ring-blue-500 px-3 py-2 rounded inline-block items-center m-1 text-2xl md:text-3xl border focus:ring ring-opacity-50 transition cursor-pointer" target="_blank" rel="noreferrer" onclick="share()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="inline" style="width:1em;height:1em;vertical-align:-0.14em">
+             <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path>
+          </svg>
+          Share
+       </a>
+
+    </div>
+      <p class="italic md:text-lg lg:text-xl p-4 mx-auto max-w-full" style="width:70ch"><br/>Commenting features coming soon... In the meantime, feel free to contact me for any suggestions!<br/><br/></p>
+
+
+  </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jake Ginesin - Add Blog</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="flex flex-col w-8/12 m-auto">
+      <h1 class='text-5xl text-center p-2 pb-6 mb-10 mt-4'>Add Blog</h1>
+
+      <div>
+        <div class="mb-3 pt-0 w-1/3 inline-block">
+          <span class="text-gray-800">Blog Title</span>
+          <input id='title' type="text" placeholder="Title" class="px-3 py-3 placeholder-blueGray-300 mt-2 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
+        </div>
+        <div class="mb-3 pt-0 inline-block float-right">
+          <span class="text-gray-800">Current Date: </span><span id='currentDate'></span>
+        </div>
+      </div>
+
+      <div>
+        <div class="mb-3 pt-0 w-1/3 inline-block">
+          <span class="text-gray-800">Blog Subtitle</span>
+          <input id='subtitle' type="text" placeholder="Subtitle" class="px-3 py-3 placeholder-blueGray-300 mt-2 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
+        </div>
+        <div class="mb-3 pt-0 inline-block float-right">
+          <span class="text-gray-800">Read Length: </span><span id='readLength'>0 min read</span>
+        </div>
+      </div>
+      <div>
+        <div class="mb-3 pt-0 w-1/3 inline-block">
+          <span class="text-gray-800">URL</span>
+          <input id='url' type="text" placeholder="link-to-article" class="px-3 py-3 placeholder-blueGray-300 mt-2 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
+        </div>
+      </div>
+      <div class="mb-3 pt-0">
+        <span class="text-gray-800">Blog Content</span>
+        <textarea id='content' class="resize border rounded-md block px-3 py-3 h-60 placeholder-blueGray-300 mt-2 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"></textarea>
+      </div>
+      <div>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 border border-blue-700 rounded w-1/12 inline-block ml-0 m-2" onclick="submitBlog()">
+          Submit
+        </button>
+        <button class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 border border-blue-700 rounded w-1/12 inline-block m-2" onclick="home()">
+          Cancel
+        </button>
+      </div>
+    </div>
+    <script>
+      async function submitBlog(){
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+        let t = document.getElementById('title').value;
+        let s = document.getElementById('subtitle').value;
+        let c = document.getElementById('content').value;
+        let d = today;
+
+        //people read 200 words per minute
+
+        // console.log(c);
+        let words = c.split(' ');
+        let contentLength = words.length;
+        let l = (Math.floor(contentLength/200) + 1);
+
+        let u = document.getElementById("url").value;
+
+        let data = {
+           blogtitle : t,
+           blogsubtitle : s,
+           blogcontent : c,
+           currentdate : d,
+           readLength : l,
+           blogurl: u
+        }
+
+        let response = await fetch('/api/addblog', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if(response.status == "201"){
+          window.location = '/blog';
+          // console.log('success!!!');
+        }
+        else if(response.status == "401"){
+          // document.getElementById('wrongpass').style.display="block";
+          // alert("no credentials");
+        }
+        else if(response.status == "501"){
+          // console.log('server error');
+
+        }
+
+        console.log(json);
+
+      }
+
+      async function home(){
+        window.location = '/admin'
+      }
+
+      window.onload=function(){
+
+        console.clear();
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = mm + '/' + dd + '/' + yyyy;
+
+        document.getElementById("currentDate").innerHTML = today;
+      }
+
+      document.getElementById("content").addEventListener("keydown", event =>{
+        let c = document.getElementById('content').value;
+        let words = c.split(' ');
+        let contentLength = words.length;
+        let l = (Math.floor(contentLength/200) + 1);
+
+        document.getElementById("readLength").innerHTML = l + " min read";
+      });
+
+    </script>
+  </body>
+</html>

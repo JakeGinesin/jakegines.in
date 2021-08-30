@@ -1,0 +1,8 @@
+@font-face{
+  font-family: "Helvetica";
+  src: url('../fonts/Helvetica-Font/Helvetica.ttf') format("ttf");
+}
+@font-face{
+  font-family: "Inter";
+  src: url('https://rsms.me/inter/inter.css') format("ttf");
+}

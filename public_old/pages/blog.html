@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jake Ginesin - Blog</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body onload="grabposts(0, 4, 'init'); init()" style="background-color: rgba(229, 231, 235, 0.5);">
+    <script src="../js/topbarscript.js"></script>
+    <script src="../js/blogscripts.js"></script>
+    <div class="relative z-50">
+      <div class="flex text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-white">
+         <a class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3.5 px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 text-blue-500 hover:bg-gray-200 transition" href="/">Jake Ginesin</a>
+         <div class="flex-1"></div>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/about">About</a>
+         <a class="bg-blue-500 hover:bg-blue-600 text-white flex items-center px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/blog">Blog</a>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/contact">Contact</a>
+      </div>
+     </div>
+     <div class="fixed -top-24 shadow-2xl z-40 w-full">
+        <div class="m-10 h-5"></div>
+     </div>
+     <div class="sticky top-0 h-1 z-50 bg-blue-300">
+        <div id='topbardark' class="h-full bg-blue-500 transition-all ease-out" style="width:0%"></div>
+     </div>
+     <div>
+     <div id="blogs" class="h-full bg-grey-100 mt-4" style="background-color: rgba(229, 231, 235, 0.5);">
+     </div>
+     <div class="w-full items-center place-items-center flex hidden" id="switch">
+       <div class="inline-flex font-medium m-4 mx-auto align-center justify-center text-blue-500 text-center bg-white shadow-lg rounded text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+          <button disabled="" class="text-gray-400 cursor-default border border-r-0 rounded-l w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline" viewBox="0 0 16 16" style="width:1em;height:1em;vertical-align:-0.14em">
+                <path fill-rule="evenodd" d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"></path>
+             </svg>
+          </button>
+          <button class="chooser border-blue-500 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 text-white border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">1</button>
+          <button class="chooser hover:bg-gray-100 border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">2</button>
+          <button class="chooser hover:bg-gray-100 border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">3</button>
+          <button class="chooser hover:bg-gray-100 hidden sm:inline border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">4</button>
+          <button class="chooser hover:bg-gray-100 hidden sm:inline border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">5</button>
+          <button class="chooser hover:bg-gray-100 hidden lg:inline border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">6</button>
+          <button class="chooser hover:bg-gray-100 hidden lg:inline border border-r-0 w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition" onclick="chooser(this)">7</button>
+          <button disabled="" class="border text-gray-400 cursor-default rounded-r w-10 sm:w-11 md:w-12 lg:w-14 xl:w-16 py-1 md:py-1.5 transition">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline" viewBox="0 0 16 16" style="width:1em;height:1em;vertical-align:-0.14em">
+                <path fill-rule="evenodd" d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0zM11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5z"></path>
+             </svg>
+          </button>
+       </div>
+     </div>
+
+  </body>
+</html>

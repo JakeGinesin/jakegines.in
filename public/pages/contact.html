@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jake Ginesin - Contact</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="icon" href="../icons/world.png">
+  </head>
+  <body>
+    <script src="../js/topbarscript.js"></script>
+    <script src="../js/contactscripts.js"></script>
+    <div class="relative z-50">
+      <div class="flex text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl bg-white">
+         <a class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3.5 px-3 sm:px-4 md:px-5 lg:px-6 xl:px-7 text-blue-500 hover:bg-gray-200 transition" href="/">Jake Ginesin</a>
+         <div class="flex-1"></div>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-2 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/blog">Blog</a>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-2 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/about">About</a>
+         <a class="text-blue-500 hover:bg-gray-200 flex items-center px-2 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/projects">Projects</a>
+         <a class="bg-blue-500 hover:bg-blue-600 text-white flex items-center px-2 sm:px-4 md:px-5 lg:px-6 xl:px-7 transition" href="/contact">Contact</a>
+      </div>
+     </div>
+     <div class="fixed -top-24 shadow-2xl z-40 w-full">
+        <div class="m-10 h-5"></div>
+     </div>
+     <div class="sticky top-0 h-1 z-50 bg-blue-300">
+        <div id='topbardark' class="h-full bg-blue-500 transition-all ease-out" style="width:0%"></div>
+     </div>
+     <div class="p-4 max-w-full md:text-lg lg:text-xl" id="content-hold">
+
+       <div class="relative mx-auto max-w-full" style="width:75ch;">
+         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative hidden" role="alert" id="timealert">
+          <strong class="font-bold">Too many requests!</strong>
+          <span class="block sm:inline"> Please wait a couple minutes in order to send another</span>
+          <span class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="deleterequest(this)">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+         <br/>
+         <h1 class="text-center text-5xl md:text-7xl lg:text-8xl">Contact</h1>
+         <br /><br />
+         <div class="grid grid-cols-6 gap-6">
+           <div class="col-span-6 sm:col-span-3 pb-0">
+             <label for="first_name" class="block text-sm font-medium text-gray-700">Your Name</label>
+             <input type="text" name="first_name" id="first_name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="John Doe">
+           </div>
+           <div class="col-span-6 sm:col-span-3" id="bot">
+             <label for="last_name" class="block text-sm font-medium text-gray-700">Your Email</label>
+             <input type="text" name="last_name" id="last_name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="johndoe@gmail.com">
+           </div>
+        </div>
+        <div class="col-span-6 sm:col-span-3 mt-2">
+          <label for="subject" class="block text-sm font-medium text-gray-700">I'm contacting you because..</label>
+          <select id="subject" onchange="select(this)" name="subject" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option value="I just want to say hi">I just want to say hi</option>
+            <option value="I'd like to work with you">I'd like to work with you</option>
+            <option value="I'd like to request an interview">I'd like to request an interview</option>
+            <option value="custom">Custom Message</option>
+          </select>
+          <div class="mt-2 hidden" id="custom">
+            <label for="custom_message" class="block text-sm font-medium text-gray-700">Custom Message</label>
+            <input type="text" name="custom_message" id="custom_message" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="I want to message you to...">
+          </div>
+        </div>
+        <div class="col-span-6 sm:col-span-3 mt-4">
+          <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
+          <textarea id="message" class="resize-y border rounded-md w-full p-4 pt-2 pb-2 text-md md:text-sm" rows="6" placeholder="Message..."></textarea>
+        </div>
+        <button id="submitbutton" onclick="submitContactRequest()" type="button" class="btn-outline-primary text-center text-sm transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-purple-700 hover:bg-purple-700 text-purple-700 hover:text-white w-20 font-normal py-2 mt-4 rounded">Submit</button>
+        <button id="closebutton" onclick="backtohome()" type="button" class="ml-4 text-center btn-outline-primary text-sm transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border border-red-700 hover:bg-red-700 text-red-700 hover:text-white font-normal w-20 py-2 mt-4 rounded">Cancel</button>
+       </div>
+     </div>
+     <div class="flex hidden" style="height:80vh;" id="submitted">
+       <div class="m-auto text-center text-4xl md:text-4xl lg:text-6xl">Your contact request was submitted!</div>
+     </div>
+     <script>
+     </script>
+  </body>
+  <style>
+     @media only screen and (max-width: 639px) {
+       #bot {
+         margin-top:-17px;
+       }
+       #submitbutton{
+         width:20vw;
+       }
+       #closebutton{
+         width:20vw;
+       }
+     }
+  </style>
+</html>
