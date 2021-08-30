@@ -10,7 +10,7 @@ Visit the live version [here](https://jakegines.in/).
 - Go to http://localhost:3000
 
 ## Main server file
-index.js
+server.js
 
 ## Routing
 All api requests go through /api/
