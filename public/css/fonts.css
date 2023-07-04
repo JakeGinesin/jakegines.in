@@ -1,0 +1,6 @@
+@import url('../fonts/Interw/inter.css');
+@font-face{
+  font-family: "IBM Plex Mono";
+  src: url('../fonts/IBMPlexMono-Regular.ttf') format("ttf");
+}
+

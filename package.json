@@ -1,0 +1,21 @@
+{
+  "name": "jake_dark_site",
+  "version": "1.0.0",
+  "description": "Jake's dark website",
+  "main": "server.js",
+  "scripts": {
+    "start": "python3 build.py && node server.js"
+  },
+  "author": "Jake Ginesin",
+  "license": "MIT",
+  "engine": {
+    "node": "14.x",
+    "npm": "6.14.10"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-fetch": "^3.2.10"
+  }
+}

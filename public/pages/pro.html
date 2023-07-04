@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+    <head>
+        
+<meta name="viewport" content= "width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+<title>Jake Ginesin - NEU</title>
+<link rel="icon" href="assets/icon.ico" />
+
+    </head>
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+.container {
+  margin-top: 50px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 50px auto;
+  width: 60%;
+}
+
+.row {
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Crimson Text", serif;
+  margin-block-start: 0px;
+  margin-block-end: 10px;
+}
+
+a, a:visited {
+  color: #68a1d3;
+  font-weight: 400;
+  text-decoration: none;
+}
+a:hover, a:visited:hover {
+  color: #2E5475;
+  text-decoration: none;
+}
+a:clicked, a:visited:clicked {
+  color: #2E5475;
+}
+
+em {
+  font-weight: 600;
+}
+
+.inset {
+  width: 95%;
+  margin: auto 2.5%;
+  font-size: 16px;
+}
+
+.feat {
+  text-decoration: underline;
+}
+
+.pagenav-link {
+  color: black;
+  display: inline;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 400;
+}
+.pagenav-link:visited {
+  text-decoration: none;
+  color: black;
+}
+.pagenav-link:hover {
+  text-decoration: none;
+  color: black;
+}
+.pagenav-link:hover {
+  text-decoration: none;
+  color: #68a1d3;
+}
+
+/*# sourceMappingURL=styles.css.map */
+    </style>
+    <body>
+        <h1 id="about">Jake Ginesin</h1>
+        <div class="row">
+            <div class="pagenav col">
+                <p>
+                    <a class="pagenav-link" href="/pro#about">About</a> • <a class="pagenav-link" href="/pro#work">Publications</a> • <a class="pagenav-link" href="/assets/resume-may11.pdf">CV</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-xs-12 my-md-1 my-2" id="about">
+              <p>I'm an undergraduate at Northeastern University double-majoring in computer science and mathematics. I'm interested in the formalization and verification of interesting and useful systems, as well as the logical foundations of mathematics and computing. My previous work involves system and network security. I'm thankful to have worked under the various supervisions of <a href="https://cnitarot.github.io/">Cristina Nita-Rotaru</a> at Northeastern University, <a href="https://www.isi.edu/~mirkovic/#">Jelena Mirkovic</a> at USC, and <a href="https://www.cs.ox.ac.uk/people/christoph.haase/">Christoph Haase</a> at Oxford. 
+              </p>
+            </div>
+            <div class="offset-md-1 col-md-4 col-xs-12 my-md-1 my-2">
+                <img src="/assets/icons/jake512.png" width="150px" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-12">
+                <b>Contact Me</b>
+                <p>Please reach out by email: ginesin (dot) j (at) northeastern (dot) edu <br />
+                    Alternatively, on social media: <a href="https://www.linkedin.com/in/jakeginesin/">LinkedIn</a>, and <a href="https://github.com/JakeGinesin">GitHub</a>.</p>
+            </div>
+        </div>
+
+        <h2 id="work">Publications and Articles</h2>
+        <p><i>* indicates equal contribution.</i></p>
+        <div class="row">
+            <div class="col-12">
+                <a href="https://arxiv.org/abs/2305.06092">SafeLLVM: LLVM Without The ROP Gadgets!</a>
+                <div class="inset">
+                  <p>Federico Cassano, Charles Bershatsky, <span class="feat">Jacob Ginesin</span>.</p>
+                  <p>
+                    A Return-oriented programming attack is when an attacker takes advantage of existing chunks of code in memory, dubbed gadgets, and chains them together to form an attack. We propose an approach to minimize the number of usable gadgets in compiled binaries, extending the methodology of a previous work. 
+                  </p>
+                </div>
+                <a href="https://jakegines.in/assets/DNS.pdf">Understanding DNS Query Composition at B-Root</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>, Jelena Mirkovic. Presented at <span class="feat">IEEE/ACM BDCAT2022</span></p>
+                  <p>We study the validity of traffic at a DNS root server through analyzing historical data.</p>
+                </div>
+            </div>
+        </div>
+
+         </div>
+    </body>
+    
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+</html>
