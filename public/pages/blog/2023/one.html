@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> one</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">one</span></h1>
+        <div>
+one -> One Text File
+<br> 
+<br> 
+My method for self-organization works really well for me. It might work really well for you too, so I decided I should share my setup.
+<br> 
+<br> 
+I was ultimately inspired by <a href="https://jamierubin.net/2022/01/25/practically-paperless-with-obsidian-episode-15-daily-notes-as-an-index-to-my-life/" target="_blank">Jamie Rubin's blog post</a> on his <a href="https://obsidian.md/" target="_blank">Obsidian.md</a> notes setup and <a href="https://web.archive.org/web/20220626044356/https://jeffhuang.com/productivity_text_file/" target="_blank">Jeff Huang's blog post</a> on his single text-file setup. Additional fine-tuning was inspired by <a href="https://orgmode.org/" target="_blank">org mode</a>, <a href="https://www.orgroam.com/" target="_blank">org roam</a>, <a href="https://zettelkasten.de/" target="_blank">the Zettelkasten Method</a>, and <a href="https://fortelabs.com/blog/para/" target="_blank">the P.A.R.A. Method</a>.
+<br> 
+<br> 
+<i>If you're not familiar, Obsidian.md is a solid markdown editor. They advertise themselves as "A second brain, for you, forever." It's inferior to vim as an editor imo tho. More on obsidian:</i>  <a href=#one>{1}</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='SetupDetails'>Setup Details</h2> 
+My system involves using a  <i>single main text file</i>  as the primary means of organizing myself. My main text file is always edited using <a href="https://neovim.io/" target="_blank">neovim</a> and lives on my <a href=/about#Setup>work laptop</a>. Everything is managed by git routinely backed up <a href=#two>{2}</a>.
+<br> 
+<br> 
+Here's an example of a day of notes:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>### [Date] 
+</span><span style='padding-right:10px;'>- todo: [thing(s) I need to do]
+</span><span style='padding-right:10px;'>- read: [thing I read] 
+</span><span style='padding-right:10px;'>- idea: [idea I have]
+</span><span style='padding-right:10px;'>- thought: [thought I have]
+</span></pre></td></tr></tbody></table></code></pre></figure>Here's an example: 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>### 23-02-04
+</span><span style='padding-right:10px;'>- todo: 
+</span><span style='padding-right:10px;'>  (1) systems hw by 2/5
+</span><span style='padding-right:10px;'>  (2) build updated SCTP spin model by mon
+</span><span style='padding-right:10px;'>  (3) number theory hw due wed
+</span><span style='padding-right:10px;'>  (4) set up webctf on digitalocean for TA-ing  
+</span><span style='padding-right:10px;'>  (5) compile safe-LLVM with ninja
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>- thought: Now that my Unihertz Jelly 2 is dead,
+</span><span style='padding-right:10px;'>    look into getting a replacement dumb phone
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>- unihertz jelly 2 root guide:
+</span><span style='padding-right:10px;'>    https://www.reddit.com/r/UnihertzJelly2/wiki/index/root/ 
+</span><span style='padding-right:10px;'>- read: https://beautifulracket.com/appendix/why-i-no-longer-contribute-to-racket.html 
+</span><span style='padding-right:10px;'>- read: https://felleisen.org/matthias/Thoughts/Apology.html
+</span><span style='padding-right:10px;'>- thought: PL people are wack
+</span><span style='padding-right:10px;'>- idea: write this post
+</span><span style='padding-right:10px;'>- thought: matt might suggested this blog: https://blog.regehr.org/
+</span></pre></td></tr></tbody></table></code></pre></figure><h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Thoughts'>Thoughts</h2> 
+This is a great organization method for several reasons:
+<br> 
+  1. I can easily search for all my todos, thoughts, ideas, etc. 
+<br> 
+  2. I can easily jump between days, or find a specific day
+<br> 
+  3. I'm not limited by any sort of organizational structure
+<br> 
+  4. Very little effort to maintain
+<br> 
+  5. Flexible af
+<br> 
+<br> 
+My workflow isn't exactly feature-hungry, so this setup works nicely for me. Although, there are some notable drawbacks. Mainly, it's impossible to create diagrams or anything visual. Also, It's hard to keep everything synched up across different devices (this isn't too big of a deal for me tho, see <a href=#three>{3}</a>). 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='BeyondOneTextFile'>Beyond One Text File</h2> 
+If I want to make a continuous note for a specific topic, I'll create a file in the <code class="highlighter-rouge" data-lang="text">abstract</code> notes directory:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>.
+</span><span style='padding-right:10px;'>|-- main.md
+</span><span style='padding-right:10px;'>|-- abstract
+</span><span style='padding-right:10px;'>    |-- topic.md
+</span><span style='padding-right:10px;'>    |-- othertopic.md
+</span><span style='padding-right:10px;'>    |-- etc.md
+</span></pre></td></tr></tbody></table></code></pre></figure>This keeps my  <i>general</i>  notes separate from my  <i>topic-specific</i>  notes. If need be, I can hyperlink between different files too. Also, note I  <i>do not</i>  keep my university notes in the <code class="highlighter-rouge" data-lang="text">abstract</code> folder. Managing uni-specific work is a completely separate ball-game from managing general notes <a href=#four>{4}</a>. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ImplementationDetails'>Implementation Details</h2> 
+Because I use Linux as my operating system and Neovim as my text editor, the implementation of my setup is non-trivial and worth discussing. Technical details incoming. 
+<br> 
+<br> 
+I wanted to be able to pop open a new window with my main notes file with a single keystroke. So, I mapped <code class="highlighter-rouge" data-lang="text">super + o</code> in my <a href="https://github.com/baskerville/sxhkd" target="_blank">sxhkd</a> config to open my terminal emulator, neovim, and execute a few commands within neovim. 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>super + {o}
+</span><span style='padding-right:10px;'>  alacritty -e 
+</span><span style='padding-right:10px;'>    nvim /path/to/daily -c 
+</span><span style='padding-right:10px;'>      "execute 'normal G' 
+</span><span style='padding-right:10px;'>      | set path+=/path/to/abstract
+</span><span style='padding-right:10px;'>      | Goyo "
+</span></pre></td></tr></tbody></table></code></pre></figure>Executing <code class="highlighter-rouge" data-lang="text">normal G</code> emulates the user pressing <code class="highlighter-rouge" data-lang="text">G</code> - e.g., in vim, jumping to the bottom of the file. Setting the <code class="highlighter-rouge" data-lang="text">path</code> variable to <code class="highlighter-rouge" data-lang="text">/path/to/abstract</code> allows me to hyperlink to other notes files in the <code class="highlighter-rouge" data-lang="text">abstract</code> folder. And, Goyo is a plugin for  <i>distraction-free writing in vim</i>  (see the project's <a href="https://github.com/junegunn/goyo.vim" target="_blank">Github repo</a>!)
+<br> 
+<br> 
+With my current <a href="https://github.com/JakeGinesin/dotfiles" target="_blank">Vim configuration</a>, my Daily notes file looks like this: 
+<br> 
+<br> 
+<img src="/media/notes-min.png" alt="Notes Min" class="img">
+<br> 
+<br> 
+To generate today's date with a simple keybind, I use <a href="https://github.com/SirVer/ultisnips" target="_blank">UltiSnips</a>. My <code class="highlighter-rouge" data-lang="text">.config/nvim/markdown.snippets</code> file looks like this:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>snippet date "markdown add date" b
+</span><span style='padding-right:10px;'>### `date +%y-%m-%d`
+</span><span style='padding-right:10px;'>- $0
+</span><span style='padding-right:10px;'>endsnippet
+</span></pre></td></tr></tbody></table></code></pre></figure>which results in:
+<br> 
+<br> 
+<img src="/media/date3.gif" alt="Date showcase" class="img">
+<br> 
+<br> 
+To search for and open notes files in the <code class="highlighter-rouge" data-lang="text">abstract</code> folder, I configured <a href="https://github.com/davatorium/rofi" target="_blank">rofi</a> as my fuzzy-search util: 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>super + {ctrl} + {o}  
+</span><span style='padding-right:10px;'>  // search for file and pass chosen to "cdir"
+</span><span style='padding-right:10px;'>  find /path/to/abstract -follow 
+</span><span style='padding-right:10px;'>    | grep -E '.md$' 
+</span><span style='padding-right:10px;'>    | rofi -dmenu 
+</span><span style='padding-right:10px;'>    | read chosen
+</span><span style='padding-right:10px;'>    // open chosen file
+</span><span style='padding-right:10px;'>    && alacritty -e nvim /path/to/abstract/$chosen -c 
+</span><span style='padding-right:10px;'>      "Goyo 
+</span><span style='padding-right:10px;'>      | set path+=/path/to/abstract"
+</span></pre></td></tr></tbody></table></code></pre></figure>Which looks like this:
+<br> 
+<br> 
+<img src="/media/select3.gif" alt="Doing stuff" class="img">
+<br> 
+<br> 
+To search through my non-main-file notes manually, I mapped <code class="highlighter-rouge" data-lang="text">super + {shift} + {o}</code> to open <a href="https://github.com/nvim-tree/nvim-tree.lua" target="_blank">nvimtree</a> instead of Goyo:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>super + {shift} + {o}
+</span><span style='padding-right:10px;'>  alacritty -e 
+</span><span style='padding-right:10px;'>    nvim /path/to/daily -c 
+</span><span style='padding-right:10px;'>    "execute 'normal G' 
+</span><span style='padding-right:10px;'>    | NvimTreeOpen /path/to/abstract
+</span><span style='padding-right:10px;'>    | set path+=/path/to/abstract"
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Notes'>Notes</h2> 
+<span id="one">{1}</span> <a href="https://obsidian.md/" target="_blank">Obsidian</a> is cool. It has great features. It's just Obsidian isn't perfect, and I'm very picky. Obsidian <a href="https://web.archive.org/web/20230205063710/https://forum.obsidian.md/t/is-it-true-that-obsidian-is-already-open-source/46413/7" target="_blank">is not open source</a>, <a href="https://obsidian.md/terms" target="_blank">requires a license to use</a> as of 2023, and subjects users to <a href="https://obsidian.md/terms" target="_blank">a lengthy terms of service</a>. Also, if I'm going to live out of a text file, I want the text editor I use to be fully customizable, y'know? 
+<br> 
+<br> 
+<span id="two">{2}</span> I back up all my notes in a high-quality SSD. This SSD has a git repository configured to pull and sync with my notes (as well as other stuff, like my programming projects). I have a script to do this automatically when the SSD is plugged into my computer and mounted. 
+<br> 
+<br> 
+<span id="three">{3}</span> I usually carry a <a href=/blog/2023/phn>dumbphone</a> with virtually no productivity capability, so my phone isn't important to my workflow. It's not necessary for me to sync my notes to my phone (or any other device besides my backup server, for that matter). Although, for some people, I'd imagine this sort of feature would be important.
+<br> 
+<br> 
+<span id="four">{4}</span> I'll write about my full university notes setup eventually. Here's my organizational structure for the first two years of my computer science and mathematics degree: 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>university
+</span><span style='padding-right:10px;'>  |-- bachelor-1
+</span><span style='padding-right:10px;'>  |   |-- semester-1
+</span><span style='padding-right:10px;'>  |   |   |-- cell-biology-and-genetics
+</span><span style='padding-right:10px;'>  |   |   |-- college-writing
+</span><span style='padding-right:10px;'>  |   |   |-- data-science-with-python
+</span><span style='padding-right:10px;'>  |   |   |-- discrete-mathematics
+</span><span style='padding-right:10px;'>  |   |   |-- geography-ireland
+</span><span style='padding-right:10px;'>  |   |   |-- calculus-1
+</span><span style='padding-right:10px;'>  |   |   `-- music-in-ireland
+</span><span style='padding-right:10px;'>  |   |-- semester-2
+</span><span style='padding-right:10px;'>  |   |   |-- cybersecurity-foundations
+</span><span style='padding-right:10px;'>  |   |   |-- discrete-structures
+</span><span style='padding-right:10px;'>  |   |   |-- fundies-1
+</span><span style='padding-right:10px;'>  |   |   |-- intro-cs-research
+</span><span style='padding-right:10px;'>  |   |   `-- multivariable-calculus
+</span><span style='padding-right:10px;'>  |   `-- summer-1
+</span><span style='padding-right:10px;'>  |       `-- fundies-2
+</span><span style='padding-right:10px;'>  `-- bachelor-2
+</span><span style='padding-right:10px;'>      |-- semester-1
+</span><span style='padding-right:10px;'>      |   |-- algorithms
+</span><span style='padding-right:10px;'>      |   |-- cybersecurity-research-seminar
+</span><span style='padding-right:10px;'>      |   |-- logic-and-computation
+</span><span style='padding-right:10px;'>      |   `-- object-oriented-design
+</span><span style='padding-right:10px;'>      `-- semester-2
+</span><span style='padding-right:10px;'>          |-- computer-systems
+</span><span style='padding-right:10px;'>          |-- linear-algebra
+</span><span style='padding-right:10px;'>          |-- number-theory
+</span><span style='padding-right:10px;'>          |-- research-seminar
+</span><span style='padding-right:10px;'>          `-- security-and-privacy
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>current-semester -&#62; semester-2
+</span></pre></td></tr></tbody></table></code></pre></figure>Notably, I keep a symlink between <code class="highlighter-rouge" data-lang="text">current-semester</code> in my home directory to, well, the directory of my current semester. My structure is loosly based off <a href="https://castel.dev/post/research-workflow/" target="_blank">this blog post</a>.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='InterestingRelatedStuff'>Interesting Related Stuff</h2> 
+• <a href="https://castel.dev/post/lecture-notes-1/" target="_blank">How I'm able to take notes in mathematics lectures using LaTeX and Vim</a>
+<br> 
+• <a href="https://johnnydecimal.com/" target="_blank">Johnny Decimal Project Organizaton System</a> 
+<br> 
+• <a href="https://www.eleanorkonik.com/its-not-just-a-pretty-gimmick-in-defense-of-obsidians-graph-view/" target="_blank">In Defense of Obsidian's Graph View</a>
+<br> 
+
+          <br>
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vst" title="vst">vst</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/phn" title="phn">phn</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg" title="egg">egg</a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/lap" title="lap">lap</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/one" title="one">one</a></td> 
+<td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

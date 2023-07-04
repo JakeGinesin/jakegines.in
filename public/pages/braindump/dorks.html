@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> dorks</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">dorks</span></h1>
+        <div>
+"Dorking" is a technique that involves issuing specific commands into a given search engine to discover vulnerable applications or to harvest data. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='GoogleDorks'>Google Dorks</h2> 
+Google, being the most popular search engine, is the most well-known type of dorking. Use <a href="https://static.semrush.com/blog/uploads/files/39/12/39121580a18160d3587274faed6323e2.pdf" target="_blank">Google search operators</a> to do so.
+<br> 
+<br> 
+Some cool examples:
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>inurl:"ViewerFrame?Mode=" 
+</span></pre></td></tr></tbody></table></code></pre></figure>^ This will find public webcams. 
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>db_password filetype:env
+</span></pre></td></tr></tbody></table></code></pre></figure>^ .env files define environment variables. These files aren't meant to be public, and here we're taking advantage of that by searching public indexed .env files passwords.
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>intitle:"index of" "contacts.txt"
+</span></pre></td></tr></tbody></table></code></pre></figure>^ "index of" in a page's title indicates a directory. Here, we're searching for "contacts.txt" within those public directories.
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>intitle:HP LASERJET PRO MFP inurl:/SSI/index.htm
+</span></pre></td></tr></tbody></table></code></pre></figure>^ This searches for indexed pages that manage HP's laserjet pro printers. If you're feeling particularly brave, the default user/password is "admin" & "password" ;)
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Shodan'>Shodan</h2> 
+While google is a general search engine, Shodan is a search engine explicitly for internet-connected devices. Shodan makes dorking incredibly powerful, as it makes finding potentially vulnerable devices almost trivial.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='FurtherReading'>Further Reading</h2> 
+• "Top 40 Shodan Dorks", <a href="https://securitytrails.com/blog/top-shodan-dorks" target="_blank">https://securitytrails.com/</a>
+<br> 
+• "Google Hacking Database", <a href="https://www.exploit-db.com/google-hacking-database?" target="_blank">explot-db.com</a>
+<br> 
+• "Google Advanced Search Operators", <a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank">ahrefs.com</a>
+<br> 
+	
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

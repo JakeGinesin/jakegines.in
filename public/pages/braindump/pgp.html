@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> pgp</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">pgp</span></h1>
+        <div>
+Pretty Good Privacy (PGP) is an encryption program that is used for signing, encrypting, and decrypting texts, emails, files, and the likes. It's powerful and widespread. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Setup'>Setup</h2> 
+After installing gpg, run:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>gpg --gen-key
+</span></pre></td></tr></tbody></table></code></pre></figure>The first key is your private or 'secret' key. Keep this key safe. Don't share it with anyone. The second key is your public key, which you should make public and share with as many people as you can.
+<br> 
+<br> 
+My public PGP key is <a href=/pgp>here</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ButhowcanIusePGP?'>But how can I use PGP?</h2> 
+Your public key can be used to encrypt messages. Your private key can then be used to decrypt those messages. Very simple. Very effective.
+<br> 
+<br> 
+This system can be used for another party to securely send messages or files to you.
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'># List public keys
+</span><span style='padding-right:10px;'>gpg --list-keys
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'># Import to keyring
+</span><span style='padding-right:10px;'>gpg --import someone.asc
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'># Export someone's key
+</span><span style='padding-right:10px;'>gpg --export --armor &#62; file
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'># Encrypts a file for a recipient
+</span><span style='padding-right:10px;'>gpg --encrypt --recipient email@site.com file.txt
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'># Encrypts and signs the message with author's private key
+</span><span style='padding-right:10px;'>gpg --encrypt --sign --recipient lasemi@nogmail.com file.txt
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'># Decrypt
+</span><span style='padding-right:10px;'>gpg --decrypt file.gpg
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='FurtherReading'>Further Reading</h2> 
+• "Signing PGP Keys", <a href="https://carouth.com/articles/signing-pgp-keys/" target="_blank">carouth.com</a>
+<br> 
+• "How To Use GPG to Encrypt and Sign Messages", <a href="https://fedingo.com/how-to-verify-pgp-signature-of-downloaded-software-in-linux/" target="_blank">fedingo.com</a>
+<br> 
+• "Key Signing Party", <a href="https://en.wikipedia.org/wiki/Key_signing_party" target="_blank">Wikipedia.org</a>
+<br> 
+• "PGP Web of Trust: Core Concepts Behind Trusted Communication" - Konstantin Ryabitsev, <a href="https://www.linux.com/training-tutorials/pgp-web-trust-core-concepts-behind-trusted-communication/" target="_blank">Linux.com</a>
+<br> 
+• "Asymmetric Algorithms", <a href="https://cryptography.io/en/latest/hazmat/primitives/asymmetric/index.html" target="_blank">Cryptography.io</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='References'>References</h2> 
+[1] "Difference between PGP and GPG", <a href="https://askubuntu.com/questions/186805/difference-between-pgp-and-gpg/186814#186814" target="_blank">askbuntu.com</a>
+<br> 
+[2] "How to Verify PGP Signature of Downloaded Software in Linux", <a href="https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages-on-an-ubuntu-12-04-vps" target="_blank">Digitalocean.com</a>
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

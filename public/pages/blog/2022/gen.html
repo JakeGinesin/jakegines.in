@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2022 -> gen</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2022" style="color: #75975e"><span class="arrow">&larr;&nbsp;</span>2022</a>
+        <!-- <a href="/blog/2022" style="color: #75975e"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2022</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #75975e">gen</span></h1>
+        <div>
+gen -> Static Website Generation
+<br> 
+<br> 
+I restructured the backend of this website to feature a  <i>self-built</i>  <a href="https://www.cloudflare.com/learning/performance/static-site-generator/" target="_blank">static HTML generator</a> and markdown parser, in addition to many other small changes. I did this not just to increase performance, but to ensure my website is <a href="https://web.archive.org/web/20220625161623/https://jeffhuang.com/designed_to_last/" target="_blank">designed to last</a> and sufficiently <a href="https://ruggedsoftware.org/" target="_blank">rugged</a>. I eliminated many moving parts from my website stack—on top of now serving static content, I dropped MongoDB, many npm libraries, and all external APIs from my stack. In this post I'm going to briefly explain my static HTML generation system.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='StaticHTMLgenerator'>Static HTML generator</h2> 
+A static HTML generator is a tool that generates HTML pages from raw data. Prebuilt tools exist to do this:  <i>Next.js</i>,  <i>Hugo</i>,  <i>Gatsby</i>, and  <i>Jekyll</i>  are some examples. I've tried these tools out, and they're not for me. Too much bloat and not enough low-level control. So, I built my own. 
+<br> 
+<br> 
+My initial file setup is something like this:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>.
+</span><span style='padding-right:10px;'>|-- raw
+</span><span style='padding-right:10px;'>     |-- item1.html
+</span><span style='padding-right:10px;'>     |-- item2.md
+</span><span style='padding-right:10px;'>|-- templates
+</span><span style='padding-right:10px;'>     |-- item_template.html
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+I want my static HTML generator to generate this:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>.
+</span><span style='padding-right:10px;'>|-- serve
+</span><span style='padding-right:10px;'>     |-- item1.html
+</span><span style='padding-right:10px;'>     |-- item2.html
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+Everything's in one python file - <code class="highlighter-rouge" data-lang="text">build.py</code> - which is invoked through a script in my <code class="highlighter-rouge" data-lang="text">package.json</code> file as shown below:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>"main": "main.js",
+</span><span style='padding-right:10px;'>"scripts": {
+</span><span style='padding-right:10px;'>	"start": "python3 build.py && node main.js"
+</span><span style='padding-right:10px;'>},
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+The formatting for the template files is the following:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre><span style='padding-right:10px;'>HTML content
+</span><span style='padding-right:10px;'>{{Data}}
+</span><span style='padding-right:10px;'>HTML content
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='BuildScript'>Build Script</h2> 
+The code behind <code class="highlighter-rouge" data-lang="text">build.py</code> is actually quite simple. Pseudocode below:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span style='padding-right:10px;'>open template, item, out:
+</span><span style='padding-right:10px;'>	if item is html : move file to serve
+</span><span style='padding-right:10px;'>	elif item is md:
+</span><span style='padding-right:10px;'>		for line in template:
+</span><span style='padding-right:10px;'>			if "{{Data}}" in line : out.write(interpret(item))
+</span><span style='padding-right:10px;'>			else : out.write(line)
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Interpreter'>Interpreter</h2> 
+The interpreter is pretty simple as well—all I'm doing is looping through each line and using regular expressions to filter and replace markdown patterns with HTML. Pseudocode below:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span style='padding-right:10px;'>def interpret(markdown):
+</span><span style='padding-right:10px;'>	lines, out = all lines in markdown, ""
+</span><span style='padding-right:10px;'>	for line in lines:
+</span><span style='padding-right:10px;'>		if re.findall(case 1, line) is not None:
+</span><span style='padding-right:10px;'>			out += formatted html
+</span><span style='padding-right:10px;'>		elif re.findall(case 2, line) is not None:
+</span><span style='padding-right:10px;'>			out += formatted html
+</span><span style='padding-right:10px;'>	
+</span><span style='padding-right:10px;'>	return out
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Implementation'>Implementation</h2> 
+The source code for my full implementation is on <a href="https://github.com/JakeGinesin/static-html-generator" target="_blank">hosted on Github</a>.
+<br> 
+<br> 
+
+          <br>
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #75975e;" href="/blog/2022" title="home">&#934</a></td>
+                <td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/gen" title="gen">gen</a></td> 
+<td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/srv" title="srv">srv</a></td> 
+<td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/biz" title="biz">biz</a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/dns" title="dns">dns</a></td> 
+<td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

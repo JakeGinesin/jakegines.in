@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> vst</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">vst</span></h1>
+        <div>
+vst -> Vim Startscreen
+<br> 
+<br> 
+I got kinda bored of Vim's default start screen. So, I created a cool Vim start screen without using the VimStart plugin. See an image of it below:
+<br> 
+<br> 
+<img src="/media/vimstart2.png" alt="vimstart" class="img">
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Setup'>Setup</h2> 
+The setup is pretty simple - all I do is open and modify a custom buffer whenever I run <code class="highlighter-rouge" data-lang="text">nvim</code> without any arguments. 
+<br> 
+<br> 
+In <code class="highlighter-rouge" data-lang="text">init.vim</code>, I execute the function <code class="highlighter-rouge" data-lang="text">Start()</code> on <code class="highlighter-rouge" data-lang="text">VimEnter</code>. To see more about how <code class="highlighter-rouge" data-lang="text">VimEnter</code> works, see vim's helpscreen with <code class="highlighter-rouge" data-lang="text">:h VimEnter</code>. 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>fun! Start()
+</span><span style='padding-right:10px;'>  " startup function contents
+</span><span style='padding-right:10px;'>endfun
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>autocmd VimEnter * call Start()
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+I set the function to return if there are command line arguments, the buffer isn't empty, vim isn't invoked by <code class="highlighter-rouge" data-lang="text">vim</code> or <code class="highlighter-rouge" data-lang="text">gvim</code>, or if I start in insert mode:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>if argc() || 
+</span><span style='padding-right:10px;'>  line2byte('$') != -1 || 
+</span><span style='padding-right:10px;'>  v:progname !~? '^[-gmnq]\=vim\=x\=\%[\.exe]$' ||
+</span><span style='padding-right:10px;'>  &insertmode
+</span><span style='padding-right:10px;'>    return
+</span><span style='padding-right:10px;'>endif
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+Then, I set a bunch of local options for the new buffer:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>" new buffer
+</span><span style='padding-right:10px;'>enew
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>" buffer options
+</span><span style='padding-right:10px;'>setlocal
+</span><span style='padding-right:10px;'>    \ bufhidden=wipe
+</span><span style='padding-right:10px;'>    \ buftype=nofile
+</span><span style='padding-right:10px;'>    \ nobuflisted
+</span><span style='padding-right:10px;'>    \ nocursorcolumn
+</span><span style='padding-right:10px;'>    \ nocursorline
+</span><span style='padding-right:10px;'>    \ nolist
+</span><span style='padding-right:10px;'>    \ nonumber
+</span><span style='padding-right:10px;'>    \ noswapfile
+</span><span style='padding-right:10px;'>    \ norelativenumber
+</span><span style='padding-right:10px;'>    \ syntax=off
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+Then, I fill the content of the buffer with my ascii art:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>" write to buffer
+</span><span style='padding-right:10px;'>for line in split(system('cat startscreen.vimstart'), '\n')
+</span><span style='padding-right:10px;'>    call append('$', '' . l:line)
+</span><span style='padding-right:10px;'>endfor
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>" No modifications to this buffer
+</span><span style='padding-right:10px;'>setlocal nomodifiable nomodified
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+I set some specific commands for this buffer:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>" new buffer commands
+</span><span style='padding-right:10px;'>nnoremap &#60;buffer&#62;&#60;silent&#62; e :enew&#60;CR&#62;
+</span><span style='padding-right:10px;'>nnoremap &#60;buffer&#62;&#60;silent&#62; i :enew &#60;bar&#62; startinsert&#60;CR&#62;
+</span><span style='padding-right:10px;'>nnoremap &#60;buffer&#62;&#60;silent&#62; o :enew &#60;bar&#62; startinsert&#60;CR&#62;
+</span><span style='padding-right:10px;'>nmap &#60;C-a&#62; :enew &#60;bar&#62; startinsert &#60;bar&#62; :Goyo 80&#60;CR&#62;
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+To disable scrolling, I changed the scroll mappings on this buffer only:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;ScrollWheelUp&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;S-ScrollWheelUp&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;C-ScrollWheelUp&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;ScrollWheelDown&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;S-ScrollWheelDown&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;C-ScrollWheelDown&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;ScrollWheelLeft&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;S-ScrollWheelLeft&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;C-ScrollWheelLeft&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;ScrollWheelRight&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;S-ScrollWheelRight&#62; &#60;nop&#62;
+</span><span style='padding-right:10px;'>nmap &#60;buffer&#62; &#60;C-ScrollWheelRight&#62; &#60;nop&#62;
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+And that's it! If you're curious, you can find my full <code class="highlighter-rouge" data-lang="text">init.vim</code> file on <a href="https://github.com/JakeGinesin/dotfiles/blob/master/.config/nvim/init.vim" target="_blank">Github</a>.
+<br> 
+
+          <br>
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vst" title="vst">vst</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/phn" title="phn">phn</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg" title="egg">egg</a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/lap" title="lap">lap</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/one" title="one">one</a></td> 
+<td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

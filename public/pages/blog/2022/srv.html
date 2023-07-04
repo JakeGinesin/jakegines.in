@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2022 -> srv</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2022" style="color: #75975e"><span class="arrow">&larr;&nbsp;</span>2022</a>
+        <!-- <a href="/blog/2022" style="color: #75975e"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2022</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #75975e">srv</span></h1>
+        <div>
+srv -> Home Server Setup
+<br> 
+<br> 
+Here's some of the details behind how I configured my home network and set up my locally hosted minecraft server. This post is mainly for my own future reference.  
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Modem'>Modem </h2> 
+I don't have enough money to blow on a new high-speed modem, so I was stuck with the default modem Comcast Xfinity, my Internet provider, gives to their customers for free. Comcast Xfinity had recently upgraded our modem for free, so I had made the easy mistake in believing I could actually make use of it.  
+<br> 
+<br> 
+It turns out, this "upgrade" severely inhibited the functionality of the model. I was now  <i>unable</i>  to edit most of the modem's settings without downloading Comcast Xfinity's disfunctional, spyware-ridden mobile app. To emphasize on the latter bit, the app would attempt to collect my location  <i>every 30 seconds</i>.  
+<br> 
+<br> 
+My solution to getting around the god-awful modem was setting it into "bridge mode" in the local settings. See <a href="https://www.xfinity.com/support/articles/wireless-gateway-enable-disable-bridge-mode" target="_blank">Xfinity's support article</a>. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Router'>Router</h2> 
+I built a computer out of some old parts and installed pfsense on it. (I made a <a href="https://www.reddit.com/r/homelab/comments/zxhl96/this_homelab_goes_hard_af_specs_in_comments/" target="_blank">reddit post</a> further detailing specs, details, etc). 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Pi'>Pi</h2> 
+I attached my raspberri pi 4 running Arch Linux to my network, gave it a static IP address assignment, and created a port forwarding rule to that IP address in pfsense. I then configured the pi as an SSH server. 
+<br> 
+<br> 
+To restart the pi through ssh, use <code class="highlighter-rouge" data-lang="text">sudo shutdown -r now</code>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MinecraftServer'>Minecraft Server </h2> 
+Because pis have poor single-core performance, the only way viable way to run a minecraft server smoothly is to use <a href="https://papermc.io/" target="_blank">papermc</a>. I just replaced my server's jar file with papermc's and everything worked fine. I further optimized the server with help from <a href="https://www.reddit.com/r/RASPBERRY_PI_PROJECTS/comments/ktt8j7/how_can_i_improve_a_raspberry_pi_minecraft_server/" target="_blank">this reddit post</a> and <a href="https://docs.dedicatedmc.io/server-optimization/paper-config-optimization-guide/" target="_blank">this blog post</a>. 
+<br> 
+<br> 
+To keep the minecraft server up 24/7, I found the best solution was to create a systemd service. I initially tried to use a cron job, but this solution proved to be clunky. Systemd better.  
+<br> 
+<br> 
+<i>ok, systemd has problems, but it's fine for my pi.</i>
+<br> 
+<br> 
+Anyways, guided by this <a href="https://stackoverflow.com/a/34333783" target="_blank">stackoverflow</a> post, I created <code class="highlighter-rouge" data-lang="text">mc.service</code> in the directory <code class="highlighter-rouge" data-lang="text">.config/systemd/user</code> with the contents:
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>[Unit]
+</span><span style='padding-right:10px;'>Description=Minecraft Server
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>[Service]
+</span><span style='padding-right:10px;'>type=simple
+</span><span style='padding-right:10px;'>WorkingDirectory=/home/pi/Server
+</span><span style='padding-right:10px;'>ExecStart=/bin/sh /home/pi/Server/run.sh
+</span><span style='padding-right:10px;'>Restart=always
+</span><span style='padding-right:10px;'>RestartSec=10
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>[Install]
+</span><span style='padding-right:10px;'>WantedBy=default.target
+</span></pre></td></tr></tbody></table></code></pre></figure>
+          <br>
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #75975e;" href="/blog/2022" title="home">&#934</a></td>
+                <td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/gen" title="gen">gen</a></td> 
+<td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/srv" title="srv">srv</a></td> 
+<td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/biz" title="biz">biz</a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important; color:#75975e" href="/blog/2022/dns" title="dns">dns</a></td> 
+<td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+              <tr>
+                <td><a style="text-decoration: none !important"></a></td> 
+
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

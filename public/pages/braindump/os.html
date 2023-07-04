@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> os</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">os</span></h1>
+        <div>
+A collection of notes from my operating systems (CS5600) course. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Intro'>Intro</h2> 
+At a high level, the operating sits between the running applications and the hardware. The OS acts as the API to the hardware and  <i>abstracts</i>  it. Programmers interface with the OS, which in turn manages processes and interfaces with the hardware itself. 
+<br> 
+<br> 
+A great example of this process is when a program allocates memory. In C, when you allocate memory for something you'll always get a consistent memory address. Why? It's because the OS is virtualizing memory for your program to use! Each process ahs its own individual address space. 
+<br> 
+<br> 
+Another concept is the idea of concurrency. The CPU (assuming it has a single core) can only process one operation at a time. Yet, if you check your current running processes, you'll often see hundreds of things happening at once. How does an operating system manage so many processes? The idea is it concurrently runs all of them! How this works is a deep and complicated problem. 
+<br> 
+<br> 
+Another important concept is  <i>persistence</i>, e.g., how do we store data over the long-term? The hardware to do this, like an SSD or a hard drive, helps with this. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='RandomFacts'>Random Facts</h2> 
+• The OS offers a couple hundred  <i>system calls</i>  that allows processes to interact with the hardware. 
+<br> 
+• memory space is hexadecimal, e.g.: 0x10 = 17th space
+<br> 
+• CPUs have  <i>registers</i>  that are used to perform calculations, etc. 
+<br> 
+• register information is different depending on, like, the CPU architecture. How CPU's are designed to process things is  <i>private</i>. 
+<br> 
+• A monolithic kernel is a single, large process that runs in priviledged mode and manages the entirety of the system's recourses. 
+<br> 
+• OSX and Windows are hybrid-kernel architecture-styles. That means, they have some aspects of monolithic kernels and some aspects of micro-architecture kernels. 
+<br> 
+• Microarchitecture kernels are kernels that provide functionality in little packages to the user
+<br> 
+• x86-64 -> registers are 64 bit!
+<br> 
+• risc is fundamentally different from x86 in that its design is open source, while x86 is closed source
+<br> 
+• stdin -> 0, stdout -> 1, stderror -> 2
+<br> 
+• which ls -> /bin/ls
+<br> 
+• which which -> (built in shell command)
+<br> 
+• EOF -> End of File
+<br> 
+• fd -> file descriptor
+<br> 
+• different CPUs, different schedules
+<br> 
+• everyone cares about CPU%, not like, anything else.
+<br> 
+• pipes: for pipe(pipefd):
+<br> 
+    write to pipefd[1], read pipefd[0]
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='DifferencesbetweenOSandKernel'>Differences between OS and Kernel</h2> 
+The kernel and the operating system (OS) are related but different concepts.
+<br> 
+<br> 
+The kernel is the central component of the operating system that manages system resources and provides the interface between the hardware and software of a computer. It is responsible for low-level tasks such as managing memory and process scheduling, as well as providing higher-level services such as device drivers, file system management, and system calls.
+<br> 
+<br> 
+An operating system, on the other hand, is a set of software programs that manages the hardware resources of a computer and provides a platform for application software to run. An operating system provides a consistent environment for the execution of programs by hiding the underlying hardware complexity, providing a stable and consistent application interface, and managing and allocating resources such as memory, storage, and processing power.
+<br> 
+<br> 
+An operating system typically includes the kernel, as well as a set of additional software components such as libraries, system utilities, and application programming interfaces (APIs) that provide additional functionality and services to the system and users.
+<br> 
+<br> 
+To simplify, the kernel is a crucial component of the operating system that is responsible for managing the computer's hardware and providing basic services, while the operating system is the overall platform that provides a consistent environment for the execution of programs and management of resources.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Howdoesthestackwork?'>How does the stack work?</h2> 
+The stack is a memory are allocated for executing processes. The stack is always located in the ram. There is a  <i>stack pointer</i>  that is kept in the register that points to the top of the stack.  
+<br> 
+<br> 
+Likewise, a stack frame is a block of memory that is allocated when function is called. It stores the function's parameters, local variables, etc. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Processes'>Processes</h2> 
+A process is an abstraction by the operating system. Essentially, creating processes is done through an API. 
+<br> 
+<br> 
+From OSTEP:
+<br> 
+The process is the major OS abstraction of a running program. At
+<br> 
+any point in time, the process can be described by its state: the con-
+<br> 
+tents of memory in its address space, the contents of CPU registers
+<br> 
+(including the program counter and stack pointer, among others),
+<br> 
+and information about I/O (such as open files which can be read or
+<br> 
+written)
+<br> 
+<br> 
+The process API consists of calls programs can make related to pro-
+<br> 
+cesses. Typically, this includes creation, destruction, and other use-
+<br> 
+ful calls.
+<br> 
+<br> 
+Processes exist in one of many different process states, including
+<br> 
+running, ready to run, and blocked. Different events (e.g., getting
+<br> 
+scheduled or descheduled, or waiting for an I/O to complete) tran-
+<br> 
+sition a process from one of these states to the other
+<br> 
+<br> 
+A process list contains information about all processes in the sys-
+<br> 
+tem. Each entry is found in what is sometimes called a process
+<br> 
+control block (PCB), which is really just a structure that contains
+<br> 
+information about a specific process
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Assembly'>Assembly</h2> 
+<a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" target="_blank">BROWN CHEAT SHEET</a>
+<br> 
+<br> 
+registers:
+<br> 
+  %rip -> always points to the next instruction in the code itself
+<br> 
+  %rsp -> points to the top of the stack. The  <i>stack</i>  pointer
+<br> 
+  %rbp -> frame pointer 
+<br> 
+  %rax -> temporary register for the return value of functions
+<br> 
+  %rbx -> callee-saved register
+<br> 
+            meaning, not saved across function calls
+<br> 
+  %rdi -> 1st argument to functions
+<br> 
+  %rsi -> 2nd argument to functions 
+<br> 
+  %rdx -> 3rd argument to functions, second return register
+<br> 
+  %rcx -> 4th argument to functions
+<br> 
+  %r8  -> 5th argument to functions
+<br> 
+  %r9  -> 6th argument to functions 
+<br> 
+            keep in mind, after the 6th argument are stored in the stack,
+<br> 
+            specifically at %rsp, %rsp+8, etc
+<br> 
+  %r10 -> temporary register, used for passing function's static chain pointer
+<br> 
+  %r11 -> temp register
+<br> 
+  %r12-%r14 -> temp register
+<br> 
+  %r15 -> callee-saved register, used as a GOT base pointer
+<br> 
+<br> 
+operations:
+<br> 
+  movq A, B -> moves the value in A => B
+<br> 
+  pushq %rax -> 
+<br> 
+    subq $8, %rsp (move stack pointer)
+<br> 
+    movq %rax, (%rsp) 
+<br> 
+  popq %rax -> 
+<br> 
+    movq (%rsp), (%rax) | 
+<br> 
+    addq $q, %rsp
+<br> 
+<br> 
+  call 0x12345 
+<br> 
+    pushq %rip (push next instruction onto the stack)
+<br> 
+    movq $0x12345, %rip (move instruction to %rip)  
+<br> 
+<br> 
+  ret 
+<br> 
+    popq %rip
+<br> 
+<br> 
+examples:
+<br> 
+subq $16, %rsp    # make stack space, $16
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Threads'>Threads</h2> 
+• threads give  <i>new registers</i>  with  <i>different schedulers</i>
+<br> 
+• threads are implemented at the  <i>hardware level</i>  (know how CPUs have like, 8 cores 16 threads? THIS IS WHY)
+<br> 
+• race condition: when threads are competing for the same resources. we  <i>don't</i>  want this,
+<br> 
+  as it like, adds in non-deterministic behavior. this is BAD. we don't know when threads
+<br> 
+  execute
+<br> 
+• exit in thread, exit in program
+<br> 
+<br> 
+threads share: 
+<br> 
+• global variables
+<br> 
+• program code
+<br> 
+• heap
+<br> 
+<br> 
+they DON'T share:
+<br> 
+• stack
+<br> 
+• registers
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Topicsforreview:'>Topics for review:</h2> 
+• understanding the output of programs using pointer variables
+<br> 
+• man pages: 
+<br> 
+  man 1 -> general commands
+<br> 
+  man 2 -> system calls
+<br> 
+  man 3 -> library (c standard library)
+<br> 
+  man 4 -> special files
+<br> 
+<br> 
+• understanding the most important system calls
+<br> 
+  waitpid -> (waiting for a given PID)
+<br> 
+  wait -> automatically gets that shit
+<br> 
+<br> 
+• stdin, stdout, stderror
+<br> 
+  0 -> stdin, 1 -> stdout, 2 -> stderror
+<br> 
+    2> is stderror redirect
+<br> 
+<br> 
+• rev -> reverse, e.g., echo abc | rev -> cba
+<br> 
+• zombie/orphan processes
+<br> 
+• what do processes share across forks? what do threads share? 
+<br> 
+  
+<br> 
+  two threads in a process share: global variables, program code, heap. 
+<br> 
+  THEY DON'T SHARE THE STACK OR REGISERS!
+<br> 
+<br> 
+  forking shit doesn't share very much
+<br> 
+<br> 
+• when do things get pushed onto the stack? when do things 
+<br> 
+  get pushed onto the heap?
+<br> 
+<br> 
+  variables are pushed onto the stack... or registers lmao
+<br> 
+  declaring variables inside a function pushes em onto the stack
+<br> 
+  mallocing stuff puts it on the heap though
+<br> 
+<br> 
+• understanding the... registers and their usage. 
+<br> 
+• understanding basic assembly
+<br> 
+  %rax -> first return vector 
+<br> 
+  %rbx -> calle-savbed
+<br> 
+  %
+<br> 
+<br> 
+• truly, for real, understanding concurrency.
+<br> 
+<br> 
+• understanding the "commandments" in Mike Dahlin's 
+<br> 
+  "coding standard for programming with threads"
+<br> 
+<br> 
+  1. Always do things the same way. Be consistent!
+<br> 
+  2. Always use monitors (condition variables & locks)
+<br> 
+  3. Always hold lock when operating on condition variables
+<br> 
+  4. always grab lock at the beginning of procedure and release it 
+<br> 
+      before return
+<br> 
+  5. always use while for cond_wait and not if
+<br> 
+  6. never sleep!
+<br> 
+<br> 
+• scheduling! be familiar with all schedules.
+<br> 
+• be familiar with lab1 and lab2
+<br> 
+• global variables initialize over non-global shit
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Pointers'>Pointers</h2> 
+So, memory has an  <i>address</i>  and a  <i>value</i>  
+<br> 
+<br> 
+for <code class="highlighter-rouge" data-lang="text">int x = 0</code>
+<br> 
+you have an address, and the integer value  <i>at</i>  the value of the address
+<br> 
+<br> 
+for like, <code class="highlighter-rouge" data-lang="text">int *pX = &x</code>,
+<br> 
+your address, <code class="highlighter-rouge" data-lang="text">int  <i>pX</code> </i>points* to a pointer that points to an integer
+<br> 
+"integer  <i>pointer</i>  named pX is set to  <i>the address</i>  of x"
+<br> 
+<br> 
+<code class="highlighter-rouge" data-lang="text">int y = *pX</code>
+<br> 
+the integer named y is set to the  <i>thing pointed to by pX</i>
+<br> 
+<br> 
+• malloc takes things from the  <i>heap</i>
+<br> 
+• minimal answer for zombie process & orphan process code
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Forking'>Forking</h2> 
+Here's an example of forking:
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>int main() {
+</span><span style='padding-right:10px;'>    pid_t pid;
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>    // fork a new process
+</span><span style='padding-right:10px;'>    pid = fork();
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>    if (pid == -1) {
+</span><span style='padding-right:10px;'>        // fork failed
+</span><span style='padding-right:10px;'>        perror("fork");
+</span><span style='padding-right:10px;'>        return 1;
+</span><span style='padding-right:10px;'>    } else if (pid == 0) {
+</span><span style='padding-right:10px;'>        // child process
+</span><span style='padding-right:10px;'>        printf("I am the child process with PID %d\n", getpid());
+</span><span style='padding-right:10px;'>    } else {
+</span><span style='padding-right:10px;'>        // parent process
+</span><span style='padding-right:10px;'>        printf("I am the parent process with PID %d\n", getpid());
+</span><span style='padding-right:10px;'>        printf("My child process has PID %d\n", pid);
+</span><span style='padding-right:10px;'>    }
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>    return 0;
+</span><span style='padding-right:10px;'>}
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Mutex'>Mutex</h2> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>mutex_t m
+</span><span style='padding-right:10px;'>mutex_init(mutex_t* m)
+</span><span style='padding-right:10px;'>acquire(mutex_t* m)
+</span><span style='padding-right:10px;'>release(mutex_t* m)
+</span><span style='padding-right:10px;'>....
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>--pthread implementation:
+</span><span style='padding-right:10px;'> pthread_mutex_init(), pthread_mutex_lock(), ...
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Conditionvariables'>Condition variables</h2> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>--void cond_init (Cond *, ...); 
+</span><span style='padding-right:10px;'>--Initialize
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>--void cond_wait(Cond *c, Mutex* m);
+</span><span style='padding-right:10px;'>--Atomically unlock m and sleep until c signaled 
+</span><span style='padding-right:10px;'>--Then re-acquire m and resume executing 
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>--void cond_signal(Cond* c);
+</span><span style='padding-right:10px;'>--Wake one thread waiting on c
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>--void cond_broadcast(Cond* c);
+</span><span style='padding-right:10px;'>--Wake all threads waiting on c
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Monitors'>Monitors</h2> 
+monitor -> mutex + condition variable
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ZombieProcess'>Zombie Process</h2> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>#include &#60;stdlib.h&#62;
+</span><span style='padding-right:10px;'>#include &#60;unistd.h&#62;
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>int main() {
+</span><span style='padding-right:10px;'>    pid_t child_pid = fork();
+</span><span style='padding-right:10px;'>    
+</span><span style='padding-right:10px;'>    if (child_pid == 0) {
+</span><span style='padding-right:10px;'>        // Child process
+</span><span style='padding-right:10px;'>        exit(0);
+</span><span style='padding-right:10px;'>    }
+</span><span style='padding-right:10px;'>    else {
+</span><span style='padding-right:10px;'>        // Parent process
+</span><span style='padding-right:10px;'>        sleep(60); // Sleep for 60 seconds to give the child time to exit
+</span><span style='padding-right:10px;'>    }
+</span><span style='padding-right:10px;'>    
+</span><span style='padding-right:10px;'>    return 0;
+</span><span style='padding-right:10px;'>}
+</span></pre></td></tr></tbody></table></code></pre></figure>the parent never calls wait(), so.. the child process never gets closed
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='OrphanProcess'>Orphan Process</h2> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>#include &#60;stdlib.h&#62;
+</span><span style='padding-right:10px;'>#include &#60;unistd.h&#62;
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>int main() {
+</span><span style='padding-right:10px;'>    pid_t child_pid = fork();
+</span><span style='padding-right:10px;'>    
+</span><span style='padding-right:10px;'>    if (child_pid == 0) {
+</span><span style='padding-right:10px;'>        // Child process
+</span><span style='padding-right:10px;'>        sleep(60); // Sleep for 60 seconds to give the parent time to exit
+</span><span style='padding-right:10px;'>    }
+</span><span style='padding-right:10px;'>    else {
+</span><span style='padding-right:10px;'>        // Parent process
+</span><span style='padding-right:10px;'>        exit(0);
+</span><span style='padding-right:10px;'>    }
+</span><span style='padding-right:10px;'>    
+</span><span style='padding-right:10px;'>    return 0;
+</span><span style='padding-right:10px;'>}
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+the parent process exits, but the child is still running.. so it's adopted by the init process!
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Scheduling'>Scheduling</h2> 
+response time -> time until process starts moving
+<br> 
+turnaround time -> time till process is done
+<br> 
+<br> 
+these are  <i>metrics</i>
+<br> 
+<br> 
+FIFO -> first in, first out
+<br> 
+SJF -> Shortest Job First
+<br> 
+STCF -> Shortest time-to-completion first. this means  <i>always</i>  putting the shortest job in front.
+<br> 
+RR -> Round robin, hit every single process
+<br> 
+Lottery -> Random processes
+<br> 
+Priority -> give processes priority and shit
+<br> 
+MLFQ -> Multi-level feedback queue, usually queues do round robin and downgrade to other processes
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> systemd</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">systemd</span></h1>
+        <div>
+Systemd is a linux service manager. It's what I personally use on my arch config, and it's how I create custom background services.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='BasicCommands'>Basic Commands</h2> 
+• Show System Status - <code class="highlighter-rouge" data-lang="text">systemctl status</code>  
+<br> 
+• List Running Units - <code class="highlighter-rouge" data-lang="text">systemctl</code> or <code class="highlighter-rouge" data-lang="text">systemctl list-units</code>  
+<br> 
+• Show System Status - <code class="highlighter-rouge" data-lang="text">systemctl status</code>  
+<br> 
+• Show Process Status - <code class="highlighter-rouge" data-lang="text">systemctl status [process]</code>  
+<br> 
+• Start A Process - <code class="highlighter-rouge" data-lang="text">systemctl start [process]</code>  
+<br> 
+• Restart A Process - <code class="highlighter-rouge" data-lang="text">systemctl relead [process]</code>  
+<br> 
+• Start A Process At Boot - <code class="highlighter-rouge" data-lang="text">systemctl enable [process]</code>  
+<br> 
+• Disable Start On Boot - <code class="highlighter-rouge" data-lang="text">systemctl disable [process]</code>  
+<br> 
+• Reload Everything - <code class="highlighter-rouge" data-lang="text">systemctl daemon-reload</code>
+<br> 
+<br> 
+Note: When navigating processes, using grep or less is really helpful for parsing large outputs.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='CreatingCustomServices-StartingADockerImage'>Creating Custom Services - Starting A Docker Image</h2> 
+I have a docker image running <a href="https://github.com/ArchiveBox" target="_blank">ArchiveBox</a> on my main workstation as a systemd service. Here's how I did it.  
+<br> 
+  
+<br> 
+Here's the short bash script I wrote to start my docker image:  
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre><span style='padding-right:10px;'>#!/bin/bash
+</span><span style='padding-right:10px;'>cd /home/jakeg/archivebox
+</span><span style='padding-right:10px;'>sudo docker-compose up
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+I used <code class="highlighter-rouge" data-lang="text">chmod +x [file].sh</code> to give systemd execution access to the script.  
+<br> 
+  
+<br> 
+In the systemd directory <code class="highlighter-rouge" data-lang="text">/etc/systemd/system</code> I wrote the file <code class="highlighter-rouge" data-lang="text">archivebox.service</code> with the contents:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span style='padding-right:10px;'>[Unit]
+</span><span style='padding-right:10px;'>Description=archivebox service
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>[Service]
+</span><span style='padding-right:10px;'>type=simple
+</span><span style='padding-right:10px;'>ExecStart=/bin/bash /home/jakeg/archivebox/run.sh
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>[Install]
+</span><span style='padding-right:10px;'>WantedBy=multi-user.target
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='References'>References</h2> 
+• "Creating a Linux service with systemd" - <a href="https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6" target="_blank">Medium.com</a>
+<br> 
+• <a href="https://wiki.archlinux.org/title/systemd" target="_blank">https://wiki.archlinux.org/title/systemd</a>
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+
