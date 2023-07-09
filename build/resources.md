@@ -256,10 +256,10 @@ JUMP -> [Misc.]("#Misc.")
 - [Daniel Roy Greenfeld](https://daniel.feldroy.com/) - ex-Nasa employee 
 - [Shriram Krishnamurthi](http://www.noahsd.com/) - CS Prof at Brown into programming languages and formal methods
 - [Qntm](https://qntm.org/) - Qntm
-- [Yosra Hashim](https://yhshi26.github.io/) - My favorite med student
 - [blog.soykaf.com](https://blog.soykaf.com/) - Lain person
 - [Neg Serg](https://github.com/neg-serg) 
 - [Daniel Howe](https://rednoise.org/daniel/pubs.html) - Prof at HKU focusing on privacy, surveillance, and disinformation
+- [Yosra Hashim](https://yhshi26.github.io/) - My favorite med student 
 
 ### Misc.
 - [Pool Suite](https://poolsuite.net/) - R e t r o Internet Radio Station 

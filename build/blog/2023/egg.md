@@ -24,7 +24,7 @@ Ingredients:
 - two bacon strips OR vegetable oil
 - a pan, a plate, a spatula, and a stove
 
-Optional topings:
+Optional toppings:
 - cheese
 - vegetables
 - herbs
@@ -46,4 +46,4 @@ Steps:
 ### Competition
 Despite the egg sandwich's numerous strengths, there's one place it falls short: the shelf life of the ingredients is quite poor. Bread gets moldy, and eggs go bad. 
 
-Thus, pasta (and to some extent, rice) are the only suitable competition. Pasta and rice have virtually unlimited shelf life and approximately equivalent cost effectiveness, but they take more prep effort. It's a tradeoff. 
+Thus, pasta (and to some extent, rice) are the only suitable competition. Pasta and rice have virtually unlimited shelf life and approximately equivalent cost effectiveness, but they take more prep effort. It's a trade-off. 

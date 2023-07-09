@@ -1,4 +1,4 @@
-phn -> dumb phone
+phn -> Dumb Phone
 
 I use a samsung xcover 4s, a budget smartphone from 2019, as my daily driver. It's rooted, runs firmware I doctored myself, and runs unlauncher. In this post, I'll discuss (1), my motivation for using this phone, and (2), some technical details of the phone itself.  
 

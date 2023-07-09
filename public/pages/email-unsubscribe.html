@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> unsubscribe</title>
+
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+</head>
+<script>
+async function send(event){
+  event.preventDefault()
+  let email = document.getElementById('emailInput').value;
+
+  let data = {
+    "email": email
+  }
+
+  let response = await fetch(window.location.origin + '/email-list/unsubscribe', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if(response.status == "201"){
+    // window.location = '/admin';
+    // console.log('success!!!');
+    document.getElementById('notfound').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    setTimeout(function() {
+      window.location = "/"
+    }, 2000); // wait 1000ms (or 1 second) before reloading
+  }
+  else if(response.status == "401"){
+    document.getElementById('ratelimit').style.display = 'block';
+    setTimeout(function() {
+      window.location = "/"
+    }, 2000); // wait 1000ms (or 1 second) before reloading
+  }
+  else if(response.status == "404"){
+    document.getElementById('notfound').style.display = 'block';
+  }
+  else if(response.status == "501"){
+    console.log('server error');
+  }
+  // console.clear();
+}
+</script>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="index.html"><span class="arrow">&larr;&nbsp;</span>home</a>
+        </p>
+        <h1><span style="color: #8cade6">unsubscribe</span></h1>
+        <div>
+          Use this form to unsubcribe from the jakegines.in email list.
+          <br>
+          <br>
+          <span style="color: #8cade6; display:none;" id="success">you've been unsubscribed.</span>
+          <span style="color: #8cade6; display:none;" id="ratelimit">you've been rate limited. wait 30 seconds.</span>
+          <span style="color: #8cade6; display:none;" id="notfound">your email wasn't found in my system.</span>
+
+          <form style="width:100%" onsubmit="send(event)">
+            <input style="width:80%;" type="email" id="emailInput" placeholder="Enter your email" />
+            <button id="submitButton" >Submit</button>
+          </form>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+
+
