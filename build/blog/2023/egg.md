@@ -13,7 +13,9 @@ My heart cherishes this humble, comforting sandwich.
 -- me, at 2am, while eating an egg sandwich
 
 ### Genesis
-The egg sandwich is the best meal for a college student, and the undisputed king of college pragmatism. My roommate introduced me to the sandwich early in my sophomore year, and I haven't looked back since. There exists no better meal in terms of prep time, ease of cooking, cost effectiveness, and customizability.
+The egg sandwich is the best meal for a college student, and the undisputed king of college pragmatism. My roommate introduced me to the sandwich early in my sophomore year, and I haven't looked back since. There exists no better meal in terms of prep time, ease of cooking, cost effectiveness, and customizability. 
+
+*Although, eggs aren't super healthy, so consume with caution.*
 
 ### Recipe
 Jake's amazing egg sandwich recipe.
@@ -21,7 +23,7 @@ Jake's amazing egg sandwich recipe.
 Ingredients:
 - two slices of bread
 - one egg
-- two bacon strips OR vegetable oil
+- two bacon strips OR vegetable oil OR an oil substitute 
 - a pan, a plate, a spatula, and a stove
 
 Optional toppings:

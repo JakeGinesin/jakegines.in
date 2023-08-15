@@ -1,0 +1,252 @@
+<head>
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Understanding DNS Query Composition at B-Root</title>
+</head>
+<style>
+
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text|Roboto:400,700&display=swap");
+.colHighlight {
+  font-family: sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+cite {
+  vertical-align: super;
+  font-size: smaller;
+  margin-left: -5px; }
+
+.atn {
+  margin: 50px;
+  padding: 20px;
+  border: 2px solid #AA2020; }
+
+.container {
+  padding: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500; }
+
+h1, h2, h3, h4 {
+  font-family: 'Crimson Text', serif; }
+
+b {
+  font-weight: 700; }
+
+.vis-inset {
+  height: 20vw; }
+  @media screen and (max-width: 600px) {
+    .vis-inset {
+      height: 20vh; } }
+
+.vis-inset-medium {
+  height: 25vw; }
+  @media screen and (max-width: 600px) {
+    .vis-inset-medium {
+      height: 25vh; } }
+
+.vis-inset-long {
+  height: 35vw; }
+  @media screen and (max-width: 600px) {
+    .vis-inset-long {
+      height: 35vh; } }
+
+.box {
+  height: 1.25em;
+  width: 1.25em;
+  top: -0.125em;
+  margin: 0.125em;
+  display: inline-flex;
+  align-self: center;
+  position: relative; }
+
+.anim svg {
+  border: 2px solid black; }
+
+.figdesc {
+  color: #808080;
+  font-size: 0.8em; }
+
+.fn {
+  vertical-align: super;
+  font-size: smaller;
+  text-align: center; }
+
+.animcontrol:hover {
+  cursor: pointer; }
+
+.animcontrol img {
+  height: 35px;
+  width: 35px; }
+
+.touchable {
+  float: right; }
+
+.pagenav-link {
+  color: black;
+  display: inline;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.inputBtn {
+  touch-action: manipulation;
+  height: 35px;
+  width: 35px;
+  margin: 10px; }
+  .inputBtn:hover {
+    cursor: pointer; }
+
+.ii {
+  font-style: italic;
+}
+
+.mobilenav {
+  touch-action: manipulation; }
+  @media screen and (min-width: 600px) {
+    .mobilenav {
+      display: none; } }
+  .mobilenav a {
+    display: block;
+    clear: both;
+    float: right; }
+
+body {
+  touch-action: manipulation; }
+</style>
+<body>
+    <div class="container">
+        <h1>Understanding DNS Query Composition at B-Root</h1>
+        <p><b>Jacob Ginesin, Jelena Mirkovic</b> <br /> <span style="font-size: 12px; color: #808080;">Northeastern University, USC/ISI</span></p>
+
+            <div class="pagenav">
+                <p>
+                    <a class="pagenav-link" href="/assets/DNS.pdf">Extended Preprint</a> • 
+                    <a class="pagenav-link" href="/assets/DNS.pdf">Published PDF</a> • 
+                    <a class="pagenav-link" href="https://ieeexplore.ieee.org/document/10062307">IEEE Xplore</a> • 
+                    <a class="pagenav-link" href="https://www.computer.org/csdl/proceedings-article/bdcat/2022/609000a265/1Lu4eh4OJ0Y">IEEE Digital Library</a> 
+                </p>
+            </div>
+        <br />
+        <div id="intro">
+          <h2>
+            Introduction
+          </h2>
+          <p>
+          The Domain Name System (DNS) is the internet's phone book - primarily it exchanges names, e.g. www.foo.com, for IP addresses, e.g. 12.34.56.78. Because DNS serves users all over the world, and because the accuracy of the information served is critical to internet security, DNS is organized in a distributed and hierarchical manner. At the top of the hierarchy (in other words, the backbone of the whole system), sits 13 DNS root servers. Through a program at University of Southern California's <a href="https://www.isi.edu/">Information Science Institute</a> (ISI), I studied the historical behavior of the DNS root server ISI manages, <a href="https://b.root-servers.org/">B-Root</a>. Root servers are only queried if servers lower in the hierarchy fail to answer the query, so studying root server data can provide insight into erroneous sent through DNS.  
+          </p>
+        </div>
+        <div id="notes">
+          <h2>
+            Extra Details
+          </h2>
+          <p>
+            If you're interested in the main results of this work, please read the paper. Otherwise, here are some extra details not included in paper.
+          </p>
+          <h4>Future Work</h4>
+          <p>
+          Because the research program I was apart of was only 8 weeks long, I wasn't able to study B-Root's DNS traces data as deeply as I would have liked. Here's some stuff I missed:
+          <ol>
+              <li>Site-specific statistics - i.e., which domain was queried the most?</li>
+              <li>DNS over HTTPS/TLS (<a href="https://datatracker.ietf.org/doc/html/rfc8484">RFC8484</a>/<a href="https://datatracker.ietf.org/doc/html/rfc7858">RFC7858</a>)</li>
+              <li>Historical DNS query responses.</li>
+              <li>Data from other root servers.<span id="fn_dist" class="fn"><a href="#mo_1">1</a></span></li>
+              <li>DNS query caching.</li>
+              <li>Categorization of "One Word" queries.</li>
+          </ol>
+
+          </p>
+          <h4>Dataset Quirks</h4>
+          Here are some interesting/fun things I found in the B-Root DNS traces dataset I studied.
+          <br>
+          <br>
+
+          <ol>
+            <li> In 2014, 1.22% of queries sent to B-Root were of the Invalid TLD ".com/wawa" - was this due to a misconfiguration or an attack on my <a href="https://www.wawa.com/">favorite hoagie store/gas station</a>?</li>
+            <li><a href="https://en.wikipedia.org/wiki/AppleTalk">Appletalk</a>, a proprietary networking protocol suite for Apple products released in 1985, consistently accounted for about 1% of all queries hitting B-Root. This possibly indicates legacy apple product usage. </li>
+            <li>In 2020, 0.18% of queries had the TLD ".rac2va" - was this due to a misconfiguration of <a href="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/RAC2V1A%20Arris%20Wave%202.pdf">this router</a>?</li>
+          </ol>
+          <h4>Reproducability</h4>
+          If you want to reproduce my results (and you have access to B-Root DNS data), you'll need to parse B-Root's DNS DITL trace format, FSDB. A nice presentation on parsing FSDB can be found <a href="https://indico.dns-oarc.net/event/28/contributions/514/attachments/488/795/2018-03-09-hardaker-lightening.pdf">here</a>. 
+        </div>
+        <br>
+
+<hr />
+<br>
+        <div id="further reading">
+          <h2>
+            Further Reading
+          </h2>
+          If you thought this paper was interesting, here are some other great reads. <br><br>
+          <ol>
+            <li><a href="https://blog.apnic.net/2023/02/08/the-root-of-the-dns-revisited/">The Root of the DNS Revisited</a> By Geoff Huston</li>
+            <li><a href="https://datatracker.ietf.org/doc/rfc9446/">Reflections on Ten Years Past the Snowden Revalations - RFC9446</a> (can't believe this is an RFC) </li>
+            <li><a href="https://root-servers.org/media/news/Statement_on_DNS_Encryption.pdf">Statement on DNS Encryption</a></li>
+          </ol>
+        </div>
+
+        <div id="footnotes">
+          <h2> 
+            Footnotes
+          </h2>
+          <p>
+              <div>
+                  <ol>
+                    <li id="mo_1">Although all 13 root servers collect their historical data under the same program, <a href="https://www.caida.org/projects/ditl/">DITL</a>, the formatting of DNS traces across different roots isn't exactly the same, making large data processing challenging. Servers at <a href="https://www.dns-oarc.net/">DNS-OARC</a> are also quite slow. <a href="#comments" class="fn_back">↩</a></li>
+                  </ol>
+              </div>
+            </p>
+        </div>
+
+        <div id="citation">
+          <h2>
+            Bibtex Citation
+          </h2>
+
+          <p>
+          <pre><code>
+          @INPROCEEDINGS{ginesin2022broot,
+          author={Ginesin, Jacob and Mirkovic, Jelena},
+          booktitle={2022 IEEE/ACM International Conference on Big Data Computing, Applications and Technologies (BDCAT)}, 
+          title={Understanding DNS Query Composition at B-Root}, 
+          year={2022},
+          volume={},
+          number={},
+          pages={265-270},
+          doi={10.1109/BDCAT56447.2022.00044}}
+          </code></pre>
+          </p>
+          <h2>
+            Plaintext Citation
+          </h2>
+          <p>
+          <pre><code>J. Ginesin and J. Mirkovic, "Understanding DNS Query Composition at B-Root," 2022 IEEE/ACM International Conference on Big Data Computing, Applications and Technologies (BDCAT), Vancouver, WA, USA, 2022, pp. 265-270, doi: 10.1109/BDCAT56447.2022.00044.
+          </code></pre>
+          </p>
+          
+        </div>
+
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: {
+                Macros: {
+                    expected: ["{\\mathbb{E}[#1]}", 1],
+                    expectedunder: ["{\\mathbb{E}_{#1}[#2]}", 2],
+                    xp: ["x^{(#1)}_{#2}", 2],
+                    hvec: ["\\langle {#1} \\rangle", 1]
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</body>

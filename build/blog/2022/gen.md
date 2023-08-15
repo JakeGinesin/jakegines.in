@@ -64,5 +64,5 @@ def interpret(markdown):
 ```
 
 ### Implementation
-The source code for my full implementation is on [hosted on Github](https://github.com/JakeGinesin/static-html-generator).
+The source code for my full implementation is on [hosted on Github](https://github.com/JakeGinesin/jakegines.in).
 
