@@ -1,5 +1,3 @@
-vst -> Vim Startscreen
-
 I got kinda bored of Vim's default start screen. So, I created a cool Vim start screen without using the VimStart plugin. See an image of it below:
 
 [[vimstart]](/media/vimstart2.png)

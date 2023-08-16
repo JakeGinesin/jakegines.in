@@ -1,6 +1,4 @@
-dns -> Domain Name System
-
-I wrote, published, and presented a paper on the Domain Name System, a critical part of the internet stack. Find the PDF of this paper [here](/assets/DNS.pdf).
+I wrote, published, and presented a paper on the Domain Name System (DNS), a critical part of the internet stack. Find the PDF of this paper [here](/assets/DNS.pdf).
 
 *maybe I'll upload the full presentation to YouTube eventually. I'll see.*
 

@@ -275,18 +275,18 @@ for d in os.listdir("build/blog"):
                 lt = lt.replace("{{name}}", config["name"])
             if "{{data1}}" in lt and data1:
                 appr = ""
-                while data1max > 0:
+                while posts:
                     try:
                         post = posts.pop()
                         v = post[:post.index(".")]
-                        vr = v[0:3]
-                        appr += '<td><a style="text-decoration: none !important; color:'+config["color"]+'" href="/blog/'+d+'/'+v+'" title="'+v+'">'+vr+'</a></td> \n'
+                        appr += '<a style="text-decoration: none !important; color:'+config["color"]+'" href="/blog/'+d+'/'+v+'" title="'+v+'">'+v+'</a><br> \n'
                         data1max -= 1
                     except:
                         data1max -= 1
                         # do nothing
 
                 lt = lt.replace("{{data1}}", appr)
+                """
             if "{{data2}}" in lt and data2:
                 appr = ""
                 while data2max > 0:
@@ -333,10 +333,10 @@ for d in os.listdir("build/blog"):
                     appr += '<td><a style="text-decoration: none !important"></a></td> \n'
 
                 lt = lt.replace("{{data4}}", appr)
+            """
             out.write(lt)
 
 # go through build/blog and create html files for each blog post
-# also, for each blog post, create a json file with the data
 for d in os.listdir("build/blog"):
     for f in os.listdir("build/blog/"+d):
         if f != "config.yaml":
@@ -368,18 +368,17 @@ for d in os.listdir("build/blog"):
                             lt = lt.replace("{{title}}", qq)
                         if "{{data1}}" in lt and data1:
                             appr = ""
-                            while data1max > 0:
+                            while posts:
                                 try:
                                     post = posts.pop()
                                     v = post[:post.index(".")]
-                                    vr = v[0:3]
-                                    appr += '<td><a style="text-decoration: none !important; color:'+config["color"]+'" href="/blog/'+d+'/'+v+'" title="'+v+'">'+vr+'</a></td> \n'
+                                    appr += '<td><a style="text-decoration: none !important; color:'+config["color"]+'" href="/blog/'+d+'/'+v+'" title="'+v+'">'+v+'</a></td> \n'
                                     data1max -= 1
                                 except:
                                     data1max -= 1
                                     # do nothing
-
                             lt = lt.replace("{{data1}}", appr)
+                        """
                         if "{{data2}}" in lt and data2:
                             appr = ""
                             while data2max > 0:
@@ -425,6 +424,7 @@ for d in os.listdir("build/blog"):
                                 appr += '<td><a style="text-decoration: none !important"></a></td> \n'
 
                             lt = lt.replace("{{data4}}", appr)
+                        """
                         out.write(lt)
 
 # rss feed

@@ -1,5 +1,3 @@
-biz -> Curl-able Business Card
-
 With university and all, I've been feeling the pressure to up my game professionally. So, I've created a *c o o l* virtual business card. To see it, simply type the following command into your command line:
 ```
 curl https://jakegines.in/card

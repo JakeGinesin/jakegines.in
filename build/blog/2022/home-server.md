@@ -1,5 +1,3 @@
-srv -> Home Server Setup
-
 Here's some of the details behind how I configured my home network and set up my locally hosted minecraft server. This post is mainly for my own future reference.  
 
 ### Modem 

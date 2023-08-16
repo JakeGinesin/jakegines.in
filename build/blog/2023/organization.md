@@ -1,5 +1,3 @@
-one -> One Text File
-
 My method for self-organization works really well for me. It might work really well for you too, so I decided I should share my setup.
 
 I was ultimately inspired by [Jamie Rubin's blog post](https://jamierubin.net/2022/01/25/practically-paperless-with-obsidian-episode-15-daily-notes-as-an-index-to-my-life/) on his [Obsidian.md](https://obsidian.md/) notes setup and [Jeff Huang's blog post](https://web.archive.org/web/20220626044356/https://jeffhuang.com/productivity_text_file/) on his single text-file setup. Additional fine-tuning was inspired by [org mode](https://orgmode.org/), [org roam](https://www.orgroam.com/), [the Zettelkasten Method](https://zettelkasten.de/), and [the P.A.R.A. Method](https://fortelabs.com/blog/para/).

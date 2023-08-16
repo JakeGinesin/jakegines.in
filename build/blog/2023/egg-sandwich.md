@@ -1,5 +1,3 @@
-egg -> Egg Sandwich
-
 As lines of code weave into the night's trance,
 I, a weary student, grant a tired glance,
 To the egg sandwich, my loyal companion and guide,

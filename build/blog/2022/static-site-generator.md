@@ -1,5 +1,3 @@
-gen -> Static Website Generation
-
 I restructured the backend of this website to feature a *self-built* [static HTML generator](https://www.cloudflare.com/learning/performance/static-site-generator/) and markdown parser, in addition to many other small changes. I did this not just to increase performance, but to ensure my website is [designed to last](https://web.archive.org/web/20220625161623/https://jeffhuang.com/designed_to_last/) and sufficiently [rugged](https://ruggedsoftware.org/). I eliminated many moving parts from my website stack—on top of now serving static content, I dropped MongoDB, many npm libraries, and all external APIs from my stack. In this post I'm going to briefly explain my static HTML generation system.
 
 ### Static HTML generator
