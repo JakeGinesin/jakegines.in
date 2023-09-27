@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> focus</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">focus</span></h1>
+        <div>
+In a world seemingly full of distactions, focusing on my work can be hard at times. Here are a few tricks I use to help myself focus - hopefully, they can help you too.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Pomodoro'>Pomodoro</h2> 
+I structure my work sessions in intervals: 25 minutes of work, then a 5 minute break. This is called the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">pomodoro technique</a>, and I've been using it for a while. I use a <a href="https://gnomepomodoro.org/" target="_blank">computer-based timer</a>, which integrates nicely with the rest of my workflow. 
+<br> 
+<br> 
+When I begin a pomodoro 25-minute work session, I have a bash script to create a small popup so I can record my objective:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+</span><span style='padding-right:10px;'>session_goal=$(echo "" | rofi -dmenu -p "session goal:")
+</span><span style='padding-right:10px;'>echo "[$timestamp] - $session_goal" &#62;&#62; track.txt
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+I then use another script to kill and remove execution access rights to discord, signal, and whatsapp, as well as to change the hostname-IP mappings for distracting websites to <code class="highlighter-rouge" data-lang="text">127.0.0.1</code> to keep me from accessing them.
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>chmod -x /usr/bin/discord
+</span><span style='padding-right:10px;'>chmod -x /usr/bin/signal-desktop
+</span><span style='padding-right:10px;'>chmod -x /usr/bin/whatsdesk
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>pkill -f discord
+</span><span style='padding-right:10px;'>pkill -f whatsdesk
+</span><span style='padding-right:10px;'>pkill -f signal
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>websites=("www.youtube.com" "youtube.com")
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'># Loop over array and add each website to /etc/hosts file
+</span><span style='padding-right:10px;'>for website in ${websites[@]}; do
+</span><span style='padding-right:10px;'>    echo "127.0.0.1 $website" | tee -a /etc/hosts &#62; /dev/null
+</span><span style='padding-right:10px;'>done
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>systemctl restart systemd-hostnamed
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+Once my 25 minute session is over and my break begins (or, I decide to end my work early), a script to restore everything runs:
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>chmod +x /usr/bin/discord
+</span><span style='padding-right:10px;'>chmod +x /usr/bin/signal-desktop
+</span><span style='padding-right:10px;'>chmod +x /usr/bin/whatsdesk
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>websites=("www.youtube.com" "youtube.com")
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>tempHosts=$(mktemp)
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>for website in ${websites[@]}; do
+</span><span style='padding-right:10px;'>    grep -v "$website" /etc/hosts &#62; "$tempHosts"
+</span><span style='padding-right:10px;'>    mv "$tempHosts" /etc/hosts
+</span><span style='padding-right:10px;'>done
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>systemctl restart systemd-hostnamed
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Phone'>Phone</h2> 
+I keep on me a <a href=/blog/2023/dumb-phone>pretty minimal phone</a>, which is great for minimizing distractions while working. It runs a minimal android laucher, and only has a few select applications. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Music'>Music</h2> 
+I love music, and I'm almost always listening to something. However, when trying to focus, I exclusively listen to music void of lyrics, mostly classical, synthwave, and lofi. If I'm listening to music with lyrics, I find it's harder to keep the music in the background so to speak - I feel my brain naturally wants to stop interpretting my work and latch onto the lyrics instead.
+<br> 
+<br> 
+To ensure I'm not reliant Youtube for music, I have downloaded several long mixes. I use <a href="https://cmus.github.io/" target="_blank">cmus</a> as my primary music player, but I also like <a href="https://github.com/ncmpcpp/ncmpcpp" target="_blank">ncmpcpp</a>.
+<br> 
+
+          <!--
+          <br>
+          <div class="calendar">
+          <table>
+            <tr>
+              <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg-sandwich" title="egg-sandwich">egg-sandwich</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/organization" title="organization">organization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vim-startscreen" title="vim-startscreen">vim-startscreen</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/focus" title="focus">focus</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/dumb-phone" title="dumb-phone">dumb-phone</a></td> 
+
+            </tr>
+          </table>
+          </div>
+          -->
+
+
+          <!--
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                
+              </tr>
+              <tr>
+                {{data2}}
+              </tr>
+              <tr>
+                {{data3}}
+              </tr>
+              <tr>
+                {{data4}}
+              </tr>
+            </table>
+          </div>
+          -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

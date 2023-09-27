@@ -1,8 +1,83 @@
-As of 2022-08-12 I am studying for my technician radio license. Here are all my notes for that. 
+# General Resources
+- r/hamradio
+- r/amateurradio
+- [hamstudy.org](https://hamstudy.org)      
+- electronics.md
+
+# General License Classes
+
+### Explicit Definitions
+- **Vara**: A protocol used with winlink
+- **azimurthal projection map**: a mpa that shows true bearings and distances from a specific location
+- **RF**: radio frequency
+- **solar flux index**: measure of solar radioation with a wavelength of 10.7 centimeters
+- **zener diode**: 
+- **half-wave rectifier**: a circuit where we want to capture half the incoming AC waveform. requires only one diode.
+- **electrolytic capacitor**: high capacitence for a given volume
+- **bypass capacitor**: takes extra noise or radio frequency interface (RFI) in the system and filters it out
+- **diodes**: let current flow in one direction
+- **beacon station**: a continuous stream of radio waves, primarily for observation of propagation and reception. condition monitoring.
+- **impedance inverse**: admittance
+- **ultimate rejection**: a filter's maximum ability to reject signals outside passband
+- **WSPR**: low-power beacon for assessing HF propagation (a low power signal is just a whisper!)
+- **duty cycle**: the ratio of time a transmitter is actually producing full power, and whe it is at rest. if something is always broadcasting at full power, e.g, 100% of the time, this is "full duty cycle"
+- **FT8**: a mode of radio communication used my amatuer radio (Franke Taylor 8)
+- **Sideband**: a band of frequencies higher or lower than the carrier frequency. We have the upper (USB) and lower (LSB).
+- **receive attenuator**: a device that reduces the amplitude of an eletronic signal. prevents overload from strong incoming signals.
+- **bandwidth**: difference between the upper and lower frequencies in a continuous band of frequencies. usually measured in hertz
+- **AFSK**: audio frequency-shift keying
+- **field-strength meter**: find the strength of RF wave
+- **IEEE 802.11**: specifies media access control (MAC), and the physical layer protocols for implementing wireless local area networks (WLAN)
+- **spread spectrum**: techniques where a signal 
+- **watt**: (V^2)/Ohms = (A^2) (Ohms)
+- **MUF**: Maximum Usable Frequency
+- **Standing Wave Ratio (SWR)**: measure of impedance matching of loads to the characteristic imedance of a transmission line or guide. e.g., sees how the current matches
+- **Antenna Analyzer**: measures impedance of a coaxial cable
+- **multipliation factor of FM transmitter**: Transmitter frequency / HF Oscillator Frequency
+- **frequency derivation**: transmitter derivation / multiplication factor
+- **gain**: how well an antenna converts input power into radio waves headed in some direction
+- **waterfall display**: frequency is horizontal, signal strength is intensity, time is vertical
+- **reactance**: the opposition to the flow of alternating current in an inductor
+- **Dual-VFO**: transmit on one frequency and listen on another
+- **QPSK (Quadrature Phase Shift Keying)**: modulation which digital data is transmitted using 0, 90, 180, 270-degree phase shifts to represent bit pairs
+- **Sine wave oscillator**: generates a sine wave. consists of an amplifier operating in a feedback loop.
+- **PACTOR**: stations established to relay data between radio stations and the internet, relaying internet access to sea-based and isolated users
+- **Joule's Law (aka power law)**: P = E x I
+- **product detector**: utilized in a single sideband receiver to extract the modulated signal
+- **Varicode**: encoding for PSK31
+- **RCA connector**: an electrical connector used to carry audio/video signals. used in radio.
+- **A-index**: long-term stability of earth's geomagnetic field
+- **K-index**: short-term stability of earth's geomagnetic field
+
+### Callsigns
+- "KN" -> Listening only for a specific station or stations
+- QRP -> Low-power transmission operation
+- Q -> is this frequency in use?
+- Q in QRV -> "I am ready to receive"
+
+### General Notes
+- to break into a phone contact, say your call sign once
+- FSK signals are identified by "mark and space"
+- capacitors in parallel is better than capacitors in series for increasing total capacitance
+- Automatic level control (ALC) with RF power amplifiers prevent excessive drive
+- 30 meter band: only data transmission modes, so no image transmission.
+- RACES training drills may only happen 1 hour per week
+- FT8 users must synchronize their times to something in an NTP pool
+- PSK31: uses varicode
+- hot wires are connected to fuses
+- exam element credit is valid for 365 days after the exam credit is done
+- geomagnetic storms affect HF propagation by degrading high-latitude HF propagation
+- on the 10 meter band, the symbol transmission rate is capped at 1200 baud
+- for a circuit that uses AWG number 14 wiring, 15 ampere resistance is optimal
+- max height for an antenna structure without notifying FAA and FCC: 200ft
+
+# Technician Radio License
+I want to get my technician radio license. Here are all my notes for that. 
+
 
 ### Explicit Definitions 
 - **shorting**: electric current flowing down the unintended path
-- **fuse**: fuses remove power from the circuit at a certain amperage. Fuses have a peace of wire in em that melts easily.
+- **fuse**: fuses remove power from the circuit at a certain amperage. Fuses have a peace of wire in em that melts easily. place these in series with "hot" wires.
 - **electric current**: the amount of electricity flowing through a circuit (measured in amperage, or amps). Electric current is measured with an ammeter 
 - **interlock**: makes the state of two mechanisms mutually dependent. for example, a mechanical interlock will be required to connect before the institution of any sort of current flowing through the system
 - **alternating current (AC)**: current can travel in both directions
@@ -36,7 +111,7 @@ As of 2022-08-12 I am studying for my technician radio license. Here are all my 
 - **Electromagnetic interference (EMI)**: unwanted noise or interfernce on an electrical path or circuit originating from an outside source. In the case of radio, this is called *radio-frequency interference*, or RFI. 
 - **Semiconductor**: A hybrid conductor and an insulator
 - **Phase Shift Keying (PSK)**: a method of digitally transmitting data by changing the phase (the height of the sine wave itself) of the signal 
-- **Inductance** the tendancy of an electrical conductor to oppose change in current flowing through it - [wikipedia page](https://en.wikipedia.org/wiki/Inductance)
+- **Inductance** the tendancy of an electrical conductor to oppose change in current flowing through it. Unit is the **Henry**. [wikipedia page](https://en.wikipedia.org/wiki/Inductance)
 - **Amplifier**: a devlice that can increase the power of a signal (e.g. the height of the sine wave will increase)
 - **CQ**: code by wireless ham radio operators. transmitting these letters is an invitation for any operators listening to respond. [wikipedia page](https://en.wikipedia.org/wiki/CQ_(call))
 - **Continuous Tone Coded Squelch System (CTCSS)**: This is a type of in-band signaling that's used to reduce the annoyance of listening to other users on a shared two-way radio communication channel - [wikipedia page](https://en.wikipedia.org/wiki/Continuous_Tone-Coded_Squelch_System)
@@ -55,11 +130,10 @@ As of 2022-08-12 I am studying for my technician radio license. Here are all my 
 - **Radiogram**: Formal written message transmitted by radio. They use a standard message format
 - **Antenna Coupler**: Matches one antenna's impedance to another's impedance
 - **Mixer**: converts one signal from one frequency to another (changes the wavelength)
-- **CW**: Morse code transmission *or* morse code transmission
+- **CW**: Morse code transmission *or* continuous wave
 - **Automatic Packet Reporting System**: general amateur radio based system for digital communcation and whatnot. Can include GPS info along with other communications. [wikipedia page](https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System)
 - **Gateway**: An amateur radio station that connects other amateur stations to the internet 
 - **Dummy Load**: A device usd to simulate electrical load
-
 
 ### Misc. Notes
 - the exothermic nature of the discharging reaction for batteries can cause a lot of excess heat - therefore, it's important to gradually discharge batteries
@@ -68,7 +142,7 @@ As of 2022-08-12 I am studying for my technician radio license. Here are all my 
 - grounding requirements (the nature of the resistance and type of grounding for your amateur radio tower) depends on local electrical codes
 - the **radiation type** of radio signals is **non-ionizing**, meaning the radiation does not have enough energy to remove elections from an atom. 
 - radio waves move at the speed of light (vroom)
-- watts is a rate (julues per second)
+- watts is a rate (julues per second). watts represents power.
 - FCC has radio-frequency exposure regulations 
 - There are different kinds of burns other than just thermal - radiation burns exist. Antennas during transmission are *hot*, but it's because of their waves, not necessarily their temp. 
 - amateures may contact the international space station :o
@@ -111,10 +185,13 @@ As of 2022-08-12 I am studying for my technician radio license. Here are all my 
 - SSB voice has 3kHz bandwidth
 - vegitation (plants) absorb UHF!
 - emergency situations allow all classes of amatuer radio users to operate outside of their designated frequencies
-- CW has the least bandwidth
+- CW has the least bandwidth (it's continuous, so of course)
 - "Spin fading" implies rotation of the satellite and the antennas
+- NTSC -> Never The Same Color
+- ARQ -> Error Detection 
 
 ### Amateur Radio Frequencies
+
 [source](https://en.wikipedia.org/wiki/Amateur_radio_frequency_allocations)
 **Low Frequency**:
 - 2200 meters (135.7-137.8 kHz)
@@ -129,9 +206,12 @@ As of 2022-08-12 I am studying for my technician radio license. Here are all my 
 - 10 meters (28-29.7 mHz) - best long distance. good for phone operation
 
 **Very High Frequency** (30 to 300 mHz):
-- 6 meters (50-54 mHz)
+- 6 meters (50-54 mHz) - phone calling FRQ
 
 **Ultra High Frequency** (300 to 3000 mHz)
+
+note: lower frequency carries longer distances, see:
+    - https://physics.stackexchange.com/questions/87751/do-low-frequency-sounds-really-carry-longer-distances
 
 ### Wire Information
 [source](https://www.bradyid.com/resources/wiring-color-codes)

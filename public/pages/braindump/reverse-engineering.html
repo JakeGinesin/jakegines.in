@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> reverse-engineering</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">reverse-engineering</span></h1>
+        <div>
+def: analyzing software, understanding its structure, functionality, behavior, etc. Important for malware analysis, software security auditing, understanding proprietary protocols, cyber forensics, etc.
+<br> 
+<br> 
+Note that there exists different reverse engineering techniques for different langagues. Some languages include C/C++, Java, .NET, Assembler, etc. Some platforms inlcude DOS, MacOS X, Unix/Linux, Windows, etc.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Resources'>Resources</h2> 
+• Reverse engineering for beginners
+<br> 
+• https://crackmes.one
+<br> 
+• x86-asm.md
+<br> 
+• os.md
+<br> 
+• <a href="https://github.com/Dump-GUY/Malware-analysis-and-Reverse-engineering" target="_blank">github.com/Dump-GUY/Malware-analysis-and-Reverse-engineering</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Definitions'>Definitions </h2> 
+• Machine language: legit 1s and 0s that are pumped into the CPU
+<br> 
+• Assembler: Turn assembly code into machine language
+<br> 
+• Disassembler: Taking a machine language program and turning it into an assembly language (human-readable) code
+<br> 
+    - examples include IDA Pro, Ghidra, Objdump, Radare2, GDB
+<br> 
+• compilation: taking high-level code and turning it into low-level code, usually assembly 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">strings [file]</code> -> legit just shows the strings
+<br> 
+• <code class="highlighter-rouge" data-lang="text">file [file]</code> -> shows the filetype
+<br> 
+    - e.g., <code class="highlighter-rouge" data-lang="text">NT_Crack.exe: PE32 executable (console) Intel 80386, for MS Windows, 13 sections</code>
+<br> 
+    - also, see <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">ELF</a>
+<br> 
+• "patching a jump" - if you want to change the flow of execution of a binary, for example if there is a license check, you can go in with a hex editor (or, disassembler) and literally change the "je" to a "jne" lol
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MakingASM'>Making ASM</h2> 
+making the assembly file/executable:
+<br> 
+c->asm: gcc -S [file]
+<br> 
+c->asm w/o fluff: gcc -S -O2 -fno-asynchronous-unwind-tables [file]
+<br> 
+c->executable: gcc [file] -no-pie -o [filename]
+<br> 
+<br> 
+once we have the assembly file, assemble to an executable:
+<br> 
+asm->executable: as [file].s -o [file].o
+<br> 
+<br> 
+and link it:
+<br> 
+gcc [file].o -o [file]
+<br> 
+<br> 
+and execute:
+<br> 
+./[file]
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Tools'>Tools</h2> 
+• IDA Pro
+<br> 
+• GDB
+<br> 
+• Objdump
+<br> 
+• strace - track system calls 
+<br> 
+• ltrace - track ibrary calls
+<br> 
+• hopper
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='GDB'>GDB</h2> 
+• <code class="highlighter-rouge" data-lang="text">set dis</code> -> dis options
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">set disassembly-flavor</code> (intel, etc)
+<br> 
+• <code class="highlighter-rouge" data-lang="text">info functions</code> -> show all defined functions
+<br> 
+• <code class="highlighter-rouge" data-lang="text">disassemble [function]</code> -> show the asm code for [function]
+<br> 
+• <code class="highlighter-rouge" data-lang="text">run</code> -> run the code
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Breakpoints'>Breakpoints</h2> 
+Apple (of app people, wtf) has a nice guide: <a href="https://developer.apple.com/library/archive/documentation/DeveloperTools/gdb/gdb/gdb_6.html" target="_blank">developer.apple.com/library/archive/documentation/DeveloperTools/gdb/gdb/gdb_6.html</a>
+<br> 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">info breakpoints</code> -> shows the current breakpoints
+<br> 
+• <code class="highlighter-rouge" data-lang="text">delete [breakpoint]</code> -> delete whatever breakpoint
+<br> 
+• <code class="highlighter-rouge" data-lang="text">break [function]</code> -> set breakpoint at function
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">break *main</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">break +offset</code>, <code class="highlighter-rouge" data-lang="text">break [linenum]</code>, <code class="highlighter-rouge" data-lang="text">break *address</code>
+<br> 
+    - example -> <code class="highlighter-rouge" data-lang="text">break *main+88</code> (will break at +88) in the lil disassembler thing)
+<br> 
+<br> 
+Note because linux has <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization" target="_blank">Address space layout randomization</a>, if you want to set a specific memory address you'll prob have to disable ASLR via <code class="highlighter-rouge" data-lang="text">echo 0 | sudo tee /proc/sys/kernel/randomize_va_space</code>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ObservingStuff'>Observing Stuff</h2> 
+Because GDB is the goat, we can step through the program with it, check out memory addresses, etc.
+<br> 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">continue</code>, <code class="highlighter-rouge" data-lang="text">c</code> -> continue execution till breakpoint
+<br> 
+• <code class="highlighter-rouge" data-lang="text">info registers</code> -> shows the content of all registers
+<br> 
+• <code class="highlighter-rouge" data-lang="text">x/d [address]</code> -> inspect the value at a memory location
+<br> 
+• <code class="highlighter-rouge" data-lang="text">stepi</code>, <code class="highlighter-rouge" data-lang="text">si</code> -> execute one assembly instruction at a time
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='C->ASM'>C->ASM</h2> 
+Each structure in C has a certain "mirror" structure in assembly. 
+<br> 
+<br> 
+(note, this section is generally in intel assembly)
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Forloop'>For loop</h2> 
+for (int i = 1, i < 10, i++){ 
+<br> 
+    // do something
+<br> 
+}
+<br> 
+<br> 
+will have the structure:
+<br> 
+// add items to stack
+<br> 
+mov addr1, i (1)
+<br> 
+mov addr2, 10
+<br> 
+<br> 
+// compare operation
+<br> 
+cmp addr2, 0xa # note how this is one more than 10 in hexadecimal
+<br> 
+<br> 
+// conditional jump after the loop
+<br> 
+jg some addr after loop
+<br> 
+<br> 
+// "do something"
+<br> 
+<br> 
+// do the increment condition
+<br> 
+add addr1, 0x1
+<br> 
+<br> 
+// jump back to compare operation
+<br> 
+jmp to compare
+<br> 
+<br> 
+If you're trying to emulate some for loop in python, they have automatic hexadecimal conversion. That is, if you type "0xe" python will spit out 14:
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>&#62;&#62;&#62; 0xe
+</span><span style='padding-right:10px;'>14
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+So you can do something like:
+<br> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>for i in range(0x1, 0xa) : # do something
+</span></pre></td></tr></tbody></table></code></pre></figure><br> 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

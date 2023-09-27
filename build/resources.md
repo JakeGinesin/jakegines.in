@@ -39,6 +39,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) - Free and open data platform from wikipedia
 - [Tech Jobs For Good](https://www.techjobsforgood.com/) - How to work in tech and not be evil
 - [x0.at](https://x0.at/) - File pastebin
+- [hakyll](https://jaspervdj.be/hakyll/) - Using Haskell to build static websites
 
 ### Cybersecurity Tools
 *Critical Reminder*: I am *not* responsible for what you do with this stuff.   
@@ -96,9 +97,18 @@ JUMP -> [Misc.]("#Misc.")
 - [The Invisible Internet Project](https://geti2p.net/en/)
 - [Temp Mail](https://temp-mail.org/en/) - Temporary email addresses
 - [Xyte.ch](https://www.xyte.ch/) - Sells modified Thinkpads
+- [privacyguides.org](https://www.privacyguides.org/) - Privacy is important
+- [secret.club](https://secret.club) - A group of people who break software
+- [libreboot.org](https://libreboot.org/) - don't boot intel management engine on system startup 
+- [orgroam.com](https://www.orgroam.com/) - An emacs-based organization system that I do not use
+- [loopsnoop](http://www.lel.ed.ac.uk/~gpullum/loopsnoop.html) - A proof that the halting problem is undecidable
+- [catb.org/hacker-emblem/](http://www.catb.org/hacker-emblem/)
+- [plv.mpi-sws.org/rustbelt/](https://plv.mpi-sws.org/rustbelt/) - Formally verifying rust
+- [syncthing.net](https://syncthing.net/) - A nice tool for syncing things between devices
+- [The Internet Hosting Cooperative](https://hcoop.net/)
 
 ### News Sources & Link Aggregators
-- [Hacker News](https://news.ycombinator.com) - Kind of like reddit, but just startups and tech 
+- [Hacker News](https://news.ycombinator.com) - Kind of like reddit, but for tech bros  
 - [Phoronix](https://phoronix.com/scan.php?page=home) - Mostly Linux News
 - [Pluralistic](https://pluralistic.net/) - Daily links from [Cory Doctorow](https://en.wikipedia.org/wiki/Cory_Doctorow)
 - [lobste.rs](https://lobste.rs/) - Similar to Hacker News
@@ -119,6 +129,8 @@ JUMP -> [Misc.]("#Misc.")
 - [A Manga Guide to Linear Algebra](https://www.math.ucla.edu/~jerryluo8/teaching/Fall2018-4A/The%20Manga%20Guide%20to%20Linear%20Algebra.pdf) - A cute educational manga on linear algebra
 - [Wolfram Alpha](https://www.wolframalpha.com/) - Because, of course
 - [The Natural Number Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/) - See the power of induction!
+- [Erdos Number](https://en.wikipedia.org/wiki/Erd%C5%91s_number)
+- [web.evanchen.cc/napkin.html](https://web.evanchen.cc/napkin.html) - The napkin
 
 ### Academia Resources 
 - [CSRankings.org](http://csrankings.org/#/index?all&us) - A website I use to systematically discover interesting professors and PhD students. 
@@ -131,6 +143,7 @@ JUMP -> [Misc.]("#Misc.")
 - [search.marginlia.nu](https://search.marginalia.nu/) - A search engine that prioritizes information-dense websites
 - [Faculty Job Search Resources](https://www.seas.upenn.edu/~sweirich/resources.htm) 
 - [HeVeA](http://hevea.inria.fr/) - LaTeX to HTML
+- [6-045j](https://ocw.mit.edu/courses/6-045j-automata-computability-and-complexity-spring-2011) - MIT's automata theory course
 
 ### Blog Posts and Articles
 - [So you want to reform democracy](https://medium.com/civic-tech-thoughts-from-joshdata/so-you-want-to-reform-democracy-7f3b1ef10597)
@@ -178,6 +191,16 @@ JUMP -> [Misc.]("#Misc.")
 - [I'm a fucking webmaster](https://justinjackson.ca/webmaster/)
 - [How to get a busy person to respond to your email](https://byrslf.co/how-to-get-a-busy-person-to-respond-to-your-email-52e5d4d69671?gi=5cc3fb1bbbd9)
 - [Life Is Short](http://paulgraham.com/vb.html)
+- [I Hacked the Dutch Government, and all I got was this t-shirt!](https://jacobriggs.io/blog/posts/i-hacked-the-dutch-government-and-all-i-got-was-this-t-shirt-24.html)
+- [Mechanical Watch](https://ciechanow.ski/mechanical-watch/)
+- [Analyzing Rail Tickets](https://eta.st/2023/01/31/rail-tickets.html)
+- [The Philisophical Implications of Complexity Theory](https://www.scottaaronson.com/papers/philos.pdf P)
+- [What is ChatGPT and why does it work?](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
+- [How to Kill Decentralized Networks](https://ploum.net/2023-06-23-how-to-kill-decentralised-networks.html)
+- [Running a single-user Mastodon instance](https://blog.thms.uk/2023/01/setting-up-mastodon)
+- [The Collatz Conjecture & Non-Archimedean Spectral Theory](https://siegelmaxwellc.wordpress.com/2022/08/09/the-collatz-conjecture-non-archimedean-spectral-theory-part-i-the-numen-of-a-hydra-map/)
+- [The Silent (R)evolution of SAT](https://cacm.acm.org/magazines/2023/6/273222-the-silent-revolution-of-sat/fulltext)
+- [E-Ink is so Retropunk](https://rmkit.dev/eink-is-so-retropunk/)
 
 ### Personal Websites
 - [Terence Tao's Blog](https://terrytao.wordpress.com/) - The blog of a fantastic mathematician
@@ -242,7 +265,6 @@ JUMP -> [Misc.]("#Misc.")
 - [www.lukeheine.com](https://www.lukeheine.com/)
 - [www.boringcactus.com](https://www.boringcactus.com/) - An immortal programming person who works for the MBTA
 - [mm4rk3t.neocities.org](https://mm4rk3t.neocities.org/home) - Space
-- [nilfm.cc](https://nilfm.cc/)
 - [badd10de.dev](https://badd10de.dev)
 - [100r.co](http://100r.co/site/home.html) - Offgrid living
 - [mrshll.com](https://mrshll.com/)
@@ -254,15 +276,24 @@ JUMP -> [Misc.]("#Misc.")
 - [Maruan Al-Shedivat](https://www.cs.cmu.edu/~mshediva/) - The founding editor of CMU's machine learning blog
 - [Ariel Procaccia](http://procaccia.info/teaching/) - CMU and Harvard prof into the relationship between algorithms and society. He's taught some interesting courses, including "Optimized Democracy" (Harvard CS238) and "Truth, Justice, and Algorithms" (CMU I5896)
 - [Daniel Roy Greenfeld](https://daniel.feldroy.com/) - ex-Nasa employee 
-- [Shriram Krishnamurthi](http://www.noahsd.com/) - CS Prof at Brown into programming languages and formal methods
+- [Shriram Krishnamurthi](https://cs.brown.edu/~sk/) - CS Prof at Brown into programming languages and formal methods
 - [Qntm](https://qntm.org/) - Qntm
 - [blog.soykaf.com](https://blog.soykaf.com/) - Lain person
 - [Neg Serg](https://github.com/neg-serg) 
 - [Daniel Howe](https://rednoise.org/daniel/pubs.html) - Prof at HKU focusing on privacy, surveillance, and disinformation
-- [Yosra Hashim](https://yhshi26.github.io/) - My favorite med student 
+- [Jordan Ellenberg](https://www.jordanellenberg.com/writings/) - Great mathematician and speaker
+- [eta.st](https://eta.st)
+- [sqrtminusone.xyz](https://sqrtminusone.xyz/posts) - emacs freak. I prefer (n)vim, but I respect it.
+- [bryndr.sn](https://bryndr.sn)
+- [calnewport.com](https://calnewport.com/) - Great author
+- [justchokingaround](https://github.com/justchokingaround) - My favorite choker
+- [Marc Lange](https://philosophy.unc.edu/people/marc-lange/) - A philosophy prof at Purdue with a hilarious webpage
 
 ### Misc.
 - [Pool Suite](https://poolsuite.net/) - R e t r o Internet Radio Station 
 - [Swapfest: The Flea at MIT](https://w1mx.mit.edu/flea-at-mit/) - Flea market at MIT
 - [Vessi Everyday Classic](https://vessi.com/products/mens-everyday-classic-mist-grey) - Nice shoes
 - [Eat Well Guide](https://www.eatwellguide.org/) - Search by location for hand-picked restaurants, farms, markets and other sources of local, sustainable food
+- [zettelkasten.de](https://zettelkasten.de/posts/overview/) - Organization method
+- [getting-rich-from-zero-to-hero-in-one-blog-post](https://www.mrmoneymustache.com/2013/02/22/getting-rich-from-zero-to-hero-in-one-blog-post)
+- [polyphasic.net](https://www.polyphasic.net/) - Sleep 2 hours a day

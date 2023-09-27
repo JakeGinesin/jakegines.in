@@ -2,7 +2,7 @@ Hi! I'm **Jake Ginesin**, and I *love* space.
 
 I'm an undergraduate at **Northeastern University** pursuing a double major in computer science and mathematics. I'm currently employed as a researcher working in Northeastern's [Network and Distributed Systems Security Lab](https://nds2.ccs.neu.edu/) where I employ formal methods to analyze internet protocol. Below are a few of my (non-space) interests, and can serve as conversation starters if you'd like: 
 
-• **Mathematics**. Mainly logic and formal methods.
+• **Mathematics**. Mainly logic, category theory, and formal methods.
 • **Security**. Verification, cryptography, and network security. 
 • **Urbanism**. Public transportation, urban planning.
 • **Geopolitics and national security**. Mostly Europe, Russia, and China.
@@ -24,7 +24,7 @@ Send mail to ginesin (dot) j (at) northeastern (dot) edu or hello (at) jakegines
 ```
 
 ### Hiring
-If you're interested in **hiring me**—here's my [résumé](/assets/resume-may11.pdf)
+If you're interested in **hiring me**—here's my [résumé](/assets/cv-sept23.pdf)
 
 ### Setup
 I often get asked about my computing setup, so I created this section to link it whenever. 
@@ -38,12 +38,12 @@ I often get asked about my computing setup, so I created this section to link it
 
 - **Keyboard**: Custom 65% build with Kailh box whites.
 
-- **Phone**: Rooted, heavily stripped down Galaxy Xcover 4s. Looking for a Jelly 2 alternative, though.
+- **Phone**: Rooted, heavily stripped down Galaxy Xcover 4s.
 
 - **Audio**: Galaxy Buds, LETSHUOER S12
 
 **Software** 
-I run a highly configured Arch Linux build on my x1 carbon. My configuration files (and pictures!) are located in this [Github repository](https://github.com/jakeginesin/dotfiles)
+I have a highly configured Arch Linux setup on my x1 carbon. My configuration files (and pictures!) are located in this [Github repository](https://github.com/jakeginesin/dotfiles)
 ```
 $ zf --terminal --user
 OS:              Arch Linux

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> electronics</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">electronics</span></h1>
+        <div>
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Resources'>Resources</h2> 
+• <a href="https://www.allaboutcircuits.com/" target="_blank">allaboutcircuits.com/</a>
+<br> 
+• <a href="https://nuwireless.org/" target="_blank">nuwireless.org/</a>
+<br> 
+• <a href="https://en.wikipedia.org/wiki/The_Art_of_Electronics" target="_blank">en.wikipedia.org/wiki/The_Art_of_Electronics</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Topicstocover'>Topics to cover</h2> 
+• basic electronics concepts
+<br> 
+    - voltage, current, resistance
+<br> 
+    - ohm's law
+<br> 
+    - AC vs DC
+<br> 
+    - resistors, 
+<br> 
+• Basic Circuit Theory
+<br> 
+    - Series and parallel circuits
+<br> 
+    - Kirchhoff's Laws
+<br> 
+    - RLC circuits (Resistor, Inductor, Capacitor)
+<br> 
+    - Frequency response and resonance
+<br> 
+• Introduction to Radio Communication
+<br> 
+    - Basic principles of electromagnetic waves
+<br> 
+    - Frequency, wavelength, and the electromagnetic spectrum
+<br> 
+    - AM (Amplitude Modulation) vs. FM (Frequency Modulation)
+<br> 
+• Radio Components
+<br> 
+    - Oscillators: Produce radio frequency signals
+<br> 
+    - Mixers: Combine signals
+<br> 
+    - Filters: Separate desired frequencies from undesired ones
+<br> 
+    - Amplifiers: Increase signal strength
+<br> 
+    - Detectors/Demodulators: Extract original information from radio waves
+<br> 
+    - Antennas: Transmit and receive radio signals
+<br> 
+• Radio Receiver Designs
+<br> 
+    - Crystal radios
+<br> 
+    - Tuned Radio Frequency (TRF) receivers
+<br> 
+    - Superheterodyne receivers
+<br> 
+    - Direct Conversion receivers
+<br> 
+• Transmitters
+<br> 
+    - Basic principles of radio transmission
+<br> 
+    - Modulation techniques: AM, FM, and Phase Modulation (PM)
+<br> 
+    - Power amplifiers and their importance in transmission
+<br> 
+• Advanced Modulation Techniques
+<br> 
+    - Single Sideband (SSB)
+<br> 
+    - Quadrature Amplitude Modulation (QAM)
+<br> 
+    - Phase Shift Keying (PSK)
+<br> 
+• Digital Radios and Software Defined Radios (SDR)
+<br> 
+    - Basics of digital communication
+<br> 
+    - Analog-to-Digital Converters (ADC) and Digital-to-Analog Converters (DAC)
+<br> 
+    - SDR architectures and principles
+<br> 
+• Propagation and Antennas
+<br> 
+    - Basics of wave propagation
+<br> 
+    - Different types of antennas: dipole, yagi, loop, etc.
+<br> 
+    - Antenna tuning and impedance matching
+<br> 
+• some advanced topics
+<br> 
+    - Satellite radio
+<br> 
+    - Digital Audio Broadcasting
+<br> 
+    - Cellumar communication principles
+<br> 
+    - radio frequency identificationa (RFID) and Near Field Communication (NFC)
+<br> 
+• microprocessors
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Voltage,current,resistance'>Voltage, current, resistance</h2> 
+At a high level, electricity is just electrons. Because metals generally have a weak attraction to their electrons, these electrons can easily move between atoms. Electrons "flow" between circuits, and something on the circuit can harvest that flow in order to do certain thing. 
+<br> 
+<br> 
+Here is a list of electric devices that can utilize the flow of electrons to do certain things:
+<br> 
+• resistors: these devices are specifically built to reduce the flow of electrons, converting the electrical energy into heat.
+<br> 
+• semiconductors: these devices utilize electric flow to perform certain computational actions
+<br> 
+• motors: these devices utilize the energy from the electric flow to create other types of motion
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Trivialanalogy'>Trivial analogy</h2> 
+• Voltage: the water pressure in a pipe
+<br> 
+• Current: the rate of water flow in the pipe
+<br> 
+• Resistance: the diameter or roughness of the pipe
+<br> 
+<br> 
+Also note, every single device, even wires, have some sort of resistance (and thus voltage etc). Electricity has different flows before and after resistors. This is not the case for superconductors, which are materials where there is no resistance present.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Somedefinitions'>Some definitions</h2> 
+•  <span class="bold">static electricity</span>  is when there are too much or too little electrons in a certain object. The built up static charge (which can be an excess or a deficit of electrons) remains in place until it has a path to neutralize. When we (or especially a metal thing) provides this path, then we see a shock. 
+<br> 
+•  <span class="bold">electric potential difference</span>: the  <i>work</i>  done to push electrons between two points.
+<br> 
+<br> 
+Now onto the full definitions:
+<br> 
+•  <span class="bold">voltage (V)</span>: the electrical potential difference between two points. Measured in volts.
+<br> 
+•  <span class="bold">current (I)</span>: the flow of electric charge (typically through conductors like a wire). Measured in amperes, or amps (A). 
+<br> 
+•  <span class="bold">resistance (R)</span>: opposes the flow of current. Measured in ohms. 
+<br> 
+<br> 
+•  <span class="bold">Ohm's law</span>: $V = I x R$. i.e., the voltage, the work done to push electrons through something, is proportional to the flow times the resistance.
+<br> 
+•  <span class="bold">AC vs DC</span>: AC stands for "alternating current" while DC stands for "direct current"
+<br> 
+    - in DC, the electrons flow in a single direction
+<br> 
+    - in AC, the electrons flow back and forth
+<br> 
+<br> 
+•  <span class="bold">power plants</span>: DC power plants have positive and negative terminals, while AC power plants two main terminals (one "live" or "hot" and the other "neutral")
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='SeriesandParallelCircuits'>Series and Parallel Circuits</h2> 
+Two-terminal components and electrical networks can either be connected in series, or in parallel. Imagine an image that implements the name here. Based on the design of the circuit here, the resistance and inductance changes.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='SomeDefinitions'>Some Definitions</h2> 
+•  <span class="bold">total resistance</span>: "total" resistance in this case refers to the resistance that a power source sees between its terminals. Depending on if the circuit is in series or parallel, the resistance is calculated a different way. 
+<br> 
+•  <span class="bold">Kirchhoff's first law</span>: also called "kitchoff's junction rule" states that for any junction in electric current, the sum of the current (I) of the inflows is equal to the sum of the current of the outflows. This is kind of like a node intake outtake problem
+<br> 
+•  <span class="bold">Kirchhoff's voltage law</span>: in a completed circuit, the sum of all voltages is equal to zero. The intuition behind this is, once the circuit is connected and everything is in flow, the total number of electrons everywhere kind of equalizes out. Makes sense.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='RLCcircuit'>RLC circuit</h2> 
+An RLC circuit is a circuit that consists of a resistor, inductor, and a capacitor.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='SomeDefinitions'>Some Definitions</h2> 
+•  <span class="bold">inductor (L)</span>: A two-terminal component that resists changes in current by creating a magnetic field. This happens because the magnetic field induces a voltage proportional to the rate of change of a current. generally a coil of wire. 
+<br> 
+    - The inductor is characterized by the ratio between the voltage to the rate of change of the current, also called the "henry". The higher the ratio, the larger the voltage response from the inductor.
+<br> 
+•  <span class="bold">capacitor (C)</span>: A capacitor is like an inductor, but instead of resisting rapid changes in current, a capacitor resists the rapid change in voltage.
+<br> 
+    - the capacity of a capacitor is known as "capacitance"
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Sowhat?'>So what?</h2> 
+A circuit with these components creates a harmonic oscillator - a system that when displaced from the equilibrium, experiences some restoring force proportional to the displacement. This resonance occurs because energy is stored in two different ways: an electric field in the capacitor, and a magnetic field in the inductor. 
+<br> 
+<br> 
+Thus, RLC circuits resonate. This means RLC circuits are important for transmitting radio signals and whatnot.
+<br> 
+<br> 
+The most basic version of this is a series circuit with a battery, a single resistor, a single inductor, and a single capacitor. When the voltage of the source changes, the RLC circuit will resonate!
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Electromagneticwaves'>Electromagnetic waves</h2> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Definitions'>Definitions</h2> 
+• wavelength: distance between two humps of a wave
+<br> 
+• amplitude: distance from the period to the top
+<br> 
+• frequency: the number of waves that pass by a fixed point in a given amount of time
+<br> 
+    - frequency is measured in "Hertz" - e.g., number fo waves that pass a fixed point in one second. e.g., 100 Hz implies 100 cycles of a wave occur in one second
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ElctromagneticSpectrum'>Elctromagnetic Spectrum</h2> 
+Depending on the radition type, the wavelength and frequency is different. Radio waves, for example, have a wavelength of approximately 10^3 meters and a frequency of 10^4 Hz.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Modulation'>Modulation</h2> 
+The idea is we consistently change a wave in order to encode data. We can modulate the data in two different ways: 
+<br> 
+• Amplitude modulation (AM): modify the height of the wave based on the data
+<br> 
+• Frequency modulation (FM): modify the length of the wave based on the data 
+<br> 
+• Phase modulation: something I don't quite understand, but involves varying the instantaneous phase of a carrier wave.
+<br> 
+<br> 
+No way! This is where AM/FM comes from!
+<br> 
+<br> 
+To encode data (e.g., 0s and 1s) into waves, Amplitude Shift Keying (ASK), Frequency shift keying (FSK), Phase Shift Keying (PSK) have been developed.
+<br> 
+<br> 
+After reception, there is error correction in many cases. 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> error-correction</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">error-correction</span></h1>
+        <div>
+Say, you're storing information in a changing environment such as an SSD (whose blocks fail overtime) or sending data via radio waves where interruptions may occur. In this case, it'd be useful to have some sort of error-correcting algorithm to ensure any data that was changed or lost can be recovered.
+<br> 
+<br> 
+Other applications of error-correcting means such as Reed-Solomon error correcting involves the rapid reading of hard drive sectors. Erroneous reads can be erroneously corrected post-collection from the disk (thus, increasing overall read performance, or at least putting some of the work on the CPU).
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Reed-Solomon'>Reed-Solomon</h2> 
+The idea behind Reed-Solomon is that we encode each value of our intended dataset with a value of a polynomial with degree less than k. In order to obtain a codeword of the encoded code, the message symbols are treated as coefficients of a polynomial.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='References'>References</h2> 
+• <a href="https://thessdguy.com/tag/reed-solomon/" target="_blank">thessdguy.com/tag/reed-solomon/</a>
+<br> 
+• <a href="https://thessdguy.com/how-controllers-maximize-ssd-life-improved-ecc/#more-633" target="_blank">thessdguy.com/how-controllers-maximize-ssd-life-improved-ecc/#more-633</a>
+<br> 
+• <a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction" target="_blank">en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction</a>
+<br> 
+<br> 
+<br> 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

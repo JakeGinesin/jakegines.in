@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> tla</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">tla</span></h1>
+        <div>
+Another means of verifying distributed systems, similar in nature to Promela.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Resources'>Resources</h2> 
+• learn TLA: <a href="https://learntla.com/" target="_blank">learntla.com/</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Howtorun'>How to run</h2> 
+• requires a <code class="highlighter-rouge" data-lang="text">[file].cfg</code>
+<br> 
+    - file contains constant values, INIT, and Next
+<br> 
+• use <code class="highlighter-rouge" data-lang="text">tlc [file].tla</code>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ExampleStateRelation'>Example State Relation</h2> 
+<br> 
+        <figure class="highlight" style="margin-top:10px; margin-bottom:10px; padding-top:10px; padding-bottom:10px;"><pre><code class="language-sh" data-lang="sh"><table class="rouge-table"><tbody><tr><td class="gutter gl" style="width:17px;"><pre class="lineno"></pre></td><td class="code"><pre><span style='padding-right:10px;'>--------------------------- MODULE p1 ---------------------------
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>EXTENDS Naturals
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>(*-- Define states as constants *)
+</span><span style='padding-right:10px;'>CONSTANT START, S0, S1, S2, S3, S10, S20, S30, S40, S50, CONC
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>VARIABLES state
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>(*-- Initial state definition *)
+</span><span style='padding-right:10px;'>Init == 
+</span><span style='padding-right:10px;'>    state = START
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>(*-- Transition relation *)
+</span><span style='padding-right:10px;'>Next == 
+</span><span style='padding-right:10px;'>    \/ state = START /\ state' \in {S1, S0}
+</span><span style='padding-right:10px;'>    \/ state = S0 /\ state' = S2
+</span><span style='padding-right:10px;'>    \/ state = S1 /\ state' = S0
+</span><span style='padding-right:10px;'>    \/ state = S2 /\ state' = S3
+</span><span style='padding-right:10px;'>    \/ state = S3 /\ state' \in {S0, S1, S30}
+</span><span style='padding-right:10px;'>    \/ state = S10 /\ state' \in {S1, S20}   (* Possibly an inconsistency *)
+</span><span style='padding-right:10px;'>    \/ state = S20 /\ state' = S30
+</span><span style='padding-right:10px;'>    \/ state = S30 /\ state' \in {S50, S40, S3}
+</span><span style='padding-right:10px;'>    \/ state = S40 /\ state' = CONC
+</span><span style='padding-right:10px;'>    \/ state = S50 /\ state' = S40
+</span><span style='padding-right:10px;'>    \/ state = CONC /\ state' = CONC
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>=============================================================================
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>## Example CFG
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>\* SPECIFICATION
+</span><span style='padding-right:10px;'>\* Uncomment the previous line and provide the specification name if it's declared
+</span><span style='padding-right:10px;'>\* in the specification file. Comment INIT / NEXT parameters if you use SPECIFICATION.
+</span><span style='padding-right:10px;'>CONSTANTS
+</span><span style='padding-right:10px;'>    START = "start"
+</span><span style='padding-right:10px;'>    S0 = "s0"
+</span><span style='padding-right:10px;'>    S1 = "s1"
+</span><span style='padding-right:10px;'>    S2 = "s2"
+</span><span style='padding-right:10px;'>    S3 = "s3"
+</span><span style='padding-right:10px;'>    S10 = "s10"
+</span><span style='padding-right:10px;'>    S20 = "s20"
+</span><span style='padding-right:10px;'>    S30 = "s30"
+</span><span style='padding-right:10px;'>    S40 = "s40"
+</span><span style='padding-right:10px;'>    S50 = "s50"
+</span><span style='padding-right:10px;'>    CONC = "conc"
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>INIT Init
+</span><span style='padding-right:10px;'>NEXT Next
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>\* PROPERTY
+</span><span style='padding-right:10px;'>\* Uncomment the previous line and add property names
+</span><span style='padding-right:10px;'>
+</span><span style='padding-right:10px;'>\* INVARIANT P
+</span><span style='padding-right:10px;'>\* Uncomment the previous line and add invariant names
+</span></pre></td></tr></tbody></table></code></pre></figure>        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+
