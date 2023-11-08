@@ -130,6 +130,7 @@ body {
                 <p>
                     <a class="pagenav-link" href="https://arxiv.org/abs/2308.07966">Extended Preprint</a> • 
                     <a class="pagenav-link" href="/assets/DNS.pdf">Published PDF</a> • 
+                    <a class="pagenav-link" href="https://blog.apnic.net/2023/11/01/understanding-dns-query-composition-at-b-root/">APNIC Guest Post</a> • 
                     <a class="pagenav-link" href="https://ieeexplore.ieee.org/document/10062307">IEEE Xplore</a> • 
                     <a class="pagenav-link" href="https://www.computer.org/csdl/proceedings-article/bdcat/2022/609000a265/1Lu4eh4OJ0Y">IEEE Digital Library</a> 
                 </p>
@@ -141,6 +142,10 @@ body {
           </h2>
           <p>
           The Domain Name System (DNS) is the internet's phone book - primarily it exchanges names, e.g. www.foo.com, for IP addresses, e.g. 12.34.56.78. Because DNS serves users all over the world, and because the accuracy of the information served is critical to internet security, DNS is organized in a distributed and hierarchical manner. At the top of the hierarchy (in other words, the backbone of the whole system), sits 13 DNS root servers. Through a program at University of Southern California's <a href="https://www.isi.edu/">Information Science Institute</a> (ISI), I studied the historical behavior of the DNS root server ISI manages, <a href="https://b.root-servers.org/">B-Root</a>. Root servers are only queried if servers lower in the hierarchy fail to answer the query, so studying root server data can provide insight into erroneous DNS query trends.  
+          <br>
+          <br>
+
+          I was invited to write a guest blog post for APNIC, the organization underpinning the internet infrastructure in Asia, on this research. You can read it <a href="https://blog.apnic.net/2023/11/01/understanding-dns-query-composition-at-b-root/">here</a>!
           </p>
         </div>
         <div id="notes">
@@ -148,7 +153,7 @@ body {
             Extra Details
           </h2>
           <p>
-            If you're interested in the main results of this work, please read the paper. Otherwise, here are some extra details not included in paper.
+            If you're interested in the main results of this work, please read the paper. Otherwise, here are some neat extra details.
           </p>
           <h4>Future Work</h4>
           <p>
@@ -169,10 +174,11 @@ body {
           <br>
 
           <ol>
-            <li> In 2020, 8.38% of queries hitting to B-Root had a ".consol" TLD - invalid by IANA's <a href="https://www.iana.org/domains/root/db">list of valid TLDs</a>. This seems to be a large leak from Hashicorp's networking platform, <a href="https://en.wikipedia.org/wiki/Consul_(software)">Consul</a>. If this is the case, the B-Root data predated the discovery of this leak by two years! See the relevant <a href="https://discuss.hashicorp.com/t/hcsec-2022-28-consul-cluster-peering-leaks-imported-nodes-services-information/46946">CVE<a>.
+            <li> In 2020, 8.38% of queries hitting to B-Root had a ".consul" TLD - invalid by IANA's <a href="https://www.iana.org/domains/root/db">list of valid TLDs</a>. This seems to be a large leak from Hashicorp's networking platform, <a href="https://en.wikipedia.org/wiki/Consul_(software)">Consul</a>. If this is the case, the B-Root data predated the discovery of this leak by two years! See the relevant <a href="https://discuss.hashicorp.com/t/hcsec-2022-28-consul-cluster-peering-leaks-imported-nodes-services-information/46946">CVE<a>.
             <li><a href="https://en.wikipedia.org/wiki/AppleTalk">Appletalk</a>, a proprietary networking protocol suite for Apple products released in 1985, consistently accounted for about 1% of all queries hitting B-Root. This possibly indicates legacy apple product usage. </li>
             <li> In 2014, 1.22% of queries sent to B-Root were of the Invalid TLD ".com/wawa" - was this due to Wawa, my <a href="https://www.wawa.com/">favorite hoagie store</a>, leaking data?</li>
-            <li> In 2020, 0.18% of queries had the TLD ".rac2va" - was this due to a misconfiguration of <a href="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/RAC2V1A%20Arris%20Wave%202.pdf">this router</a>?</li>
+            <li> In 2020, 0.18% of queries had the invalid TLD ".rac2va" - was this due to a misconfiguration of <a href="https://d15yx0mnc9teae.cloudfront.net/sites/default/files/RAC2V1A%20Arris%20Wave%202.pdf">this router</a>?</li>
+            <li> In 2021, 0.66% of queries had the invalid TLD ".novalocal" - this seems to be due to a widespread misconfiguration of Openstack, as discussed on <a href="https://lists.openstack.org/pipermail/openstack/2017-March/019000.html">stackoverflow</a> and <a href="https://lists.openstack.org/pipermail/openstack/2017-March/019000.html">in documentation</a>
           </ol>
           <h4>Reproducability</h4>
           If you want to reproduce my results (and you have access to B-Root DNS data), you'll need to parse B-Root's DNS DITL trace format, FSDB. A nice presentation on parsing FSDB can be found <a href="https://indico.dns-oarc.net/event/28/contributions/514/attachments/488/795/2018-03-09-hardaker-lightening.pdf">here</a>. 

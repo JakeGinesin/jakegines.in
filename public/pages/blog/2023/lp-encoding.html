@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> lp-encoding</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">lp-encoding</span></h1>
+        <div>
+Linear programming (LP) is a neat way to optimize things. Although (integer) linear programming is <a href="https://resources.mpi-inf.mpg.de/departments/d1/teaching/ss11/OPT/lec23.pdf" target="_blank">NP-hard</a>, in practice LP solvers such as <a href="https://www.gurobi.com/solutions/gurobi-optimizer/" target="_blank">Gurobi</a> employ loads of sophisticated heuristics and preprocessing techniques to speed up runtime. Because of this, it's always pretty cool to realize I can reduce some part of a hard decision problem (e.g., something PSPACE-complete) to LP. Similar deal with <a href="https://cacm.acm.org/magazines/2023/6/273222-the-silent-revolution-of-sat/fulltext" target="_blank">SAT and SMT</a>.
+<br> 
+<br> 
+Sometimes, when attempting to encode a problem into LP, I want to reason about my constraints with boolean logic. I find doing so can be quite convenient. Here's how to do it yourself. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ANaiveApproach:FlattenedConstraints'>A Naive Approach: Flattened Constraints </h2> 
+Given our linear constraints $c_1, c_2, ..., c_n$, a naive approach to getting the boolean logic we want is to  <i>flatten</i>  our constraints to binary variables $x_1, x_2,..., x_n$ that indicate if the respective constraint is satisfied. This way, we can use a simple encoding to get the boolean logic we want. 
+<br> 
+<br> 
+<span class="bold">Logical OR</span>: To express $x_1 \vee x_2 \vee x_3$, we create a boolean indicator variable $0 \geq y_1 \geq 1$ and do
+<br> 
+$$
+<br> 
+y_1 \leq x_1 + x_2 + x_3 \\ y_1 \geq x_1, \: y_1 \geq x_2, \: y_1 \geq x_3 
+<br> 
+$$
+<br> 
+For an arbitrarily large amount of indicator variables, we have:
+<br> 
+$$
+<br> 
+0 \leq n \cdot y - \sum x_i \leq n - 1
+<br> 
+$$
+<br> 
+<span class="bold">Logical AND</span>: To express $x_1 \land x_2 \land x_3$, we create $0 \geq y_2 \geq 1$ and do
+<br> 
+$$
+<br> 
+y_2 \geq x_1 + x_2 + x_3 - 2 \\ y_2 \leq x_1, \: y_2 \leq x_2, \: y_2 \leq x_3
+<br> 
+$$
+<br> 
+For any number of indicator variables:
+<br> 
+$$
+<br> 
+0 \leq \sum x_i - ny \leq n - 1
+<br> 
+$$
+<br> 
+<span class="bold">Logical NOT</span>: To express $\neg x_1$ we simply do $y_3 = 1 - x_1$
+<br> 
+<br> 
+<span class="bold">Logical XOR</span>: To express $y_4 = x_1 \oplus x_2$ it's a bit more complex:
+<br> 
+$$
+<br> 
+y_4 \leq x_1 + x_2 \\
+<br> 
+y_4 \geq x_1 - x_2 \: y_4 \geq x_2 - x_1 \\
+<br> 
+y_4 \leq 2 - x_1 - x_2
+<br> 
+$$
+<br> 
+<span class="bold">Forced Implication</span>: To  <i>assert</i>  $x_1 \Rightarrow x_2$, we can simply do $x_1 \leq x_2$
+<br> 
+<br> 
+<span class="bold">Indicated Implication</span>: Because implication is syntactic sugar e.g. $(x_1 \Rightarrow x_2) == (\neg x_1 \vee x_2)$, we can adapt the or construction:
+<br> 
+$$
+<br> 
+y_5 \leq 1 - x_1 + x_2 \\
+<br> 
+y_5 \geq 1 - x_1, \: y_5 \geq x_2
+<br> 
+$$
+<br> 
+Encoding things this way obviously adds a lot of complexity to the LP problem, and I find overusing this encoding can be really expensive.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='FlatteningConstraints'>Flattening Constraints</h2> 
+But how do you reduce any given constraint to an indicator variable? In general, the <a href="https://assets.gurobi.com/pdfs/user-events/2017-frankfurt/Modeling-2.pdf" target="_blank">big M method</a> is used. Adapted from Gurobi's documentation, the idea is for some arbitrarily large $M$ and a linear constraint $a = b$, enforce for some $0 \leq z \leq 1$:
+<br> 
+$$
+<br> 
+a - b \leq M \cdot z \\
+<br> 
+b - a \geq M \cdot z 
+<br> 
+$$
+<br> 
+This way, when $z=0$, $a=b$. Otherwise, $-M \leq a-b \leq M$. This can be adapted to any linear or nonlinear constraint, given $M$ is chosen properly. 
+<br> 
+<br> 
+But, similarly, this can be expensive ._.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MakingThisPractical'>Making This Practical</h2> 
+In my experience, the best way to make this approach practical runtime-wise is to take advantage of where boolean values naturally appear in constraints. Building up a large boolean expression, although possible, is just so expensive even with great LP solvers.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='References'>References</h2> 
+• <a href="https://personal.utdallas.edu/~scniu/OPRE-6201/documents/LP07-Big-M-Formulation.pdf" target="_blank">UT Dallas Big M Lecture Notes</a>
+<br> 
+• <a href="https://resources.mpi-inf.mpg.de/departments/d1/teaching/ss11/OPT/lec23.pdf" target="_blank">More Lecture Notes</a>
+<br> 
+• <a href="https://www.khoury.northeastern.edu/home/hlnguyen/cs7800/fall19/lp.pdf" target="_blank">Northeastern LP Lecture Notes</a>
+<br> 
+
+          <!--
+          <br>
+          <div class="calendar">
+          <table>
+            <tr>
+              <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg-sandwich" title="egg-sandwich">egg-sandwich</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/organization" title="organization">organization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vim-startscreen" title="vim-startscreen">vim-startscreen</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/focus" title="focus">focus</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/dumb-phone" title="dumb-phone">dumb-phone</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/lp-encoding" title="lp-encoding">lp-encoding</a></td> 
+
+            </tr>
+          </table>
+          </div>
+          -->
+
+
+          <!--
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                
+              </tr>
+              <tr>
+                {{data2}}
+              </tr>
+              <tr>
+                {{data3}}
+              </tr>
+              <tr>
+                {{data4}}
+              </tr>
+            </table>
+          </div>
+          -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

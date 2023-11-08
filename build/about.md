@@ -1,6 +1,6 @@
 Hi! I'm **Jake Ginesin**, and I *love* space.
 
-I'm an undergraduate at **Northeastern University** pursuing a double major in computer science and mathematics. I'm currently employed as a researcher working in Northeastern's [Network and Distributed Systems Security Lab](https://nds2.ccs.neu.edu/) where I employ formal methods to analyze internet protocol. Below are a few of my (non-space) interests, and can serve as conversation starters if you'd like: 
+I'm an undergraduate at **Northeastern University** pursuing a double major in computer science and mathematics. I'm currently employed as a researcher working in Northeastern's [Network and Distributed Systems Security Lab](https://nds2.ccs.neu.edu/) where I employ formal methods to analyze internet protocols. Below are a few of my (non-space) interests, and can serve as conversation starters if you'd like: 
 
 • **Mathematics**. Mainly logic, category theory, and formal methods.
 • **Security**. Verification, cryptography, and network security. 
