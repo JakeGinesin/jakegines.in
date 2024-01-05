@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> spring-reflection</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">spring-reflection</span></h1>
+        <div>
+(date of writing: 14 December 2023)
+<br> 
+<br> 
+Now that I'm on w i n t e r b r e a k, I decided I should write a nice reflection on my semester.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Courses'>Courses</h2> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MATH5101-Analysis1'>MATH5101 - Analysis 1  </h2> 
+<i>M,W 9:50am-11:30am.</i>
+<br> 
+<br> 
+Pretty much all my previous math courses were algebra-oriented, and I didn't even know what delta-epsilon continuity before I took this class. So yeah, taking a grad analysis course was kinda rough. But, the professor was fantastic, and the problem sets were interesting. 
+<br> 
+<br> 
+Also, this class single-handedly kept my sleep schedule in check.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='CS7800-AdvancedAlgorithms'>CS7800 - Advanced Algorithms</h2> 
+<i>M,TH 11:45pm-1:25pm</i>
+<br> 
+<br> 
+I would describe this class as a broad tour through semi-recent advances in algorithms literature. The class was designed mainly with PhD students in mind, so the class was pretty theoretical and math-heavy. Not going to lie, the classes were extremely sleeper. The concepts themselves are interesting, but when the professor immediately dives into esoteric and loosely contextualized theory, things got a bit hard to follow. The lecture notes were great though, and I gained way more from them than the lectures themselves.
+<br> 
+<br> 
+The class was mostly focused on machine learning-related topics, and sadly we didn't have time to cover game theory, probabilistic programming, nor coding theory.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='CS4830-SystemSpecification,Verification,andSynthesis'>CS4830 - System Specification, Verification, and Synthesis</h2> 
+<i>M,W,TH 1:35pm-2:40pm</i>
+<br> 
+<br> 
+This class took a very foundational approach to teaching model checking and formal verification, which was pretty neat. Formal methods is an extremely broad field, and this course obviously didn't cover anything, but it was a pretty nice intro. We covered the theory behind model checking, temporal logics (LTL, CTL, TLA), inductive invariance, tooling, automata, and program synthesis. This class was almost entirely graduate students, and the professor emphasized active areas of research in the field, which I appreciated. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='CS3800-TheoryofComputation'>CS3800 - Theory of Computation</h2> 
+<i>TU 11:45am-1:25pm, TH 2:50-4:30</i>
+<br> 
+<br> 
+Pretty standard theory of computation class, not much to say. Turing machines, models of computation, Chomsky hierarchy, Turing reductions, complexity theory, etc. The professor got her PhD in crypto, and we ended up having a few neat conversations about cryptosystem verification, namely the Dolev-Yao model. Cool person.
+<br> 
+<br> 
+I accidentally skipped a page on the final lol. Otherwise, chill class.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='PHIL4515-AdvancedLogic(Audit)'>PHIL4515 - Advanced Logic (Audit)</h2> 
+<i>TU,F 3:25pm-5:05pm</i>
+<br> 
+<br> 
+This class covered the nitty-gritty foundations of formal (symbolic) reasoning - essentially, the work of Frege and his book, <a href="https://en.wikipedia.org/wiki/Principia_Mathematica" target="_blank">Principia Mathematica</a>. This class is required for philosophy majors, and was aimed at students who didn't have a background in rigorous mathematics. Even though I wasn't the class's target audience, I still found it super neat. 
+<br> 
+<br> 
+I've gone through a few "intro to proof" classes. I've sat through <a href="https://web.archive.org/web/20231210210735/https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=MODULE&MODULE=COMP20110&TERMCODE=202200" target="_blank">COMP20110 - Discrete Mathematics for Computer Science</a> at UCD, took <a href="https://course.ccs.neu.edu/cs1800f22/" target="_blank">CS1800 - Discrete Structures</a> (horrible class btw), and went through the notes for <a href="https://web.northeastern.edu/dummit/teaching_fa22_1365.html" target="_blank">MATH1365 - Intro to Mathematical Reasoning</a>. All of these classes gave answers for "what is proof," but this class tried to answer "why is proof." 
+<br> 
+<br> 
+The prof <a href="https://fitelson.org/" target="_blank">Branden Fitelson</a> (absolute goat btw) really stressed the relationship between language and logic. I learned there's an intricate, well-studied relationship between language and logic. Language, and by extension, thought, were interestingly described as "continuous" while logic is "discrete." The formalization process, already intuitively known to me as non-trivial, was concretely shown to be such.
+<br> 
+<br> 
+I had many neat conversations with Brandon. He's a cool guy. He showed me this fucking fantastic talk, <a href="https://youtu.be/lE48QtO4xBQ" target="_blank">Is Mathematics Obsolete?</a>, by Jeremy Avigad. Do check it out.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MIT15.378-BuildinganEntrepreneurialVenture'>MIT 15.378 - Building an Entrepreneurial Venture</h2> 
+<i>F 5:30pm-8:30pm</i>
+<br> 
+<br> 
+I had the opportunity to take this class through some startup biz with a couple friends, one obviously at MIT. Even though I don't really care for the business side of companies, I'm pretty keen to learn and do new things. So, I figured I had nothing to lose by taking this class. And boy, it was so worth.
+<br> 
+<br> 
+I would best describe the course as a business incubator, but obviously MIT doesn't take equity (they take tuition instead!) The class is designed for groups of students who are in the initial stages of building some venture. <a href="https://entrepreneurship.mit.edu/an-inside-look-at-gsd/" target="_blank">Read more about it here</a>. The class had 5 super accomplished instructors and only 15 students. Two of the three hours of the class were solely dedicated to one-on-one mentorship. Also, one of the instructors would fly out from Chicago  <i>just for the day</i>  to teach this course. Fucking wild.
+<br> 
+<br> 
+Although this was my first (and probably last) business class, I think it's safe to say the course content was pretty standard. Building a team, product-market fit, etc etc. Compared to my math and computer science courses, I would describe the content as much more  <i>intuitive</i>  in nature. To this end, the real  <i>meat</i>  of the course was interacting with the instructors and observing their intuition for all things business. Everyone in the class was also super ambitious and eager to learn, which I really enjoyed.
+<br> 
+<br> 
+They also provided free dinner, a huge W.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Misc'>Misc</h2> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Research'>Research</h2> 
+<i>"20 hours"</i>
+<br> 
+<br> 
+I did research in formal language theory, specifically regular language program repair under incomplete specification. I also did a good bit of work finishing up some work I did a previous semester (paper soon!)
+<br> 
+<br> 
+I'll write up/publish my work from this semester eventually, do stay tuned.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Biking'>Biking</h2> 
+Having a bike this semester was damn sweet. Via my bike, I was able to get to MIT for the class in just under 15 minutes. I was more easily able to attend events all across Boston. The bike also made grocery shopping an absolute breeze. If you're in Boston, definitely consider picking up a bike.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Food'>Food</h2> 
+I cooked a ton this semester, and ate pretty healthily (vegan) modulo the free pizza from clubs. Next semester I'll try cooking more complex dishes.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='WirelessClub'>Wireless Club</h2> 
+Got much more involved with the wireless club this semester. I met a bunch of interesting people, and learned a ton about hardware. I also got my general ham radio license :D
+<br> 
+<br> 
+I'll be on the e-board next semester, so that's cool.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='GammaTau'>GammaTau</h2> 
+I've gotten pretty deep into AI this semester via <a href="https://gammatau.ai" target="_blank">GammaTau</a>, essentially a weekly reading group made up of all my buddies in AI. I gave a chill presentation to them about theorem proving and automated reasoning. Here's the slides.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Putnam'>Putnam</h2> 
+Took the putnam for the first time! Solved one problem for sure. Submitted attempts for 5 others. Idk my score yet.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ICPC/CCDC'>ICPC/CCDC</h2> 
+Participated in a few cybersecurity competitions this semester. I learned a ton about how those sorts of competitions work and refined my skills a ton. I'm eager to do more. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MathClub'>Math Club</h2> 
+I love the math club. Super cool group of people. Prof. David Garcia gave a fantastic talk on generalizing limits to category theory, which was neat.
+<br> 
+
+          <!--
+          <br>
+          <div class="calendar">
+          <table>
+            <tr>
+              <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg-sandwich" title="egg-sandwich">egg-sandwich</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/organization" title="organization">organization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vim-startscreen" title="vim-startscreen">vim-startscreen</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/abstraction" title="abstraction">abstraction</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/focus" title="focus">focus</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/dumb-phone" title="dumb-phone">dumb-phone</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/spring-reflection" title="spring-reflection">spring-reflection</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/cog-formalization" title="cog-formalization">cog-formalization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/lp-encoding" title="lp-encoding">lp-encoding</a></td> 
+
+            </tr>
+          </table>
+          </div>
+          -->
+
+
+          <!--
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                
+              </tr>
+              <tr>
+                {{data2}}
+              </tr>
+              <tr>
+                {{data3}}
+              </tr>
+              <tr>
+                {{data4}}
+              </tr>
+            </table>
+          </div>
+          -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

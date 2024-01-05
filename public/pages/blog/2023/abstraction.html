@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> abstraction</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">abstraction</span></h1>
+        <div>
+A good friend of mine, <a href="https://github.com/EdwardBerman" target="_blank">Eddie Berman</a>, showed me a neat paper, <a href="https://math.mit.edu/~edelman/publications/on_machine_learning.pdf" target="_blank">On Machine Learning and Programming Languages</a>. In short, this paper tries to sell the <a href="https://julialang.org/" target="_blank">Julia Programming Language</a> and the <a href="https://fluxml.ai/Flux.jl/stable/" target="_blank">Flux Machine Learning Library</a> by arguing the complexity of machine learning requires a dedicated programming language (and of course implying Julia is this language.) The authors spend the (short) paper describing the complexities of machine learning, and how it can benefit from programming languages concepts.
+<br> 
+<br> 
+In my opinion, this is the wrong way to sell a language like Julia. Although, note I lean on the formal methods/programming languages side of things, so I'm biased. I think a better angle is to speak about Julia in terms of  <i>abstractions</i>.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Argument'>Argument</h2> 
+As is well-known with the concept of Turing completeness, any reasonable modern programming language can effectively simulate the code of any other modern programming language. The most complex program can you imagine can be written and ran in a language as esoteric as <a href="https://en.wikipedia.org/wiki/Brainfuck" target="_blank">Brainfuck</a>. So, why do we even care about writing programming languages other than, say, Brainfuck? The answer, I argue, can be summarized in the ergonomics of reasoning about abstractions. 
+<br> 
+<br> 
+Brainfuck directly reasons about Turing machine operations. Assembly reasons about CPU operations, which is effectively synonymous with Turing machine operations (abstracting out the CPU architecture nonsense.)
+<br> 
+<br> 
+C, by comparison, is a language written to more effectively reason about the operations of a computer. It is equivalent  <i>operationally</i>  to the assembly it compiles down to. But, the language itself contains abstractions (in other words, loops, objects, standard library functions) that make reasoning about the computer easier. As many programmers will tell you, it is simply more  <i>ergonomic</i>  to work with computer memory in C than directly in assembly <a href=#one>{1}</a>. 
+<br> 
+<br> 
+From here, it follows why certain languages exist. Rust, for example, makes reasoning about memory even easier than C via the <a href="https://doc.rust-lang.org/1.8.0/book/references-and-borrowing.html" target="_blank">borrow checking procedure</a>. Sure, you can implement the borrow checking procedure in C, but Rust has it  <i>built into the language</i>  with additional optimizations via the <a href="https://llvm.org/" target="_blank">LLVM compiler toolchain</a>.
+<br> 
+<br> 
+The paper speaks about successes of domain-specific languages in formal methods and verification. What the paper does not acknowledge, however, is more specialized verification languages and are generally written to more closely reason about the mathematical objects used in the verification procedures. For example, <a href="https://en.wikipedia.org/wiki/Promela" target="_blank">Promela</a>, <a href="https://en.wikipedia.org/wiki/TLA%2B" target="_blank">TLA+</a>, and <a href="https://nusmv.fbk.eu/" target="_blank">NuSMV</a> use temporal logics and automata for verification. It is generally easy to see the languages themselves are built on top of these formalisms. Similarly, theorem proving languages such as <a href="https://lean-lang.org/" target="_blank">Lean</a> and <a href="https://coq.inria.fr/" target="_blank">Coq</a> are built on top of the notion of checking type-equivalence between assumptions and propositions. Thus, these languages feature "tactics" to better manipulate the types of objects.
+<br> 
+<br> 
+The paper makes the argument that machine learning models require languages of their own. I think it's a natural question for me to ask: what  <i>abstractions</i>  to do those in machine learning need to reason about? Tensors? Transformers? The paper makes broad allusions to very general abstractions such as recursion and recurrence (no, I'm not kidding lmao.)
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='SomeThoughts'>Some Thoughts</h2> 
+In my opinion, different languages exist in the first place due to  <i>abstraction-specific optimization</i>. Julia, for example, has lots of subtle optimizations for working with differential equations and doing numerical analysis. Those behind Julia know a lot about these objects, so of course Julia features lots of domain-specific optimizations. Is this not the selling point of Julia, or am I just missing something? At least to me, a formal methods person, it's abundantly clear that the domain-specific machinery can be implemented in a domain-specific language. What's the purpose of a paper like this? 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Notes'>Notes</h2> 
+<span id="one">{1}</span> This notion of abstraction is most easily seen in functional languages that essentially build everything on top of lambda calculus.
+<br> 
+
+          <!--
+          <br>
+          <div class="calendar">
+          <table>
+            <tr>
+              <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg-sandwich" title="egg-sandwich">egg-sandwich</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/organization" title="organization">organization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vim-startscreen" title="vim-startscreen">vim-startscreen</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/abstraction" title="abstraction">abstraction</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/focus" title="focus">focus</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/dumb-phone" title="dumb-phone">dumb-phone</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/spring-reflection" title="spring-reflection">spring-reflection</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/cog-formalization" title="cog-formalization">cog-formalization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/lp-encoding" title="lp-encoding">lp-encoding</a></td> 
+
+            </tr>
+          </table>
+          </div>
+          -->
+
+
+          <!--
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                
+              </tr>
+              <tr>
+                {{data2}}
+              </tr>
+              <tr>
+                {{data3}}
+              </tr>
+              <tr>
+                {{data4}}
+              </tr>
+            </table>
+          </div>
+          -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

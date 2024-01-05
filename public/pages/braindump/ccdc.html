@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> ccdc</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">ccdc</span></h1>
+        <div>
+CCDC: National Collegiate Cyber Defense Competition. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Links&Resources'>Links & Resources</h2> 
+• Competition site: <a href="https://www.nationalccdc.org/" target="_blank">nationalccdc.org/</a>
+<br> 
+• <a href="https://nuccdc.club/" target="_blank">nuccdc.club/</a>
+<br> 
+• (see federico's CCDC doc)
+<br> 
+• <a href="https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS" target="_blank">github.com/carlospolop/PEASS-ng/tree/master/linPEAS</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ClubTools'>Club Tools</h2> 
+I think CCDC makes it policy so security tools clubs build should be public. See the links below.
+<br> 
+• <a href="https://github.com/BYU-CCDC/public-ccdc-resources" target="_blank">github.com/BYU-CCDC/public-ccdc-resources</a>
+<br> 
+• <a href="https://github.com/s00p123/resource-repo/" target="_blank">github.com/s00p123/resource-repo/</a>
+<br> 
+• <a href="https://github.com/cpp-cyber/blue" target="_blank">github.com/cpp-cyber/blue</a>
+<br> 
+• <a href="https://github.com/nuccdc/tools" target="_blank">github.com/nuccdc/tools</a>
+<br> 
+• <a href="https://github.com/UCI-CCDC" target="_blank">github.com/UCI-CCDC</a>
+<br> 
+• <a href="https://github.com/ucrcyberI" target="_blank">github.com/ucrcyberI</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Windowstools'>Windows tools</h2> 
+• autoruns - see where things are holding persistence. see what is triggered on startup!
+<br> 
+• process explorer - task manager on drugs
+<br> 
+• process monitor (procmon)
+<br> 
+• registry capture tool
+<br> 
+• windows event log
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='WindowsMalwareThings'>Windows Malware Things</h2> 
+• Windows edr : endpoint detection and response
+<br> 
+• Look at command line arguments for trusted things
+<br> 
+• Don't trust any process! no way!
+<br> 
+• Purple: encrypted in memory
+<br> 
+• Change the name of the thing you're trying to process
+<br> 
+• Run autorun as admin before you do anything
+<br> 
+    - see whether something is verified (sig is signed by microsoft)
+<br> 
+    - options->scan options
+<br> 
+    - use virustotal and sees which binaries are sus
+<br> 
+• run process monitor
+<br> 
+    - don't suspend windows processes! don't suspend login, etc.
+<br> 
+    - python.exe is suspicious! 
+<br> 
+        - python itself is verified, so it'll show up
+<br> 
+        - don't kill, but suspend the python process. any sort of persistence will check to see if the process is still running
+<br> 
+    - powershell sessions... command line, all suspicious 
+<br> 
+    - just run virustotal off the bat. make sure to check off unknown executables
+<br> 
+    - red -> process killed, green->process started, purple->"packed" (running with memory that is compressed)
+<br> 
+• TCpview : looks at connections
+<br> 
+    - should be binaries associated w connection
+<br> 
+• multilevel persistence 
+<br> 
+• check temp on windows for persistence 
+<br> 
+    - %tmp%
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Linux'>Linux </h2> 
+• /etc/pam.d/ -> rigorous permissions. check this! more powerful than sudoers file. need a tool to edit something safely.
+<br> 
+• /var/spool/
+<br> 
+• put ! in front of things in /etc/shadow to disable account
+<br> 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

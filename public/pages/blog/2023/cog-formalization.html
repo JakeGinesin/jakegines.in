@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2023 -> cog-formalization</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow">&larr;&nbsp;</span>2023</a>
+        <!-- <a href="/blog/2023" style="color: #fc8f4c"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2023</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc8f4c">cog-formalization</span></h1>
+        <div>
+Cognition Formalization.
+<br> 
+<br> 
+Through some conversations with some friends, as well as some of my own ongoing projects, I've been thinking about the relationship between cognition, formal grammars, and abstraction. I've also been checking out the work of <a href="https://en.wikipedia.org/wiki/Linguistics_of_Noam_Chomsky" target="_blank">Noam Chomsky</a>, the guy who pioneered formal language theory. 
+<br> 
+<br> 
+In this post, I (very casually) hypothesize that the inherent difficulty of language-centric tasks is directly associated with language complexity. I understand there is a lot of scientific literature in this space, some of which probably invalidates parts of this post. I don't really care though, this post is a casual formalization and just for fun :)
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ThreePrimary"levels"'>Three Primary "levels"</h2> 
+I think all thoughts can be broken up into three loose categories (largely inspired by the Chomsky Hierarchy):
+<br> 
+• level 1: context-free thought
+<br> 
+• level 2: context-sensitive thought
+<br> 
+• level 3: free-form thought
+<br> 
+<br> 
+Context-free thoughts are thoughts within the expressability of  <i>context-free grammars</i>. Context-free grammars include Backus-Naur form, so programming languages generally fall in this category. Context-free grammars are less expressive than natural language, as they follow stricter language construction rules. So, reasoning about these languages often involves a higher level of symbolic reasoning.
+<br> 
+<br> 
+Context-sensitive thoughts fall within the expressability of context-sensitive grammars, which encompasses natural language. Thinking in this way requires less symbolic reasoning, but formalizing abstract thoughts and ideas into a context-sensitive language (i.e. English) isn't necessarily trivial either.
+<br> 
+<br> 
+Free-form thought falls outside of the expressability of context-sensitive grammars. Admittedly I don't have very good intuition for languages that fall outside of context-sensitive grammars (outside of Turing-theoretic stuff, <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem" target="_blank">Rice's Theorem</a> etc). It's generally easier to say what these languages  <i>are not</i>. I'd imagine this category encompasses abstract concepts and ideas, pseudo-linguistic visualizations, etc. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ProblemFraming'>Problem Framing</h2> 
+Intuitively, our brains are constantly translating concepts, thoughts, and ideas between all three levels. 
+<br> 
+<br> 
+For example, when we read a book we translate level 2 thoughts (natural language) the associated abstract concepts and ideas. When I explain to someone my code, I am translating level 1 thoughts (context-sensitive grammar'ed code) to level 2 thoughts (natural language). Writing code from English specification is going from level 2 to level 1, while writing code with no specification is going from level 3 to level 1. 
+<br> 
+<br> 
+Formalizing mathematical arguments in <a href="https://leanprover-community.github.io/" target="_blank">Lean</a>, some cool software that can verify the correctness of any mathematical theorem, is also going from level 3 to level 2. You'd imagine mathematics papers would be written in something closer to formal prose but <a href="https://arxiv.org/pdf/2207.04779.pdf" target="_blank">some argue that's not really the case</a>.
+<br> 
+<br> 
+To me at least, it seems going up the hierarchy is easier than going down. This kinda makes sense, as by the Chomsky hierarchy we know:
+<br> 
+$$
+<br> 
+\text{ regular } \subseteq \text{context-sensitive } \subseteq \\
+<br> 
+\text{ context-free } \subseteq \text{ recursively enumerable }
+<br> 
+$$
+<br> 
+In other words, there are simply  <i>more</i>  context-free languages than context-sensitive languages. Mapping from something less expressive to something more expressive intuitively is a different problem than going from more to less. More concretely, reading a book is much easier than writing a book. Writing textual specification from an implementation is generally easier than writing code from specification. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Mappings'>Mappings</h2> 
+We can also reason about  <i>mappings</i>  between levels. To give some more examples, a programming language (e.g. Python) and its textual specification is an example of mapping a level 2 thought to a level 1 thought (i.e. mapping natural language to a context-free grammar.) Such a mapping is generally easy to learn with a few good youtube tutorials. 
+<br> 
+<br> 
+A learning a full-on language, however, can be considered learning a mapping from level 3 thought to level 2 thought (i.e. mapping abstract thoughts and ideas to a natural language, context-sensitive grammar.) This mapping, evidently, takes much longer to learn than a level 2 <-> level 1 mapping.
+<br> 
+<br> 
+I think this mapping concept is quite neat. I've generally observed multi-lingual people (including myself) seem to seamlessly transition from communication in one language to another. There is no context switch. This mapping notion gives an interesting perspective to this phenomena. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Otherthoughts'>Other thoughts</h2> 
+• are thoughts recursively enumerable? Intuitively, it may seem so. There's a finite universe after all, so does that imply the number of different thoughts we can have is also finite? 
+<br> 
+• this leveling system is only reasoning about language. But, evidently, we think about more than just language. The process of drawing an image in your mind is nontrivial, and could be described as a different formalization process. 
+<br> 
+• one could say our ability, as humans, to understand language stems from our ability to reason about  <i>abstractions</i>  of different flavors. 
+<br> 
+
+          <!--
+          <br>
+          <div class="calendar">
+          <table>
+            <tr>
+              <td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/egg-sandwich" title="egg-sandwich">egg-sandwich</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/organization" title="organization">organization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/vim-startscreen" title="vim-startscreen">vim-startscreen</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/abstraction" title="abstraction">abstraction</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/focus" title="focus">focus</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/dumb-phone" title="dumb-phone">dumb-phone</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/spring-reflection" title="spring-reflection">spring-reflection</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/cog-formalization" title="cog-formalization">cog-formalization</a></td> 
+<td><a style="text-decoration: none !important; color:#fc8f4c" href="/blog/2023/lp-encoding" title="lp-encoding">lp-encoding</a></td> 
+
+            </tr>
+          </table>
+          </div>
+          -->
+
+
+          <!--
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc8f4c;" href="/blog/2023" title="home">&#955</a></td>
+                
+              </tr>
+              <tr>
+                {{data2}}
+              </tr>
+              <tr>
+                {{data3}}
+              </tr>
+              <tr>
+                {{data4}}
+              </tr>
+            </table>
+          </div>
+          -->
+
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

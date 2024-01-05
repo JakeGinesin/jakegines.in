@@ -1,0 +1,22 @@
+A good friend of mine, [Eddie Berman](https://github.com/EdwardBerman), showed me a neat paper, [On Machine Learning and Programming Languages](https://math.mit.edu/~edelman/publications/on_machine_learning.pdf). In short, this paper tries to sell the [Julia Programming Language](https://julialang.org/) and the [Flux Machine Learning Library](https://fluxml.ai/Flux.jl/stable/) by arguing the complexity of machine learning requires a dedicated programming language (and of course implying Julia is this language.) The authors spend the (short) paper describing the complexities of machine learning, and how it can benefit from programming languages concepts.
+
+In my opinion, this is the wrong way to sell a language like Julia. Although, note I lean on the formal methods/programming languages side of things, so I'm biased. I think a better angle is to speak about Julia in terms of *abstractions*.
+
+### Argument
+As is well-known with the concept of Turing completeness, any reasonable modern programming language can effectively simulate the code of any other modern programming language. The most complex program can you imagine can be written and ran in a language as esoteric as [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck). So, why do we even care about writing programming languages other than, say, Brainfuck? The answer, I argue, can be summarized in the ergonomics of reasoning about abstractions. 
+
+Brainfuck directly reasons about Turing machine operations. Assembly reasons about CPU operations, which is effectively synonymous with Turing machine operations (abstracting out the CPU architecture nonsense.)
+
+C, by comparison, is a language written to more effectively reason about the operations of a computer. It is equivalent *operationally* to the assembly it compiles down to. But, the language itself contains abstractions (in other words, loops, objects, standard library functions) that make reasoning about the computer easier. As many programmers will tell you, it is simply more *ergonomic* to work with computer memory in C than directly in assembly [{1}](#one). 
+
+From here, it follows why certain languages exist. Rust, for example, makes reasoning about memory even easier than C via the [borrow checking procedure](https://doc.rust-lang.org/1.8.0/book/references-and-borrowing.html). Sure, you can implement the borrow checking procedure in C, but Rust has it *built into the language* with additional optimizations via the [LLVM compiler toolchain](https://llvm.org/).
+
+The paper speaks about successes of domain-specific languages in formal methods and verification. What the paper does not acknowledge, however, is more specialized verification languages and are generally written to more closely reason about the mathematical objects used in the verification procedures. For example, [Promela](https://en.wikipedia.org/wiki/Promela), [TLA+](https://en.wikipedia.org/wiki/TLA%2B), and [NuSMV](https://nusmv.fbk.eu/) use temporal logics and automata for verification. It is generally easy to see the languages themselves are built on top of these formalisms. Similarly, theorem proving languages such as [Lean](https://lean-lang.org/) and [Coq](https://coq.inria.fr/) are built on top of the notion of checking type-equivalence between assumptions and propositions. Thus, these languages feature "tactics" to better manipulate the types of objects.
+
+The paper makes the argument that machine learning models require languages of their own. I think it's a natural question for me to ask: what *abstractions* to do those in machine learning need to reason about? Tensors? Transformers? The paper makes broad allusions to very general abstractions such as recursion and recurrence (no, I'm not kidding lmao.)
+
+### Some Thoughts
+In my opinion, different languages exist in the first place due to *abstraction-specific optimization*. Julia, for example, has lots of subtle optimizations for working with differential equations and doing numerical analysis. Those behind Julia know a lot about these objects, so of course Julia features lots of domain-specific optimizations. Is this not the selling point of Julia, or am I just missing something? At least to me, a formal methods person, it's abundantly clear that the domain-specific machinery can be implemented in a domain-specific language. What's the purpose of a paper like this? 
+
+### Notes
+[[[{1}]]](one) This notion of abstraction is most easily seen in functional languages that essentially build everything on top of lambda calculus.

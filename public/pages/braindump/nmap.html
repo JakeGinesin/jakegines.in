@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> nmap</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">nmap</span></h1>
+        <div>
+All things nmap - a network scanning tool.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Resources'>Resources</h2> 
+• <a href="https://github.com/CyberLions/CompetitionResources-CPTC/blob/master/Cheat%20Sheets/NmapCheatSheetv1.1.pdf" target="_blank">github.com/CyberLions/CompetitionResources-CPTC/blob/master/Cheat%20Sheets/NmapCheatSheetv1.1.pdf</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Setup'>Setup</h2> 
+• get your own ip address with <code class="highlighter-rouge" data-lang="text">ip addr show</code>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='AllthingsNMAP'>All things NMAP</h2> 
+now, we have some ip addresses to play with! here are some general notes regarding nmap:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sn <range></code> -> discover live hosts (other active things). ping sweep.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap <target ip></code> -> scan the 1000 most common ports
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -p- <target ip></code> -> scan all 65,535 ports
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sv -sc <target ip></code> -> get service versions
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">nmap -sv <target ip></code> -> get banner information for some service
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -O <target ip></code> -> get os version of target
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -a <target ip></code> -> aggressive scan. get os, version detection, script scanning, and traceroute
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -ss <target ip></code> -> stealth syn scan
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -su <target ip></code> -> scan for open udp ports (as opposed to tcp)
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -ox output.xml <target ip></code> -> save scan result
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-sI <address></code> -> spoof some address
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='timingtemplates'>timing templates</h2> 
+• <code class="highlighter-rouge" data-lang="text">-t0</code> -> paranoid, super slow and stealthy
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-t1</code> -> sneaky
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-t2</code> -> polite, gives more prio to device limitations 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-t3</code> -> normal
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-t4</code> -> aggressive. generally recommended if you have a connection faster than dial up.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-t5</code> -> insane, fastest scan timing. you'll miss shit and you'll be caught.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='goingfromdomaintoscanning'>going from domain to scanning</h2> 
+• <code class="highlighter-rouge" data-lang="text">whois -h whois.arin.net n [service]</code> -> gets a range of IPs to scan
+<br> 
+• ping the web server for latency est.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">dig @dns-nameserver webserver.com. any</code> dig through DNS records 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='tricksandnotes'>tricks and notes</h2> 
+• <code class="highlighter-rouge" data-lang="text">-sL <addr></code> -> finds reverse DNS entries that resolve to some address
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-sS</code> -> SYN scan. this is the default, but it's ok to mention explicitly. 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-p-</code> -> requests Nmap scans every port from 1-65535
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-PS22,80,113,33334 -PA80,113,21000 -PU19000 -PE</code> -> sends TCP syn to 22,80,113,33334, TCP ack to 80,113,21000, UDP to 19000, and ICMP echo.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-A</code> -> advanced and aggressive form. equivalent to <code class="highlighter-rouge" data-lang="text">-sV -sC -O --traceroute</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">oA</code> -> output things 
+<br> 
+• 12.34.56.78/24 could instead be specified as 6.209.24.0-255
+<br> 
+• IANA specifies official ports, but this isn't always followed.
+<br> 
+• some nmap tools: <a href="http://www.unspecific.com/nmap/" target="_blank">unspecific.com/nmap/</a>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-p80</code> -> looking for web ports only
+<br> 
+• host enumeration -> the process of identifying all hosts on a network
+<br> 
+• running <code class="highlighter-rouge" data-lang="text">nmap -sS -PS80 -iR 0 -p 80</code> is kinda cute for locating random servers
+<br> 
+• <code class="highlighter-rouge" data-lang="text">host -t ns [domain.com]</code> -> gets the name servers serving the domain
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-sP</code> ->  <i>only</i>  perform a ping scan. no further testing whatsoever.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-PS<port list></code> -> TCP SYN Ping (<code class="highlighter-rouge" data-lang="text">-PA</code> is ack, <code class="highlighter-rouge" data-lang="text">-PU<list></code> is UDP)
+<br> 
+• <code class="highlighter-rouge" data-lang="text">--source-port <portnum></code> -> sets a constant source port. helps with rule checking shit.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">oA,oN, oG, oX</code> are output options. 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">host -t ns [domain.com]</code> -> gets the name servers for 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">--reason</code> -> indicates what exactly the probe responded to
+<br> 
+• for UDP ports, you want to try to target 53 (DNS port) and some arbitrarily high numbered port (e.g., 34444) to target shit firewalls with bad range proofs.
+<br> 
+• a set of ping options that'll catch the vaaast number of hosts: <code class="highlighter-rouge" data-lang="text">-PE -PA -PS21,23,23,25,80,113,31339 -PA80,113,443,10042</code>, and adding in <code class="highlighter-rouge" data-lang="text">--source-port 53</code> migth also work.
+<br> 
+• by default, nmap just scans and classifies the 1000 most commonly used TCP ports on the target
+<br> 
+• ports are a software abstraction. 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-6</code> - IPv6 scanning!
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -p80 -oG logs 10.110.150.125/24</code> -> scan network for open web ports, and put that shit in a nice file, "logs," which is searchable by grep 
+<br> 
+• a faster version of the above which optimizes reverse DNS resolution: <code class="highlighter-rouge" data-lang="text">nmap -T4 -PN -p80 --max-rtt-timeout 200ms --initial-rtt-timeout 150ms --min-hostgroup 512ms -oGlogs 216.163.128.0/20</code>
+<br> 
+    - in order to watch logs, we can run <code class="highlighter-rouge" data-lang="text">watch -n 5 "cat logs | grep -E 'open'"</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-sO</code> - determines which IP protocols are supported by target machines. not necessarily a port scan...
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-sC</code> -> run default scripts
+<br> 
+• <code class="highlighter-rouge" data-lang="text">--script=<script name>|<script category>|<ScriptDir></code> run individual or group of scripts
+<br> 
+• <code class="highlighter-rouge" data-lang="text">--script-args=<Name1=Value1...></code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap --script dns-zone-transfer.nse --script-args dns-zone-transfer.domain=<domain> -p53 <hosts></code> -> attempt pull DNS zone fule
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap --script http-robots.txt <hosts></code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-oN</code> -> standard nmap output
+<br> 
+• <code class="highlighter-rouge" data-lang="text">--reason</code> -> nmap reason why it thinks port is open, closed, filtered, etc
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Scriptthatareuseful:'>Script that are useful:</h2> 
+• <code class="highlighter-rouge" data-lang="text">auth</code> -> utilize credentials or bypass authentication on target hosts
+<br> 
+• <code class="highlighter-rouge" data-lang="text">broadcast</code> -> discover hosts not included on command line by broadcasting to local network
+<br> 
+• <code class="highlighter-rouge" data-lang="text">brute</code> -> attempt to guess passwords for different protocols, including <code class="highlighter-rouge" data-lang="text">http, SNMP, IAX, MySQL, VNC</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">default</code> -> things that are automatically ran when <code class="highlighter-rouge" data-lang="text">-sC</code> and <code class="highlighter-rouge" data-lang="text">-A</code> are used
+<br> 
+• <code class="highlighter-rouge" data-lang="text">discovery</code> -> try to learn more info about target hosts via <code class="highlighter-rouge" data-lang="text">SNMP</code>, directory services, etc
+<br> 
+• <code class="highlighter-rouge" data-lang="text">dos</code> -> may cause dos conditions
+<br> 
+• <code class="highlighter-rouge" data-lang="text">exploit </code>-> attempt to exploit target systems
+<br> 
+• <code class="highlighter-rouge" data-lang="text">external</code> -> interact with third party systems
+<br> 
+• <code class="highlighter-rouge" data-lang="text">fuzzer</code> -> send unexpected input in network protocol fields
+<br> 
+• <code class="highlighter-rouge" data-lang="text">intrusive</code> -> may crash target, consume excessive resources, or otherwise impact machine
+<br> 
+• <code class="highlighter-rouge" data-lang="text">malware</code> -> look for signs of malware infection
+<br> 
+• <code class="highlighter-rouge" data-lang="text">safe</code> -> don't impact target system
+<br> 
+• <code class="highlighter-rouge" data-lang="text">version</code> -> get versions
+<br> 
+• <code class="highlighter-rouge" data-lang="text">vuln</code> -> measure whether systems have a known vulnerability
+<br> 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

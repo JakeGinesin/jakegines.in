@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> ctf-playbook</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">ctf-playbook</span></h1>
+        <div>
+A "playbook" for CTF purposes
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Pipeline'>Pipeline</h2> 
+• Listen to things -> Map things with ping scans -> figure out what is running what service -> figure out some attack vector based on scanning, etc -> gain access to a machine -> get some sessions -> escalation -> persistence -> find other hosts, continue mapping
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='NetworkMapping'>Network Mapping</h2> 
+See nmap.md for more details.
+<br> 
+<br> 
+First, we want to find our IP address: <code class="highlighter-rouge" data-lang="text">ip addr show</code>. You already know how to interpret network controllers. Find your IP address. If your IP address has a <code class="highlighter-rouge" data-lang="text">/16</code> you're on a bigger network, and <code class="highlighter-rouge" data-lang="text">/24</code> if you're on a smaller network.
+<br> 
+<br> 
+To do more broad network discovery, run:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sn 192.168.0.0/16</code>
+<br> 
+• If smaller, run <code class="highlighter-rouge" data-lang="text">nmap -sn 192.168.100</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">netdiscover</code> also nice for listening
+<br> 
+<br> 
+To do discovery via an arp scan, do:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">sudo arp-scan -l</code> -> scan all IP addresses on the local subnet
+<br> 
+• <code class="highlighter-rouge" data-lang="text">sudo arp-scan 192.168.1.0/24</code> -> try a different subnet
+<br> 
+• <code class="highlighter-rouge" data-lang="text">sudo arp-scan -lq</code> -> see only live hosts and not any error msg stats
+<br> 
+• <code class="highlighter-rouge" data-lang="text">sudo arp-scan -I eth0 -l</code> -> scan with your desired network interface
+<br> 
+<br> 
+Now, we have some IP addresses to play with! Here are some general notes regarding nmap:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sn <range></code> -> discover live hosts (other active things). ping sweep.
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap <target IP></code> -> scan the 1000 most common ports
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -p- <target IP></code> -> scan all 65,535 ports
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sV -sC <target IP></code> -> get service versions
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">nmap -sV <target IP></code> -> get banner information for some service
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -O <target IP></code> -> get OS version of target
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -A <target IP></code> -> aggressive scan. get OS, version detection, script scanning, and traceroute
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sS <target IP></code> -> stealth SYN scan
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -sU <target IP></code> -> scan for open UDP ports (as opposed to TCP)
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nmap -oX output.xml <target IP></code> -> save scan result
+<br> 
+<br> 
+Timing templates:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-T0</code> -> paranoid, super slow and stealthy
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-T1</code> -> sneaky
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-T2</code> -> polite, gives more prio to device limitations 
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-T3</code> -> normal
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-T4</code> -> aggressive, fast and dirty but you might miss some shit
+<br> 
+• <code class="highlighter-rouge" data-lang="text">-T5</code> -> insane, fastest scan timing. you'll miss shit and you'll be caught.
+<br> 
+<br> 
+Classical ports:
+<br> 
+• 21 -> FTP -> TCP -> Transfer files
+<br> 
+• 22 -> SSH -> TCP/UDP -> Secure Shell
+<br> 
+• 23 -> Telnet -> TCP/UDP -> Remote administration (depreciated)
+<br> 
+• 21 FTP TCP FTPS, 989/990 Transfer Files from host to host
+<br> 
+• 22 SSH TCP/UDP Secure Shell Connection
+<br> 
+• 23 Telnet TCP/UDP Remote administration (deprecated)
+<br> 
+• 25 SMTP TCP SMTP w/ TLS, 465/587 Sends Email
+<br> 
+• 49 TACACS+ TCP Remote Authentication
+<br> 
+• 53 DNS TCP/UDP DNSSEC Hostname to IP resolution
+<br> 
+• 69 TFTP UDP Basic version of FTP
+<br> 
+• 80 HTTP TCP HTTPS, 443 Transmit web page data
+<br> 
+• 88 Kerberos TCP/UDP Network Authentication using tickets
+<br> 
+• 110 POP3 TCP POP3 w/ TLS, 995 Receives Email
+<br> 
+• 119 NNTP TCP Transport Usenet Articles
+<br> 
+• 135 RPC TCP/UDP Locate DCOM ports
+<br> 
+• 137-139 NetBIOS TCP/UDP Name quering, sending data, NetBIOS connection
+<br> 
+• 143 IMAP TCP IMAP4 w/ TLS, 993 Email retrieval
+<br> 
+• 161 SNMP UDP Remote network device monitoring
+<br> 
+• 162 SNMPTRAP TCP/UDP Traps/InformRequests sent to SNMP manager
+<br> 
+• 389 LDAP TCP/UDP LDAP w/ TLS, 636 Maintain user and other object directory
+<br> 
+• 445 SMB TCP Shared access to files and resources
+<br> 
+• 514 Syslog UDP Syslog w/ TLS, 6514 Computer message logging
+<br> 
+• 860 iSCSI TCP IP based protocol for linking data storage facilities
+<br> 
+• 1433 Ms-sql-s TCP Opens MS SQL server queries
+<br> 
+• 1701 L2TP UDP VPN protocol with no security, used with IPsec
+<br> 
+• 1723 PPTP TCP/UDP VPN protocol with security
+<br> 
+• 1812/1813 RADIUS UDP AAA protocol for authentication, authorization and accounting
+<br> 
+• 3225 FCIP TCP/UDP Encapsulate Fibre channel frames
+<br> 
+• 3389 RDP TCP/UDP Remote Desktop Protocol for Windows
+<br> 
+• 3868 Diameter TCP AAA protocol that can replace RADIUS
+<br> 
+<br> 
+You can confirm individual connection things with netcat:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">nc -v <IP> <PORT></code> -  
+<br> 
+<br> 
+Things you might run into when scanning:
+<br> 
+• <code class="highlighter-rouge" data-lang="text">tcpwrapped</code> -> completed a full connection. likely a firewall. Try slowing thespeed, using <code class="highlighter-rouge" data-lang="text">-T2</code>. Don't use <code class="highlighter-rouge" data-lang="text">-A</code>, but <code class="highlighter-rouge" data-lang="text">-sV</code>. Or, drill down on the specific packet type.
+<br> 
+<br> 
+Some other useful tools for further enumeration:
+<br> 
+• for web servers, use dirb, nikto, gobuster
+<br> 
+• for smb shares, use enum4linux
+<br> 
+• for SNMP, use <code class="highlighter-rouge" data-lang="text">snmpwalk</code> or <code class="highlighter-rouge" data-lang="text">snmp-check</code>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='UsingDNS...'>Using DNS...</h2> 
+Using DNS, we can get a ton of different information on a network. First, how do we obtain what server is a DNS server?
+<br> 
+• use nmap to see who is serving dns requests: <code class="highlighter-rouge" data-lang="text">nmap -p 53 --open <target-range></code>
+<br> 
+• through passive observation... using wireshark etc
+<br> 
+<br> 
+Once we have the IP of the server sending dns requests, we can try a few things:
+<br> 
+• Try to get the zone info using a zone transfer: <code class="highlighter-rouge" data-lang="text">dig axfr @<DNS-server> domain.com</code> (axfr is a full zone transfer, ixfr is a partial zone transfer, the difference from last requested)
+<br> 
+• Do reverse lookup brute forcing with DNSrecon: <code class="highlighter-rouge" data-lang="text">dnsrecon -r <ip range> -n <DNS-server></code>
+<br> 
+• check for DNSsec with <code class="highlighter-rouge" data-lang="text">dig +dnssec domain.com</code>
+<br> 
+• Use <code class="highlighter-rouge" data-lang="text">Responder</code> for LLMNR, NBT-NS, and MDNS poisoning to capture credentials
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Whattodonowwithallthisinfo?'>What to do now with all this info?</h2> 
+Okay, we found some random shit. We did some discovering. What now? Well, we really have two options... 
+<br> 
+• first, we can  <i>listen</i>  to packets over the wire. this way, we can do some network analysis and whatnot. see: listen-ctf.md for more
+<br> 
+• second, we can try to exploit shit directly. this is what this markdown bit will be focusing on.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Nicetools'>Nice tools</h2> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Crackmapexec'>Crackmapexec</h2> 
+a "swiss army knife" for pen testing networks. See: <a href="https://github.com/byt3bl33d3r/CrackMapExec" target="_blank">github.com/byt3bl33d3r/CrackMapExec</a>. 
+<br> 
+• See the <a href="https://www.crackmapexec.wiki/getting-started/using-credentials" target="_blank">wiki</a>
+<br> 
+<br> 
+This tool is mostly used for password stuff and brute forcing. This is good for SMB (fucking windows), LDAP (directory access), WINRM, MSSQL, SSH, FTP, RDP, WMI
+<br> 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='OtherToolsformerkingshityoufind'>Other Tools for merking shit you find</h2> 
+• nikto, scan web servers: <a href="https://github.com/sullo/nikto" target="_blank">github.com/sullo/nikto</a>
+<br> 
+• metasploit, obviously
+<br> 
+• pymodbus, a thing for communicating with things over the modbus protocol: <a href="https://github.com/pymodbus-dev/pymodbus" target="_blank">github.com/pymodbus-dev/pymodbus</a>
+<br> 
+• linuxprivchecker.py, more linux privilege escalation check scripts: <a href="https://github.com/sleventyeleven/linuxprivchecker" target="_blank">github.com/sleventyeleven/linuxprivchecker</a>
+<br> 
+• Linux-exploit-suggester, <a href="https://github.com/The-Z-Labs/linux-exploit-suggester" target="_blank">github.com/The-Z-Labs/linux-exploit-suggester</a>
+<br> 
+• Hydra, attempt to brute force ssh: <a href="https://www.kali.org/tools/hydra/" target="_blank">kali.org/tools/hydra/</a>
+<br> 
+• wfuzz, a web application fuzzer: <a href="https://github.com/xmendez/wfuzz" target="_blank">github.com/xmendez/wfuzz</a>
+<br> 
+• OWASP ZAP, a super popular web app scanner: <a href="https://www.zaproxy.org/" target="_blank">zaproxy.org/</a>
+<br> 
+    - a guide on how to use OWASP: <a href="https://www.hackerone.com/knowledge-center/owasp-zap-6-key-capabilities-and-quick-tutorial" target="_blank">hackerone.com/knowledge-center/owasp-zap-6-key-capabilities-and-quick-tutorial</a>
+<br> 
+• infoga, a tool for checking whether some email has been pwned. see: <a href="https://www.geeksforgeeks.org/infoga-email-information-gathering-tool-in-kali-linux/#" target="_blank">geeksforgeeks.org/infoga-email-information-gathering-tool-in-kali-linux/#</a>
+<br> 
+• enum4linux, a tool that enumerates windows machines  <i>from</i>  linux: <a href="https://github.com/CiscoCXSecurity/enum4linux" target="_blank">github.com/CiscoCXSecurity/enum4linux</a>
+<br> 
+• smbmap, a tool for SMB enumeration (a windows thing) <a href="https://github.com/ShawnDEvans/smbmap" target="_blank">github.com/ShawnDEvans/smbmap</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Privescalation'>Priv escalation </h2> 
+• Linpeas, winpeas, linenum
+<br> 
+ 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

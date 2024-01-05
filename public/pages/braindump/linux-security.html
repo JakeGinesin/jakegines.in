@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> linux-security</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">linux-security</span></h1>
+        <div>
+All things linux security!
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Tools'>Tools</h2> 
+• LinEnum, privilege escalation checks on Linux: <a href="https://github.com/rebootuser/LinEnum" target="_blank">github.com/rebootuser/LinEnum</a>
+<br> 
+• LinPEAS, an amazing privilege escaltion script: <a href="https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS#linpeas---linux-privilege-escalation-awesome-script" target="_blank">github.com/carlospolop/PEASS-ng/tree/master/linPEAS#linpeas---linux-privilege-escalation-awesome-script</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='SystemStructure'>System Structure</h2> 
+• <code class="highlighter-rouge" data-lang="text">/bin</code> -> essential user command binaries
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/etc</code> -> configuration files for the system
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/etc/pam.d/</code> -> pluggable authentication modules, responsible for checking the local account authentication
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/etc/security</code> -> many things installed with pam
+<br> 
+        - <code class="highlighter-rouge" data-lang="text">/etc/security/limits.conf</code> -> resource limits for specific users
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/etc/host.conf</code> -> resolver configuration file, see <code class="highlighter-rouge" data-lang="text">man host.conf</code> 
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/etc/sudoers</code> -> shows who can run what without using sudo. edit with visudo
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/sbin</code> -> essential system binaries
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/usr</code> -> read-only user application support data & binaries
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/usr/bin</code> -> lots of user commands and whatnot
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/usr/include</code> -> lots of standard includes, e.g., things required to run c
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/usr/lib</code> -> obj, bin. lib files for coding and packages and whatnot
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/usr/local</code> -> local software, contains bin, lib, man, sbin, share
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/usr/share</code> -> data for sharing across all architectures
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/var</code> -> variable data files 
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/var/cache</code> -> application cache data
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/var/lib</code> -> data modified as programs run
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/var/log</code> -> logs
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/var/opt</code> -> variable data for installed packages
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/var/spool</code> -> where data goes when it's waiting to be processed, e.g., <code class="highlighter-rouge" data-lang="text">/var/spool/mail</code>
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/var/tmp</code> -> temporary files saved between reboots
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/dev</code> -> device files
+<br> 
+    - <code class="highlighter-rouge" data-lang="text">/dev/null</code> -> deletes everything that's written to it
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/home</code> -> user home directories
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/lib</code> -> libraries and kernel modules
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/mnt</code> -> mount files and temporary file systems
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/opt</code> -> optional software applications
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/proc</code> -> process and kerenl info files
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/root</code> -> home dir for the root user!
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/boot</code> -> everything needed for boot
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Importantthingstocheck'>Important things to check</h2> 
+• <code class="highlighter-rouge" data-lang="text">who/w</code> -> see who is currently logged in
+<br> 
+• <code class="highlighter-rouge" data-lang="text">last</code> -> last login
+<br> 
+• <code class="highlighter-rouge" data-lang="text">ps aux/top</code> -> see what processes are currently running
+<br> 
+• <code class="highlighter-rouge" data-lang="text">netstat -tuln/ss -tuln</code> -> see active network connections 
+<br> 
+= <code class="highlighter-rouge" data-lang="text">/etc/passwd</code> -> check for unfamiliar user accounts
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/etc/shadow</code> -> for users with no passwords or weak passwords
+<br> 
+    - look for users with UID of 0 other than root
+<br> 
+    - to disable an account, put a ! in front of their hash as such: <code class="highlighter-rouge" data-lang="text">username:!$6$hashvalue:...</code>
+<br> 
+• <code class="highlighter-rouge" data-lang="text">/etc/log/auto.log</code> or <code class="highlighter-rouge" data-lang="text">/var/log/secure</code>
+<br> 
+• check crontab at <code class="highlighter-rouge" data-lang="text">/etc/crontab</code>
+<br> 
+• look at services in <code class="highlighter-rouge" data-lang="text">/etc/systemd</code> and <code class="highlighter-rouge" data-lang="text">/etc/init.d</code>
+<br> 
+• check out <code class="highlighter-rouge" data-lang="text">/etc/rc.local</code> and <code class="highlighter-rouge" data-lang="text">/etc/inittab</code>
+<br> 
+• nmap scan on myself: <code class="highlighter-rouge" data-lang="text">nmap -p- -sV --open -v 127.0.0.1</code>
+<br> 
+• look at permissions for like, the fucking cronjob items lmao. <code class="highlighter-rouge" data-lang="text">/var/spool/cron</code>
+<br> 
+• look at vim history
+<br> 
+• look at sudoers
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Analyzingsusthings'>Analyzing sus things</h2> 
+• identify sus processes with <code class="highlighter-rouge" data-lang="text">top/htop</code>
+<br> 
+• use <code class="highlighter-rouge" data-lang="text">ps aux</code> to list all running processes. look for sus things!
+<br> 
+• look at <code class="highlighter-rouge" data-lang="text">netstat -tulnp</code> or <code class="highlighter-rouge" data-lang="text">ss -tulnp</code> to see active network connections - look for unfamiliar IP addresses or unexpected outbound connections.
+<br> 
+    - also, look at <code class="highlighter-rouge" data-lang="text">lsof -i :port</code> to find which processes are using network connections. might need sudo.
+<br> 
+• check ps -aux | grep <code class="highlighter-rouge" data-lang="text">[PID]</code>
+<br> 
+• once we have a process, use <code class="highlighter-rouge" data-lang="text">lsof -p [PID]</code> to see which files the process is accessing, or <code class="highlighter-rouge" data-lang="text">strace -p [PID]</code> to trace system calls made by it
+<br> 
+• to analyze a suspicious binary, use GDB, strings, file (to determine filetype)
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+
