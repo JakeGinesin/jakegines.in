@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> helltaker</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">helltaker</span></h1>
+        <div>
+Proving helltaker is PSPACE-complete, because why not lmao.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Todo'>Todo</h2> 
+• prove containment in PSPACE 
+<br> 
+• prove pspace-hardness  
+<br> 
+• prove pspace-completeness
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ContainmentinPSPACE'>Containment in PSPACE</h2> 
+Proof:
+<br> 
+The states of  <i>The Helltaker</i>  and every entity can be described by a polynomial amount of space, since entities are confined to a polynomial-sized area. Thus, an algorithm which guesses  <i>The Helltaker's</i>  inputs on every frame and simulates Helltaker, until  <i>The Helltaker</i>  either reaches the goal location or a state is repeated, requires only polynomial to function. Thus, by savage's theorem, since NPSPACE=PSPACE, we know Helltaker is contained in PSPACE.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ContainmentinPSPACE-Hardness&PSPACE-completness'>Containment in PSPACE-Hardness & PSPACE-completness</h2> 
+Via the planar motion problem, we need to construct a gadget that simulates any one door. Since it's generally easy to build hallways and branching hallways in helltaker, as we are working with an n x n grid, this is generally easy to see. You can very reasonably construct an pen-close traverse door to show PSPACE-hardness. From this gadget, PSPACE-completeless also follows.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Citations'>Citations</h2> 
+• Planar Motion Problem: <a href="https://erikdemaine.org/papers/Doors_FUN2020/paper.pdf" target="_blank">erikdemaine.org/papers/Doors_FUN2020/paper.pdf</a>
+<br> 
+• <a href="https://arxiv.org/pdf/2005.03192.pdf" target="_blank">arxiv.org/pdf/2005.03192.pdf</a>
+<br> 
+• Celeste is PSPACE-hard: <a href="https://arxiv.org/pdf/2211.11839.pdf" target="_blank">arxiv.org/pdf/2211.11839.pdf</a>
+<br> 
+• Block pushing: <a href="https://erikdemaine.org/papers/GadgetsChecked_FUN2022/paper.pdf" target="_blank">erikdemaine.org/papers/GadgetsChecked_FUN2022/paper.pdf</a>
+<br> 
+• <a href="https://erikdemaine.org/papers/Celeste_TJM/paper.pdf" target="_blank">erikdemaine.org/papers/Celeste_TJM/paper.pdf</a>
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> toc</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">toc</span></h1>
+        <div>
+Theory of Computation. This document does not contain many formal constructions - reference a textbook or something for that.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Textbooks&Resources'>Textbooks & Resources</h2> 
+• [MIT 6.045J (automata, computability, and complexity)](https://ocw.mit.edu/courses/6-045j-automata-computability-and-complexity-spring-2011/) (went through this one fully)
+<br> 
+• [MIT 18.404J (theory of comp)](https://ocw.mit.edu/courses/18-404j-theory-of-computation-fall-2020/)
+<br> 
+• Michael Sispser's TOC textbook
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Language'>Language </h2> 
+The absolute foundation of theory of computation (imo) is the notion of  <i>formal grammar</i>. A formal grammar generally defines the syntax of formal grammars in terms of specific production rules. 
+<br> 
+<br> 
+Certain production rules can be more strict than others; depending on the strictness of your production rules, you can only possibly define certain "classes" of languages. Chomsky formalized the Chomsky hierarchy in the 1950s, defining regular, context-free, context-sensitive, and recursively enumerable languages. Classical notions of computation are defined in context to this hierarchy. 
+<br> 
+<br> 
+The language hierarchy is defined as follows:
+<br> 
+$$
+<br> 
+\text{Regular } \subseteq \text{ Context-Free } \subseteq \text{ Context-Sensitive } \subseteq \text{ Recursively Enumerable }
+<br> 
+$$
+<br> 
+That is, every regular language is also a context-free language, etc.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='RegularLanguages'>Regular Languages</h2> 
+The defining characteristic of regular languages is that they are recognizable by deterministic or nondeterministic finite automata, or a regular expression. Example language:
+<br> 
+$$
+<br> 
+L = \{a^n \: \mid \: n \ge 0 \}
+<br> 
+$$
+<br> 
+<br> 
+Regular language tidbits:
+<br> 
+• regular languages are closed under intersection, union, concatenation, complement, and kleene star (i.e., doing these operations with regular languages always results in another regular language)
+<br> 
+• containment ($L(A) \subseteq L(B)$), disjointness ($L(A) \cap L(B) = \emptyset$), and universality are decidable in PSPACE-complete time. 
+<br> 
+• membership and emptiness are also decidable
+<br> 
+• Buchi Automata are finite automata that accept  <i>infinite</i>  words, or $\Sigma^w$
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Context-FreeLanguages'>Context-Free Languages</h2> 
+Ever try to write a regular expression for something, but realize the regular expression just can't handle the complexity if what you're trying to make it do? For example, you try to write a regular expression to recognize a Python function and fail miserably. What do you do!?!
+<br> 
+<br> 
+Context-Free languages are recognized by pushdown automata, essentially a finite automata with a stack of memory. Example language:
+<br> 
+$$
+<br> 
+L = \{a^n b^n \: \mid \: n \ge 1 \}
+<br> 
+$$
+<br> 
+<br> 
+Context-free languages have  <i>context-free grammars</i>, which notably are expressive enough to recognize programming language syntax. BNF form and EBNF form, which are grammars used more in practice, are equivalent to context-free grammars.
+<br> 
+<br> 
+Many tidbits:
+<br> 
+• The pushdown automata recognizing a given context-free language acts as a  <i>parser</i>, and checking membership (i.e. $w \in L(G)) is decidable in polynomial time. - CFLs are closed under union, concatenation, and kleene star
+<br> 
+• CFLs, notably, are  <i>not</i>  closed under intersection, complement, and difference - equivalence ($L(A) = L(B)$), disjointness ($L(A) \cap L(B)$), containment ($L(A) \subseteq L(B)$), and universality between context-free languages are  <i>undecidable</i>  
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Context-SensitiveLanguages'>Context-Sensitive Languages</h2> 
+Context-sensitive languages, also known as  <i>Turing-decidable languages</i>, are languages where a Turing machine accepts words in the language and rejects words not in the language (aka,  <i>deciding</i>  any given word). This implies the deciding Turing machine halts on any given word inside or outside the language. Example:
+<br> 
+L = \{a^n b^n c^n \: \mid \: n \ge 1 \}
+<br> 
+<br> 
+Tidbits:
+<br> 
+• Closed under union, intersection, concatenation, kleene star
+<br> 
+• Not closed complement 
+<br> 
+• Natural language is generally considered context-sensitive 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='RecursivelyEnumerable'>Recursively Enumerable </h2> 
+Recursively enumerable languages are languages in which a Turing machine can enumerate all words in the language. Keep in mind, regular, context-free, and context-sensitive languages are subsets of recursively enumerable, so a Turing machine can enumerate the words in those languages too. Recursively Enumerable languages can also be defined as languages that  <i>are not</i>  decidable by Turing machines.
+<br> 
+<br> 
+Via rice's theorem, we know all non-trivial semantic properties of programs are  <i>undecidable</i>. Thus, for example language in this class is:
+<br> 
+$$
+<br> 
+L = \{M \: \mid \: M \text{ accepts a string } w}
+<br> 
+$$
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='BeyondRecursivelyEnumerable'>Beyond Recursively Enumerable</h2> 
+Languages where a Turing machine cannot recognize a language evidently fall outside of recursively enumerable. Here's an example:
+<br> 
+$$
+<br> 
+L = \{M \: \mid \: M \text{ rejects a string } w}
+<br> 
+$$
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='DecidablevsRecognizablevsUnrecognizable'>Decidable vs Recognizable vs Unrecognizable </h2> 
+Understand that on a given input, a Turing machine can either accept, reject, or loop. Via the halting problem (and, rice's theorem), we cannot write a program to determine whether a given turing machine will halt (either on accept or reject) on some arbitrary input. 
+<br> 
+<br> 
+So, we define our terms (given a language $L$):
+<br> 
+• Deciding $TM$ on $L$: $TM$ accepts words in $L$ and rejects words not in $L$
+<br> 
+• Recognizing $TM$ on $L$: $TM$ accepts words in $L$ and rejects or loops on words not in $L$
+<br> 
+• Non-recognizing $TM$ on $L$: $TM$ accepts or loops on words in $L$, and rejects or loops on words not in $L$
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='DeterministicandNondeterministicTuringMachines'>Deterministic and Nondeterministic Turing Machines</h2> 
+Without getting into the formal definition of a turing machine, turing machines consist of a  <i>finite control</i>  and an  <i>infinite tape</i>. The finite control can be  <i>deterministic</i>  or  <i>nondeterministic</i>  (similarly to finite automata that recognize regular languages). 
+<br> 
+<br> 
+Given a nondeterministic turing machine that decides some language, if there  <i>exists</i>  a path where a word is accepted, that word is included in the language. Also, a deterministic turing machine can simulate a nondeterministic turing machine in exponential time (i.e. exploring all the branches).
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='AsimplecharacterizationofPandNP'>A simple characterization of P and NP</h2> 
+Simply put, a  <i>problem</i>  is in the complexity class $P$ is it can be solved by a  <i>deterministic</i>  turing machine in polynomial time. Similarly, a problem is in $NP$ if it can be solved in polynomial time by a  <i>nondeterministic</i>  turing machine. 
+<br> 
+<br> 
+When asking if P=NP, we first recognize 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='References'>References</h2> 
+• Michael Sisper's textbook
+<br> 
+• <a href="https://en.wikipedia.org/wiki/Formal_grammar" target="_blank">en.wikipedia.org/wiki/Formal_grammar</a>
+<br> 
+• <a href="https://courses.engr.illinois.edu/cs373/sp2013/Lectures/lec25.pdf" target="_blank">Rice's Theorem</a>
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

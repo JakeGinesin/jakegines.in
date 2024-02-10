@@ -55,9 +55,9 @@ They also provided free dinner, a huge W.
 # Research
 *"20 hours"*
 
-I did research in formal language theory, specifically regular language program repair under incomplete specification. I also did a good bit of work finishing up some work I did a previous semester (paper soon!)
+I did research in formal language theory, specifically regular language program repair under incomplete specification. I also did a good bit of work finishing up some research I did a previous semester (paper soon!)
 
-I'll write up/publish my work from this semester eventually, do stay tuned.
+I'll write up/publish my stuff from this semester eventually, do stay tuned.
 
 # Biking
 Having a bike this semester was damn sweet. Via my bike, I was able to get to MIT for the class in just under 15 minutes. I was more easily able to attend events all across Boston. The bike also made grocery shopping an absolute breeze. If you're in Boston, definitely consider picking up a bike.

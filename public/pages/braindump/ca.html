@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> ca</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">ca</span></h1>
+        <div>
+Cellar automaton are a discrete model of computation closely related to automata theory.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Resources'>Resources</h2> 
+• <a href="https://en.wikipedia.org/wiki/Cellular_automaton" target="_blank">en.wikipedia.org/wiki/Cellular_automaton</a>
+<br> 
+• <a href="https://plato.stanford.edu/entries/cellular-automata/" target="_blank">plato.stanford.edu/entries/cellular-automata/</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Setup'>Setup</h2> 
+Although many models of cellular automata are studied, the most "classical" so to speak is an infinite grid with binary variables denoting each square. Each square is related to other squares, and values of any given square can be defined to change over some temporal junction depending on some condition. 
+<br> 
+<br> 
+By the nature of a grid, each square is related to other squares via a distance metric. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='OnCellarAutomatavsFiniteAutomata'>On Cellar Automata vs Finite Automata</h2> 
+"cellular" and "finite" automata are fundamentally different. Finite automata such as DFAs, NFAs, Pushdown Automata, Turing Machines, and Nondeterministic Turing machines are all unique in that they have some sort of finite  <i>control</i>  so to speak. 
+<br> 
+<br> 
+Cellular automata are generative in nature. That is, given some state of the system and a set of rules, an infinite number of consecutive states can be computed. This makes them very powerful! 
+<br> 
+<br> 
+Extremely interestingly, cellular automata can simulate a turing machine, and vice versa. This implies anything that can be computed with a turing machine can be  computed with a cellar automata.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Nondeterminism'>Nondeterminism</h2> 
+Similarly, nondeterministic cellular automata exists. Rules that define temporal behavior don't have to be deterministic. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='OnapplicationsinAI'>On applications in AI</h2> 
+Since cellular automata are a prime example of a generative model of computation, making them an interesting approach to artificial intelligence. They were one of the first examples of an autonomous "agent" in computer science. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='More'>More</h2> 
+• <a href="http://www.catb.org/hacker-emblem/" target="_blank">catb.org/hacker-emblem/</a>
+<br> 
+• <a href="https://www.tandfonline.com/doi/pdf/10.1080/03081079.2012.695896" target="_blank">tandfonline.com/doi/pdf/10.1080/03081079.2012.695896</a>
+<br> 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+
