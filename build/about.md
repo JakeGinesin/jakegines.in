@@ -24,7 +24,7 @@ Send mail to ginesin (dot) j (at) northeastern (dot) edu or hello (at) jakegines
 ```
 
 ### Hiring
-If you're interested in **hiring me**—here's my [résumé](/assets/cv-sept23.pdf)
+If you're interested in **hiring me**—here's my [résumé](/assets/jake_resume.pdf)
 
 ### Setup
 I often get asked about my computing setup, so I created this section to link it whenever. 

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> notes -> il</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+  src="../../libraries/MathJax-2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<style>
+  a{
+    color: #8cade6;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/notes"><span class="arrow">&larr;&nbsp;</span>notes</a>
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #8cade6">il</span></h1>
+        <div>
+This document tries to build up intuitionist (constructive) logic.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Resources'>Resources </h2> 
+• Intro to linear logic: <a href="https://logicallycoherent.github.io/blog/introduction-to-linear-logic/" target="_blank">logicallycoherent.github.io/blog/introduction-to-linear-logic/</a>
+<br> 
+• Intuitionist Logic Wikipedia: <a href="https://en.wikipedia.org/wiki/Intuitionistic_logic" target="_blank">en.wikipedia.org/wiki/Intuitionistic_logic</a>
+<br> 
+• Sequent Calculus Wikipedia Page: <a href="https://en.wikipedia.org/wiki/Sequent_calculus" target="_blank">en.wikipedia.org/wiki/Sequent_calculus</a>
+<br> 
+• Interaction Nets Blog: <a href="https://zicklag.github.io/blog/interaction-nets-combinators-calculus/" target="_blank">zicklag.github.io/blog/interaction-nets-combinators-calculus/</a>
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Topics'>Topics</h2> 
+• Natural deduction 
+<br> 
+• Intuitionist Logic
+<br> 
+• Hoare Logic
+<br> 
+• Linear Logic
+<br> 
+• Proof net
+<br> 
+• Proof theory
+<br> 
+• Interaction Nets
+<br> 
+• Sequent Calculus (we can define our logic  <i>in terms</i>  of sequent calculus)
+<br> 
+• Syntax, Semantics
+<br> 
+• combinators : combinatory-logic.md
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ProofCalculusvsLogic'>Proof Calculus vs Logic</h2> 
+Proof calculus (calculi?) are formal systems and syntax for constructing proofs. They formalize the systems of reasoning that we have. Some examples:
+<br> 
+• Natural deduction: models how we think intuitively. emphasizes introduction and elimination rules.
+<br> 
+• Sequent calculus: represents logical arguments through sequents. helps for studying consistency and completeness. 
+<br> 
+• Hilbert Systems: characterized by a small set of axioms and inference rules.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='ClassicalSequentCalculus'>Classical Sequent Calculus</h2> 
+A sequent is of the form: $P_1,...,P_n ⊢ Q_1,...,Q_n$ which just implies $P_1 \land ... \land P_n -> Q_1 \vee ... \vee Q_n$. "⊢" is a turnsile. Tao and Delta (Γ,Δ) are used to describe arbitrary formula.
+<br> 
+<br> 
+An inference rule is a rule that, given one sequent (i.e. knowing that something holds from something else), we then know another sequent holds. An example:
+<br> 
+cut(⊢P  P⊢Q)/(⊢Q) 
+<br> 
+<br> 
+Which can be read as, "I know P and P implies Q, so using the inference rule 'cut' we know Q"
+<br> 
+<br> 
+We can define all of basic logic this way!
+<br> 
+<br> 
+It's inherently constructive
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='BasicDefinitions'>Basic Definitions</h2> 
+• Intuitionist logic is  <i>constructive</i>  logic, and more closely mirrors the notion of constructive proof. 
+<br> 
+<br> 
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

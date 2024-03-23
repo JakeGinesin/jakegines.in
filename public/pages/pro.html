@@ -86,7 +86,7 @@ em {
         <div class="row">
             <div class="pagenav col">
                 <p>
-                    <a class="pagenav-link" href="/pro#about">About</a> • <a class="pagenav-link" href="/pro#work">Publications</a> • <a class="pagenav-link" href="/assets/resume-may11.pdf">CV</a>
+                    <a class="pagenav-link" href="/pro#about">About</a> • <a class="pagenav-link" href="/pro#work">Publications</a> • <a class="pagenav-link" href="/assets/jake_resume.pdf">Full CV</a>
                 </p>
             </div>
         </div>
@@ -108,13 +108,29 @@ em {
             </div>
         </div>
 
-        <h2 id="work">Publications and Articles</h2>
+        <h2 id="work">Research</h2>
         <p><i>* indicates equal contribution.</i></p>
         <div class="row">
             <div class="col-12">
+                <a href="/assets/sctp.pdf">A Formal Analysis of SCTP: Attack Synthesis and Patch Verification</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>*, Max von Hippel*, Evan Defloor, Cristina Nita-Rotaru, Michael Tüxen. <span class="feat">In submission to USENIX Security 2024</span>.</p> 
+                  <p>We use formal methods to analyze the security of the Stream Control Transmission Protocol (SCTP). We report a symphony of new attacks across various attacker models, as well as the automated re-discovery of CVE-2021-3772.</p>
+                </div>
+                <a href="/assets/canitedit.pdf">Can It Edit? Evaluating the Ability of Large Language Models to Follow Code Editing Instructions</a>
+                <div class="inset">
+                  <p>Federico Cassano, Luisa Li, Akul Sethi, Noah Shinn, Abby Brennan-Jones, <span class="feat">Jacob Ginesin</span>, Edward Berman, George Chakhnashvili, Anton Lozhkov, Carolyn Jane Anderson, Arjun Guha. <span class="feat">In submission to the Conference on Language Modeling, 2024</span>.</p>
+                  <p>We develop benchmarks to evaluate large language models on code editing performance, as previous benchmarks proved insufficient. We also fine-tune models for specifically code editing. </p>
+                </div>
+                <a href="/assets/language-bounds.pdf">Regular Language Bounds: Extraction and Applications</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>, Christoph Haase. Presented at the <span class="feat">Joint Mathematical Meetings 2024</span>.</p> 
+                  <p>We define methods to compute the upper and lower boundaries of regular languages in order to speed up model checkers.</p>
+                </div>
+                
                 <a href="https://arxiv.org/abs/2305.06092">SafeLLVM: LLVM Without The ROP Gadgets!</a>
                 <div class="inset">
-                  <p>Federico Cassano, Charles Bershatsky, <span class="feat">Jacob Ginesin</span>. arXiv preprint arXiv:2305.06092, 2023.</p> 
+                  <p>Federico Cassano, Charles Bershatsky, <span class="feat">Jacob Ginesin</span>, Sasha Bashenko. arXiv preprint arXiv:2305.06092, 2023.</p> 
                   <p>
                     A Return-oriented programming attack is when an attacker takes advantage of existing chunks of code in memory, dubbed gadgets, and chains them together to form an attack. We propose an approach to minimize the number of usable gadgets in compiled binaries, extending the methodology of a previous work. 
                   </p>

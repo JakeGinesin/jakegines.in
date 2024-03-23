@@ -81,8 +81,6 @@ Given a nondeterministic turing machine that decides some language, if there *ex
 # A simple characterization of P and NP
 Simply put, a *problem* is in the complexity class $P$ is it can be solved by a *deterministic* turing machine in polynomial time. Similarly, a problem is in $NP$ if it can be solved in polynomial time by a *nondeterministic* turing machine. 
 
-When asking if P=NP, we first recognize 
-
 # References
 - Michael Sisper's textbook
 - [en.wikipedia.org/wiki/Formal_grammar](https://en.wikipedia.org/wiki/Formal_grammar)
