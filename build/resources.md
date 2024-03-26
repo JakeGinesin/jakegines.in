@@ -1,4 +1,4 @@
-A collection of my *favorite* stuff from across the web, loosly assorted into categories. 
+A collection of my *favorite* stuff from across the web, loosly assorted into categories. Last updated on March 25th, 2024.
 
 *This page is way too l o n g, so click the links below to jump to jake's favorite [blank]:*
 
@@ -24,11 +24,8 @@ JUMP -> [Misc.]("#Misc.")
 
 ### Software Engineering Resources 
 - [The C Programming Language](https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628) - A PDF of the greatest programming book of all time, imo
-- [Anime.js](https://animejs.com/) - A javascript animation library that, in my opinion, is better than [Three.js](https://threejs.org/)
-- [Autohotkey](https://www.autohotkey.com/) - Good tool for creating hotkeys on Windows. Best utilized for video editing workflows imo. 
 - [Unsplash](https://unsplash.com/images) - Free stock images
 - [Pexels](https://www.pexels.com) - More free stock images
-- [One Page Love](https://onepagelove.com/inspiration) - Pretty one page websites
 - [Learn-regex](https://github.com/ziishaned/learn-regex) - A great guide on regular expressions
 - [Github Is My Resume](https://pydanny.blogspot.com/2011/08/github-is-my-resume.html) - An interesting article on resumes vs portfolios
 - [Github Student Developer Pack](https://education.github.com/pack) - Free access to great developer tools if you're a student 
@@ -36,38 +33,37 @@ JUMP -> [Misc.]("#Misc.")
 - [Carbon](https://carbon.now.sh) - Create pretty images of your source code
 - [Weather.com API](https://weather.com/swagger-docs/call-for-code) - A great weather API
 - [Stanford large Network Dataset Collection](http://snap.stanford.edu/data/) - A massive amount of free data 
-- [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) - Free and open data platform from wikipedia
+- [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) - Free and open data platform from Wikipedia
 - [Tech Jobs For Good](https://www.techjobsforgood.com/) - How to work in tech and not be evil
 - [x0.at](https://x0.at/) - File pastebin
+- [Termbin](https://termbin.com/) - Terminal-based file pastebin
 - [hakyll](https://jaspervdj.be/hakyll/) - Using Haskell to build static websites
+- [Rosetta Code](https://www.rosettacode.org/wiki/Rosetta_Code) - The Rosetta stone, but for code
+- [PL notes](https://pl.barzilay.org/lec98.txt) - Northeastern's programming languages course notes 
+- [Compiler Explorer](https://alive2.llvm.org/ce/) - Explore compiler behaviors
 
 ### Cybersecurity Tools
 *Critical Reminder*: I am *not* responsible for what you do with this stuff.   
 
-- [Cybersec Basics & Armor](https://gist.githubusercontent.com/heywoodlh/07570f45ea1a4c74b79d4b897847ea6d/raw/37f9ba608c58733c1615b4dc28875e303938a9c6/maderas.txt) - Basically covers everything
 - [CTF101.org](https://ctf101.org) - Learn how to compete in CTFs
 - [CTFtime](https://ctftime.org) - See upcoming CTFs
+- [exploit.education](https://exploit.education/) - Learn binary exploitation
 - [Sherlock Project](https://github.com/sherlock-project/sherlock) - Track down social media accounts
-- EK's pentest tips and tricks [one](https://jivoi.github.io/2015/07/01/pentest-tips-and-tricks/) and [two](https://jivoi.github.io/2015/08/21/pentest-tips-and-tricks-number-2/)
-- [Cheet Sheets - pentestmonkey](https://pentestmonkey.net/category/cheat-sheet)
-- [FaradaySEC](https://faradaysec.com/#why-faraday) - Multi-user pentest environment
-- [Vulnhub.com](https://www.vulnhub.com/) - Practice on vulnerable virtual machines
 - [Reverse Engineering for Beginners](https://beginners.re/main.html) - Good book on assembly and reverse engineering. My go-to. 
 - [Massscan](https://github.com/robertdavidgraham/masscan) - "TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes."
-- [https://gbhackers.com/sn1per-a-detailed-explanation-of-most-advanced-automated-information-gathering-penetration-testing-tool/](https://gbhackers.com/sn1per-a-detailed-explanation-of-most-advanced-automated-information-gathering-penetration-testing-tool/)
 - [NSA@home](http://nsa.unaligned.org/index.php) - password cracker
 - [testssl.sh](https://testssl.sh/) - /bin/bash based SSL/TLS tester
-- [2019 OSINT Guide](https://randhome.io/blog/2019/01/05/2019-osint-guide/)
+- [nmap](https://nmap.org/) - because duh! also read the [book](https://github.com/Rushimamtora/pentestingbooks/blob/master/Book%20-%20Nmap%20Cookbook%20The%20Fat-free%20Guide%20to%20Network%20Scanning-1.pdf)
 - [OSINT Dojo](https://www.osintdojo.com/resources/)
-- [PowerSploit](https://github.com/PowerShellMafia/PowerSploit) - A (now archived) Powershell Post-Exploitation framework
-- [Discord Exploit Collection](https://github.com/ecriminal/Discord-Exploit-Collection)
-- [the-backdoor-factory](https://github.com/secretsquirrel/the-backdoor-factory) - Patch PE, ELF, Mach-O binaries
-- [BDFProxy](https://github.com/secretsquirrel/BDFProxy)
-- [Veil](https://github.com/Veil-Framework/Veil) - Tool for generating metasploti payloads that bypass common antiviruses
-- [An old intro to fuzzing](https://resources.infosecinstitute.com/topic/intro-to-fuzzing/)
-- [pwntools](https://github.com/Gallopsled/pwntools) - CTF framework and exploit development library
+- [Veil](https://github.com/Veil-Framework/Veil) - Tool for generating metasploit payloads that bypass common antiviruses
 - [From 0x90 to 0x4c454554](https://pastebin.com/3Qtw6JQw)
-- [Sec Cheet Sheets](https://catonmat.net/projects/cheat-sheets) 
+- [privacy.sexy](https://privacy.sexy/) - Privacy is sexy
+- [Reverse Shell Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md) - Reverse shell anything
+- [linpeas](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS) - OP linux privilege escalation 
+- [hydra](https://www.kali.org/tools/hydra/) - SSH brute force
+- [nikto](https://github.com/sullo/nikto) - OP web server scanning
+- [wfuzz](https://github.com/xmendez/wfuzz) - OP webapp fuzzing
+- [winpeas](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS) - OP windows privilege escalation 
 
 ### Misc. Tech Stuff
 - [xkcd comics](https://xkcd.com) - Comics
@@ -106,6 +102,8 @@ JUMP -> [Misc.]("#Misc.")
 - [plv.mpi-sws.org/rustbelt/](https://plv.mpi-sws.org/rustbelt/) - Formally verifying rust
 - [syncthing.net](https://syncthing.net/) - A nice tool for syncing things between devices
 - [The Internet Hosting Cooperative](https://hcoop.net/)
+- [Verifpal Manual](https://verifpal.com/res/pdf/manual.pdf)
+- [SAT competition](http://satcompetition.org/)
 
 ### News Sources & Link Aggregators
 - [Hacker News](https://news.ycombinator.com) - Kind of like reddit, but for tech bros  
@@ -131,6 +129,11 @@ JUMP -> [Misc.]("#Misc.")
 - [The Natural Number Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/) - See the power of induction!
 - [Erdos Number](https://en.wikipedia.org/wiki/Erd%C5%91s_number)
 - [web.evanchen.cc/napkin.html](https://web.evanchen.cc/napkin.html) - The napkin
+- [15-251 Great Ideas in Theoretical Computer Science](https://www.cs.cmu.edu/~15251/) - Peak CMU course in theoretical computer science
+- [Homotopy Type Theory Book](https://homotopytypetheory.org/book/) - A classic
+- [The Knot Atlas](http://katlas.org/wiki/Main_Page) - Knot theory!
+- [Integer Encyclopedia Database](https://oeis.org/) - Pretty integer sequences
+- [Is Mathematics Obsolete?](https://www.youtube.com/watch?v=lE48QtO4xBQ)
 
 ### Academia Resources 
 - [CSRankings.org](http://csrankings.org/#/index?all&us) - A website I use to systematically discover interesting professors and PhD students. 
@@ -201,6 +204,8 @@ JUMP -> [Misc.]("#Misc.")
 - [The Collatz Conjecture & Non-Archimedean Spectral Theory](https://siegelmaxwellc.wordpress.com/2022/08/09/the-collatz-conjecture-non-archimedean-spectral-theory-part-i-the-numen-of-a-hydra-map/)
 - [The Silent Revolution of SAT](https://cacm.acm.org/magazines/2023/6/273222-the-silent-revolution-of-sat/fulltext)
 - [E-Ink is so Retropunk](https://rmkit.dev/eink-is-so-retropunk/)
+- [A Linux Evening](https://fabiensanglard.net/a_linux_evening/index.html)
+- [Search Query](https://www.henrikkarlsson.xyz/p/search-query)
 
 ### Personal Websites
 - [Terence Tao's Blog](https://terrytao.wordpress.com/) - The blog of a fantastic mathematician
@@ -222,6 +227,7 @@ JUMP -> [Misc.]("#Misc.")
 - [danielkirs.ch](http://danielkirs.ch/)
 - [samuelgruetter.net/](https://samuelgruetter.net/) - Compiler guy
 - [jmilne.org](https://www.jmilne.org/)
+- [dontvacuum.me](https://dontvacuum.me/) - IoT security goat
 - [cyber.dabamos.de](http://cyber.dabamos.de/blog/)
 - [faultlore.com](https://faultlore.com/blah/) - Author of "you can't spell trust without rust"
 - [h313.info](https://h313.info/)
@@ -288,6 +294,18 @@ JUMP -> [Misc.]("#Misc.")
 - [calnewport.com](https://calnewport.com/) - Great author
 - [justchokingaround](https://github.com/justchokingaround) - My favorite choker
 - [Marc Lange](https://philosophy.unc.edu/people/marc-lange/) - A philosophy prof at Purdue with a hilarious webpage
+- [Ice1000](https://ice1000.org/) - Type theory 
+- [Travis Ormandly](https://lock.cmpxchg8b.com/) 
+- [Germacheck](https://merlinfo.github.io/) - Minimal website, lovely person
+- [Jordan Ellenberg](https://people.math.wisc.edu/~ellenberg/) - A mathematician and writer
+- [Justine Tunney](https://justine.lol/)
+- [Erik Demaine](https://erikdemaine.org/) - MIT Professor, computational origami
+- [Xie Yuheng](https://xieyuheng.com/) - Interaction net man
+- [amelia.how](https://amelia.how/) 
+- [j3s.sh](https://j3s.sh/)
+- [mcyoung](https://mcyoung.xyz) - compiler dude
+- [Evan Chen](https://web.evanchen.cc/) 
+- [Jeremy Avigad](https://www.andrew.cmu.edu/user/avigad/) - Awesome logic prof at CMU, behind Lean
 
 ### Misc.
 - [Pool Suite](https://poolsuite.net/) - R e t r o Internet Radio Station 
@@ -297,3 +315,6 @@ JUMP -> [Misc.]("#Misc.")
 - [zettelkasten.de](https://zettelkasten.de/posts/overview/) - Organization method
 - [getting-rich-from-zero-to-hero-in-one-blog-post](https://www.mrmoneymustache.com/2013/02/22/getting-rich-from-zero-to-hero-in-one-blog-post)
 - [polyphasic.net](https://www.polyphasic.net/) - Sleep 2 hours a day
+- [Annas Archive](https://annas-archive.org/) - Read anything
+- [listen.moe](https://listen.moe/) - Weeb radio
+- [Good Guy Godel](https://ihavenoteeth.com/2014/10/23/good-guy-godel/)
