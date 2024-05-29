@@ -27,7 +27,7 @@ def interpret(out, md):
                 line = line.replace("<", "&#60;").replace(">", "&#62;")
                 fullf+="<span style='padding-right:10px;'>" + str(line) + "</span>"
 
-        elif re.search("^```[a-zA-Z]+\=$", line) is not None or p:
+        elif re.search(r"^```[a-zA-Z]+\=$", line) is not None or p:
             if p == False:
                 fullp, fullpc = "", 0
                 p = True
@@ -223,8 +223,14 @@ with open("templates/braindump.html", 'r') as temp:
 for f in os.listdir("build/braindump"):
     with open("templates/braindump_individual.html") as temp, open("build/braindump"+"/"+f) as braindump:
         out = open("public/pages/braindump/"+f[:f.index(".")] + ".html", "a")
+        g = open("build/braindump"+"/"+f)
+        content = g.read()
+        # content = braindump.read()
+        math = " $" in content or "$$" in content
+        # print(math)
         for line in temp:
             lt = line
+            if '<script type=' in lt and not math : continue
             if "{{data}}" in lt:
                 interpret(out, braindump)
             elif "{{title}}" in lt:
@@ -345,6 +351,9 @@ for d in os.listdir("build/blog"):
                 out = open("public/pages/blog/"+d+"/"+f[:f.index(".")] + ".html", "a")
                 data1, data2, data3, data4 = True, True, True, True
                 data1max, data2max, data3max, data4max = 3, 4, 4, 4
+                g = open("build/blog/"+d+"/"+f)
+                content = g.read()
+                math = " $" in content or "$$" in content
                 # create list of all blog posts
                 posts = []
                 for f in os.listdir("build/blog/"+d):
@@ -352,6 +361,7 @@ for d in os.listdir("build/blog"):
                         posts.append(f)
                 for line in temp:
                     lt = line
+                    if '<script type=' in lt and not math : continue
                     if "{{data}}" in lt:
                         interpret(out, blog)
                     else:

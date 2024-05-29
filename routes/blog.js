@@ -51,7 +51,7 @@ router.get('/:n/:m', async(req, res) => {
           res.redirect('/');
         }
       }
-      res.sendFile(path.join(__dirname, 'public', '../../public/pages/blog/' + t + '/' + req.params.m + '.html'));
+      // res.sendFile(path.join(__dirname, 'public', '../../public/pages/blog/' + t + '/' + req.params.m + '.html'));
     }
     else{
       if (fs.existsSync(path.join(__dirname, 'public', '../../public/pages/blog/' + req.params.n + '/' + req.params.m + '.html'))) {

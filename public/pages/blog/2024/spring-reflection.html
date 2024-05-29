@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <title>jakeg -> 2024 -> spring-reflection</title>
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/fonts.css" />
+  <link rel="preload stylesheet" as="style" type="text/css" href="../../css/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/jake32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/jake16.png"/>
+  <link rel="stylesheet" href="../../css/wide.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://jakegines.in/jake512"/>
+</head>
+<style>
+  a{
+    color: #fc0339;
+  }
+  a:link {
+    color: #fc0339;
+  }
+  a:visited {
+    color: #fc0339;
+  }
+</style>
+<body>
+    <div class="container">
+    <div class="middle">
+      <div class="content">
+        <p>
+        <a href="/blog/2024" style="color: #fc0339"><span class="arrow">&larr;&nbsp;</span>2024</a>
+        <!-- <a href="/blog/2024" style="color: #fc0339"><span class="arrow" style="font-family:IBM Plex Mono;font-weight:300;font-size:10pt;">&larr;&nbsp;</span>2024</a> -->
+        </p>
+        <h1 style="margin-bottom:10px;"><span style="color: #fc0339">spring-reflection</span></h1>
+        <div>
+(date of writing: 1 May 2024)
+<br> 
+<br> 
+I figured now that my Spring semester has come to an end, I should write another <a href=/blog/2023/fall-reflection>semester reflection</a>. So yeah, without further a-do, here it goes.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Courses'>Courses</h2> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MATH4572-NumberTheory2'>MATH4572 - Number Theory 2</h2> 
+<i>M,W,TH 4:40pm-5:45pm</i>
+<br> 
+<br> 
+This was an extremely beefy high-level tour of what I would describe as modern number theory. We covered various methods for solving Diophantine Equations (a fancy word for equations over integers), Farey sequences and Ford circles (<a href="https://en.wikipedia.org/wiki/Ford_circle" target="_blank">pretty!</a>), continued fractions and their usage in approximating rational numbers, Pell's equation, ideals and their applications in Ring/Field arithmetic, Minkowski's Convex-Body theorem and its applications towards integer representations, the ideal class group, the Riemann zeta function, Dirichlet's theorem, and the Dedekind zeta function. 
+<br> 
+<br> 
+Told you the course was beefy! I thoroughly enjoyed the content. It nicely connected some areas of computing (namely, crypto stuff) with the underlying maths. Sadly we didn't cover elliptic curves though. At the beginning of the class the prof asked us to vote on topics to cover, and elliptic curves didn't make the cut.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MATH3275-AdvancedGroupTheory'>MATH3275 - Advanced Group Theory</h2> 
+<i>M,TH 11:45am-1:25pm</i>
+<br> 
+<br> 
+This class actually wasn't supposed to be offered, but me and <a href="https://peter.bio/" target="_blank">some</a> <a href="https://ebrmn.space/" target="_blank">friends</a> asked the math department to offer the course and it worked! 
+<br> 
+<br> 
+This course ran extremely quickly through the foundations of group theory (we apparently covered the entirety of the regular group theory content in just a month!?). Besides the classic group stuff we covered lots of representation theory, character theory,  <i>category theory</i>  (lfg), rings, fields, and ideals. Interestingly, there was a ton of intersection between this course and Number Theory 2. Turns out stuff like the isomorphism theorems exist across groups, rings, and fields. Seems algebra all becomes the same eventually.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='MATH4545-FourierSeriesandPartialDifferentialEquations'>MATH4545 - Fourier Series and Partial Differential Equations</h2> 
+<i>W,F 11:45am-1:25pm</i>
+<br> 
+<br> 
+For whatever reason I decided it'd be a fantastic idea to skip differential equations and go right to partial differential equations. It was a bit of a struggle, but totally worth it imo. It helped that towards the beginning of the semester, I watched a really good presentation on <a href="https://en.wikiversity.org/wiki/Differential_logic/Introduction" target="_blank">differential logic</a>. TLDR; logic and formal verification meets continuous systems.  
+<br> 
+<br> 
+This course went over lots of methods to solve various partial differential equations. In comparison to the rest of my math career, this class largely dealt with  <i>continuous</i>  systems as opposed to  <i>discrete</i>  systems. I had many cool conversations with the <a href="https://cos.northeastern.edu/people/solomon-jekel/" target="_blank">goated professor</a> about this sort of thin - in practice modeling real-world systems with PDEs is highly subject to <a href="https://en.wikipedia.org/wiki/Chaos_theory" target="_blank">chaos</a>. 
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='CS7670-FormalMethodsforSecurityofNetworkProtocolsandDistributedSystems'>CS7670 - Formal Methods for Security of Network Protocols and Distributed Systems </h2> 
+<i>T,TH 1:35pm-3:15pm</i>
+<br> 
+<br> 
+This class was peak. It was me, a bunch of PhD students, and my <a href="https://cnitarot.github.io/" target="_blank">research supervisor</a> talking about various applied formal methods <a href="https://cnitarot.github.io/courses/fmndss_Spring_2024/index.html" target="_blank">papers</a>. We had a brief overview of distributed systems in the first few weeks, then all we did for the rest of the semester was present sick papers to each other. I gave presentations on the verification of <a href=/assets/agda-pres.pdf>BFT Consensus in Agda</a>, <a href=/assets/quic-pres.pdf>QUIC in Fstar using refinement types</a>, and <a href=5g-pres.pdf>5G authentication in Tamarin</a>. 
+<br> 
+<br> 
+For my final project I formalized and verified <a href="https://matrix.org/" target="_blank">Matrix</a> using <a href="https://verifpal.com/" target="_blank">Verifpal</a>. I gave a <a href=/assets/matrix-pres.pdf>nice presentation</a> on my project and wrote a report. I'll probably turn the report into a paper and submit it to some conference, so stay tuned for that.
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Research'>Research</h2> 
+Polished a <a href=/assets/sctp.pdf>few</a> <a href=/assets/canitedit>papers</a>, gave a talk at <a href="https://sites.google.com/brown.edu/sums" target="_blank">Brown</a> (<a href=/assets/j-brown.jpg>cool pic</a>, <a href=/assets/sums.pdf>slides</a>). I started some sick work on interaction nets, and I'm cooking up a few other projects relating to my work on SCTP. Very excited :D
+<br> 
+<br> 
+<h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='CollegiateCyberDefenseCompetition'>Collegiate Cyber Defense Competition </h2> 
+See the dedicated <a href=/blog/2024/ccdc>post</a>!
+<br> 
+
+          <!--
+          <br>
+          <div class="calendar">
+          <table>
+            <tr>
+              <td><a style="text-decoration: none !important; color:#fc0339" href="/blog/2024/spring-reflection" title="spring-reflection">spring-reflection</a></td> 
+<td><a style="text-decoration: none !important; color:#fc0339" href="/blog/2024/ccdc" title="ccdc">ccdc</a></td> 
+
+            </tr>
+          </table>
+          </div>
+          -->
+
+
+          <!--
+          <div class="calendar">
+          <table>
+              <tr>
+                <td><a style="text-decoration: none !important; color: #fc0339;" href="/blog/2024" title="home">&#964;</a></td>
+                
+              </tr>
+              <tr>
+                {{data2}}
+              </tr>
+              <tr>
+                {{data3}}
+              </tr>
+              <tr>
+                {{data4}}
+              </tr>
+            </table>
+          </div>
+          -->
+
+        </div>
+        <br>
+        <br>
+        <a href="/blog/2024" style="color: #fc0339"><span class="arrow">&larr;&nbsp;</span>2024</a>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+

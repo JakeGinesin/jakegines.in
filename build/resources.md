@@ -1,4 +1,4 @@
-A collection of my *favorite* stuff from across the web, loosly assorted into categories. Last updated on March 25th, 2024.
+A collection of my *favorite* stuff from across the web, loosly assorted into categories. Last updated on April 10th, 2024.
 
 *This page is way too l o n g, so click the links below to jump to jake's favorite [blank]:*
 
@@ -28,7 +28,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Pexels](https://www.pexels.com) - More free stock images
 - [Learn-regex](https://github.com/ziishaned/learn-regex) - A great guide on regular expressions
 - [Github Is My Resume](https://pydanny.blogspot.com/2011/08/github-is-my-resume.html) - An interesting article on resumes vs portfolios
-- [Github Student Developer Pack](https://education.github.com/pack) - Free access to great developer tools if you're a student 
+- [Github Student Developer Pack](https://education.github.com/pack) - Free access to great developer tools if you're a student
 - [How to improve at any programming language](https://www.cbui.dev/how-to-rapidly-improve-at-any-programming-language/) - A great read
 - [Carbon](https://carbon.now.sh) - Create pretty images of your source code
 - [Weather.com API](https://weather.com/swagger-docs/call-for-code) - A great weather API
@@ -53,7 +53,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Massscan](https://github.com/robertdavidgraham/masscan) - "TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes."
 - [NSA@home](http://nsa.unaligned.org/index.php) - password cracker
 - [testssl.sh](https://testssl.sh/) - /bin/bash based SSL/TLS tester
-- [nmap](https://nmap.org/) - because duh! also read the [book](https://github.com/Rushimamtora/pentestingbooks/blob/master/Book%20-%20Nmap%20Cookbook%20The%20Fat-free%20Guide%20to%20Network%20Scanning-1.pdf)
+- [nmap](https://nmap.org/) - because duh. also read the [book](https://github.com/Rushimamtora/pentestingbooks/blob/master/Book%20-%20Nmap%20Cookbook%20The%20Fat-free%20Guide%20to%20Network%20Scanning-1.pdf)
 - [OSINT Dojo](https://www.osintdojo.com/resources/)
 - [Veil](https://github.com/Veil-Framework/Veil) - Tool for generating metasploit payloads that bypass common antiviruses
 - [From 0x90 to 0x4c454554](https://pastebin.com/3Qtw6JQw)
@@ -76,7 +76,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Labgopher](https://labgopher.com/) - Tool for getting great deals on ebay
 - [r/homelab's software wiki](https://www.reddit.com/r/homelab/wiki/software) - List of software for home servers
 - [OpenVPN](https://openvpn.net/community-downloads/) - Best VPN
-- [Lubed Holy Pandas](https://youtu.be/aeqnEJpPZVY) - No Explaination Necessary
+- [Lubed Holy Pandas](https://youtu.be/aeqnEJpPZVY) - No explanation necessary
 - [WTFPL](http://www.wtfpl.net/) - The epicly named "Do What the Fuck You Want to Public License
 - [The World's Most Advanced Video Editing Tutorial](https://www.youtube.com/watch?v=O6ERELse_QY) - The best video editing tutorial avaiable, done by the main editor for Linus Tech Tips
 - [xkcd 195](https://xkcd.com/195/)
@@ -86,6 +86,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Mullvad VPN](https://mullvad.net/en/) - The second best VPN
 - [996](https://github.com/996icu/996.ICU) - *fuck the ccp*
 - [12ft](https://12ft.io/) - "hop" any paywall
+- [Pandoc](https://pandoc.org/) - Universal document converter 
 - [Text Files](http://textfiles.com/) - Reading
 - [notes.andymatuschak.org](https://notes.andymatuschak.org/About_these_notes) - Andy Matuschak's fantastic working notes
 - [pgp.mit.edu](http://pgp.mit.edu/) - MIT's PGP key server
@@ -101,9 +102,12 @@ JUMP -> [Misc.]("#Misc.")
 - [catb.org/hacker-emblem/](http://www.catb.org/hacker-emblem/)
 - [plv.mpi-sws.org/rustbelt/](https://plv.mpi-sws.org/rustbelt/) - Formally verifying rust
 - [syncthing.net](https://syncthing.net/) - A nice tool for syncing things between devices
-- [The Internet Hosting Cooperative](https://hcoop.net/)
-- [Verifpal Manual](https://verifpal.com/res/pdf/manual.pdf)
+- [The Internet Hosting Cooperative](https://hcoop.net/) - Shared hosting environment 
+- [TOTP Token Generator](https://totp.danhersam.com/) - Two factor for the uninterested 
+- [Verifpal Manual](https://verifpal.com/res/pdf/manual.pdf) - The best manual for any verification tool
+- [Libreoffice](https://www.libreoffice.org/) - Genuinely good office suite alternative
 - [SAT competition](http://satcompetition.org/)
+- [LWN.net](https://lwn.net/) - Linux News
 
 ### News Sources & Link Aggregators
 - [Hacker News](https://news.ycombinator.com) - Kind of like reddit, but for tech bros  
@@ -124,16 +128,16 @@ JUMP -> [Misc.]("#Misc.")
 - [The Linux Documentation Project](https://tldp.org/) - Huuge repo of linux info
 
 ### Mathematics Resources
-- [A Manga Guide to Linear Algebra](https://www.math.ucla.edu/~jerryluo8/teaching/Fall2018-4A/The%20Manga%20Guide%20to%20Linear%20Algebra.pdf) - A cute educational manga on linear algebra
+- [A Manga Guide to Linear Algebra](https://web.math.ucsb.edu/~jerryluo8/teaching/Fall2018-4A/The%20Manga%20Guide%20to%20Linear%20Algebra.pdf) - A cute educational manga on linear algebra
 - [Wolfram Alpha](https://www.wolframalpha.com/) - Because, of course
 - [The Natural Number Game](https://www.ma.imperial.ac.uk/~buzzard/xena/natural_number_game/) - See the power of induction!
 - [Erdos Number](https://en.wikipedia.org/wiki/Erd%C5%91s_number)
 - [web.evanchen.cc/napkin.html](https://web.evanchen.cc/napkin.html) - The napkin
 - [15-251 Great Ideas in Theoretical Computer Science](https://www.cs.cmu.edu/~15251/) - Peak CMU course in theoretical computer science
-- [Homotopy Type Theory Book](https://homotopytypetheory.org/book/) - A classic
-- [The Knot Atlas](http://katlas.org/wiki/Main_Page) - Knot theory!
+- [Homotopy Type Theory Book](https://homotopytypetheory.org/book/) - Canonical type theory resource
+- [The Knot Atlas](http://katlas.org/wiki/Main_Page) - Knots database
 - [Integer Encyclopedia Database](https://oeis.org/) - Pretty integer sequences
-- [Is Mathematics Obsolete?](https://www.youtube.com/watch?v=lE48QtO4xBQ)
+- [Is Mathematics Obsolete?](https://www.youtube.com/watch?v=lE48QtO4xBQ) - Lovely talk
 
 ### Academia Resources 
 - [CSRankings.org](http://csrankings.org/#/index?all&us) - A website I use to systematically discover interesting professors and PhD students. 
@@ -147,6 +151,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Faculty Job Search Resources](https://www.seas.upenn.edu/~sweirich/resources.htm) 
 - [HeVeA](http://hevea.inria.fr/) - LaTeX to HTML
 - [6-045j](https://ocw.mit.edu/courses/6-045j-automata-computability-and-complexity-spring-2011) - MIT's automata theory course
+- [Zotero](https://www.zotero.org/) - Genuinely, honest to god, the best paper manager
 
 ### Blog Posts and Articles
 - [So you want to reform democracy](https://medium.com/civic-tech-thoughts-from-joshdata/so-you-want-to-reform-democracy-7f3b1ef10597)
@@ -212,7 +217,7 @@ JUMP -> [Misc.]("#Misc.")
 - [bramadams.dev](https://www.bramadams.dev)
 - [jeffhuang.com/](https://jeffhuang.com/) - Prof at Brown researching HCI
 - [henryneeds.coffee](https://henryneeds.coffee/blog/)
-- [blog.cr.yp.to](http://blog.cr.yp.to/) - D.J. Bernstein's great blog
+- [blog.cr.yp.to](http://blog.cr.yp.to/) - Guy who sued the US govt over crypto
 - [azdavis.net](https://azdavis.net/) - A Fella
 - [sookocheff.com](https://sookocheff.com/) - A distributed systems engineer
 - [zhangmingming.org](https://www.zhangmingming.org/) - A security researcher at Tsinghau university with similar research interests to mine
@@ -248,7 +253,7 @@ JUMP -> [Misc.]("#Misc.")
 - [sigbus.info](https://www.sigbus.info/) 
 - [coelacanth-dream.com](https://www.coelacanth-dream.com/)
 - [analogdreams.blog](https://analogdreams.blog/)
-- [demin.ws](https://demin.ws/) - реверс-инжиниринг человек
+- [demin.ws](https://demin.ws/) 
 - [maya.land](https://maya.land/) 
 - [suragu.net](https://suragu.net/about.html) 
 - [wowana.me](https://wowana.me/) - a guy big into fediverse
@@ -289,7 +294,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Daniel Howe](https://rednoise.org/daniel/pubs.html) - Prof at HKU focusing on privacy, surveillance, and disinformation
 - [Jordan Ellenberg](https://www.jordanellenberg.com/writings/) - Great mathematician and speaker
 - [eta.st](https://eta.st)
-- [sqrtminusone.xyz](https://sqrtminusone.xyz/posts) - emacs freak. I prefer (n)vim, but I respect it.
+- [sqrtminusone.xyz](https://sqrtminusone.xyz/posts) - emacs freak. I prefer (n)vim, but I respect it
 - [bryndr.sn](https://bryndr.sn)
 - [calnewport.com](https://calnewport.com/) - Great author
 - [justchokingaround](https://github.com/justchokingaround) - My favorite choker
@@ -303,9 +308,9 @@ JUMP -> [Misc.]("#Misc.")
 - [Xie Yuheng](https://xieyuheng.com/) - Interaction net man
 - [amelia.how](https://amelia.how/) 
 - [j3s.sh](https://j3s.sh/)
-- [mcyoung](https://mcyoung.xyz) - compiler dude
+- [mcyoung](https://mcyoung.xyz) - compiler/math dude
 - [Evan Chen](https://web.evanchen.cc/) 
-- [Jeremy Avigad](https://www.andrew.cmu.edu/user/avigad/) - Awesome logic prof at CMU, behind Lean
+- [Jeremy Avigad](https://www.andrew.cmu.edu/user/avigad/) - Logic prof at CMU. A guy behind Lean's mathlib
 
 ### Misc.
 - [Pool Suite](https://poolsuite.net/) - R e t r o Internet Radio Station 
@@ -318,3 +323,4 @@ JUMP -> [Misc.]("#Misc.")
 - [Annas Archive](https://annas-archive.org/) - Read anything
 - [listen.moe](https://listen.moe/) - Weeb radio
 - [Good Guy Godel](https://ihavenoteeth.com/2014/10/23/good-guy-godel/)
+- [Wikivoyage](https://en.wikivoyage.org/wiki/Main_Page) - Find travel info about any place
