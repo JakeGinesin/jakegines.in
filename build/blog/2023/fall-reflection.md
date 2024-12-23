@@ -71,7 +71,7 @@ Got much more involved with the wireless club this semester. I met a bunch of in
 I'll be on the e-board next semester, so that's cool.
 
 # Putnam
-Took the [Putnam](https://maa.org/math-competitions/william-lowell-putnam-mathematical-competition) for the first time! Solved one problem for sure. Submitted attempts for a bunch of others. Idk my score yet.
+Took the [Putnam](https://maa.org/math-competitions/william-lowell-putnam-mathematical-competition) for the first time! Solved one problem for sure. Submitted attempts for a bunch of others. Idk my score yet. (Update: got a problem right!)
 
 # ICPC/CCDC
 Participated in a few cybersecurity competitions this semester. I learned a ton about how those sorts of competitions work and refined my skills a ton. I'm eager to do more :D 

@@ -28,7 +28,7 @@ This course went over lots of methods to solve various partial differential equa
 # CS7670 - Formal Methods for Security of Network Protocols and Distributed Systems 
 *T,TH 1:35pm-3:15pm*
 
-This class was peak. It was me, a bunch of PhD students, and my [research supervisor](https://cnitarot.github.io/) talking about various applied formal methods [papers](https://cnitarot.github.io/courses/fmndss_Spring_2024/index.html). We had a brief overview of distributed systems in the first few weeks, then all we did for the rest of the semester was present sick papers to each other. I gave presentations on the verification of [BFT Consensus in Agda](/assets/agda-pres.pdf), [QUIC in Fstar using refinement types](/assets/quic-pres.pdf), and [5G authentication in Tamarin](5g-pres.pdf). 
+This class was peak. It was me, a bunch of PhD students, and my [research supervisor](https://cnitarot.github.io/) talking about various applied formal methods [papers](https://cnitarot.github.io/courses/fmndss_Spring_2024/index.html). We had a brief overview of distributed systems in the first few weeks, then all we did for the rest of the semester was present sick papers to each other. I gave presentations on the verification of [BFT Consensus in Agda](/assets/agda-pres.pdf), [QUIC in Fstar using refinement types](/assets/quic-pres.pdf), and [5G authentication in Tamarin](/assets/5g-pres.pdf). 
 
 For my final project I formalized and verified [Matrix](https://matrix.org/) using [Verifpal](https://verifpal.com/). I gave a [nice presentation](/assets/matrix-pres.pdf) on my project and wrote a report. I'll probably turn the report into a paper and submit it to some conference, so stay tuned for that.
 

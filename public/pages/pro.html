@@ -86,13 +86,13 @@ em {
         <div class="row">
             <div class="pagenav col">
                 <p>
-                    <a class="pagenav-link" href="/pro#about">About</a> • <a class="pagenav-link" href="/pro#work">Publications</a> • <a class="pagenav-link" href="/assets/jake_resume.pdf">Full CV</a>
+                    <a class="pagenav-link" href="/pro#about">About</a> • <a class="pagenav-link" href="/pro#work">Publications</a> • <a class="pagenav-link" href="/assets/j_resume.pdf">Full CV</a>
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-7 col-xs-12 my-md-1 my-2" id="about">
-              <p>I'm an undergraduate at Northeastern University double-majoring in computer science and mathematics. I'm interested in the formalization and verification of interesting and useful systems, as well as the logical foundations of mathematics and computing. My previous work involves system and network security. I'm thankful to have worked under the various supervisions of <a href="https://cnitarot.github.io/">Cristina Nita-Rotaru</a> at Northeastern University, <a href="https://www.isi.edu/~mirkovic/#">Jelena Mirkovic</a> at USC, and <a href="https://www.cs.ox.ac.uk/people/christoph.haase/">Christoph Haase</a> at Oxford. 
+              <p>I'm an undergraduate at Northeastern University double-majoring in computer science and mathematics. I'm interested in the formalization and verification of interesting and useful systems, as well as the logical foundations of mathematics and computing. My previous work involves system and network security. I'm thankful to have worked under the various supervisions of <a href="https://cnitarot.github.io/">Cristina Nita-Rotaru</a> and <a href="https://coe.northeastern.edu/people/schirner-gunar/">Gunar Schirner</a> at Northeastern University, <a href="https://www.isi.edu/~mirkovic/#">Jelena Mirkovic</a> at USC, and <a href="https://www.cs.ox.ac.uk/people/christoph.haase/">Christoph Haase</a> at Oxford. 
               </p>
             </div>
             <div class="offset-md-1 col-md-4 col-xs-12 my-md-1 my-2">
@@ -104,28 +104,82 @@ em {
             <div class="col-12">
                 <b>Contact Me</b>
                 <p>Please reach out by email: ginesin (dot) j (at) northeastern (dot) edu <br />
-                    Alternatively, on social media: <a href="https://www.linkedin.com/in/jakeginesin/">LinkedIn</a>, and <a href="https://github.com/JakeGinesin">GitHub</a>.</p>
+                    Alternatively, I'm on other platforms: <a href="https://www.linkedin.com/in/jakeginesin/">LinkedIn</a>, and <a href="https://github.com/JakeGinesin">GitHub</a>.</p>
             </div>
         </div>
 
-        <h2 id="work">Research</h2>
+
+        <h2 id="work">Publications</h2>
         <p><i>* indicates equal contribution.</i></p>
         <div class="row">
             <div class="col-12">
-                <a href="https://arxiv.org/abs/2403.05663">A Formal Analysis of SCTP: Attack Synthesis and Patch Verification</a>
+                <a href="/research/sctp">A Formal Analysis of SCTP: Attack Synthesis and Patch Verification</a>
                 <div class="inset">
                   <p><span class="feat">Jacob Ginesin</span>*, Max von Hippel*, Evan Defloor, Cristina Nita-Rotaru, Michael Tüxen. <span class="feat">USENIX Security 2024</span>.</p> 
                   <p>We use formal methods to analyze the security of the Stream Control Transmission Protocol (SCTP). We report a symphony of new attacks across various attacker models, the automated re-discovery of CVE-2021-3772, and two ambiguities in SCTP RFC that, if misinterpreted, enable attacks.</p>
                 </div>
+                <a href="https://arxiv.org/abs/2410.10908">The State of Julia for Scientific Machine Learning</a>
+                <div class="inset">
+                  <p>Edward Berman*, <span class="feat">Jacob Ginesin</span>*. To appear at the <span class="feat">NeurIPS Machine Learning and Physical Sciences Workshop</span> (Oral Spotlight)</p> 
+                  <p>How does Julia compare to Python for scientific machine learning tasks? And, is Julia ready for primetime?</p>
+                </div>
                 <a href="https://arxiv.org/abs/2312.12450">Can It Edit? Evaluating the Ability of Large Language Models to Follow Code Editing Instructions</a>
                 <div class="inset">
-                  <p>Federico Cassano, Luisa Li, Akul Sethi, Noah Shinn, Abby Brennan-Jones, <span class="feat">Jacob Ginesin</span>, Edward Berman, George Chakhnashvili, Anton Lozhkov, Carolyn Jane Anderson, Arjun Guha. <span class="feat">In submission to the Conference on Language Modeling, 2024</span>.</p>
+                  <p>Federico Cassano, Luisa Li, Akul Sethi, Noah Shinn, Abby Brennan-Jones, <span class="feat">Jacob Ginesin</span>, Edward Berman, George Chakhnashvili, Anton Lozhkov, Carolyn Jane Anderson, Arjun Guha. <span class="feat">Conference on Language Modeling, 2024</span>.</p>
                   <p>We develop benchmarks to evaluate large language models on code editing performance, as previous benchmarks proved insufficient. We also fine-tune models for specifically code editing. </p>
                 </div>
-                <a href="/assets/language-bounds.pdf">Regular Language Bounds: Extraction and Applications</a>
+                <a href="/research/dns-b-root">Understanding DNS Query Composition at B-Root</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>, Jelena Mirkovic. <span class="feat">IEEE/ACM Conference on Big Data Computing, Applications and Technologies</span>.</p>
+                  <p>We study the validity of traffic at a DNS root server through analyzing historical data.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 id="work">Preprints</h2>
+        <div class="row">
+            <div class="col-12">
+
+
+                <a href="/research">Korg: An Attack Synthesis Tool for Distributed Protocols</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>, Max von Hippel, Cristina Nita-Rotaru. In submission. </p> 
+                  <p>
+                  Automatically synthesizing attackers that can replay, reorder, drop, or insert messages onto a channel
+                  </p>
+                </div>
+
+                <a href="/research">ConnILP: Allocating Distributed Communication Design in Domain Platforms for Streaming Applications</a>
+                <div class="inset">
+                  <p>Qucheng Jiang, Gunar Schirner, Oscar Kellner, Tianrui Ma, and <span class="feat">Jacob Ginesin</span>. In submission. </p> 
+                  <p>
+                  Optimizing domain-specific hardware configurations via a reduction to integer linear programming!
+                  </p>
+                </div>
+
+            </div>
+        </div>
+
+        
+        <h2 id="work">Other Stuff</h2>
+        <div class="row">
+
+            <div class="col-12">
+                <a href="/assets/language-bounds.pdf">Regular Language Bounds: Extraction and Applications</a> (Poster)
                 <div class="inset">
                   <p><span class="feat">Jacob Ginesin</span>, Christoph Haase. Presented at the <span class="feat">Joint Mathematical Meetings 2024</span>.</p> 
                   <p>We define methods to compute the upper and lower boundaries of regular languages in order to speed up model checkers.</p>
+                </div>
+            </div>
+            <div class="col-12">
+
+                <a href="https://arxiv.org/abs/2408.12743">The Matrix Reloaded: A Mechanized Formal Analysis of the Matrix Cryptographic Suite</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>, Cristina Nita-Rotaru. arXiv preprint arXiv:2408.12743, 2024.</p> 
+                  <p>
+                  We analyze the cryptographic group instant messaging protocols behind Matrix using ProVerif, comparing them to the standard in the space (WhatsApp, Signal, etc.). We find a few issues.
+                  </p>
                 </div>
                 
                 <a href="https://arxiv.org/abs/2305.06092">SafeLLVM: LLVM Without The ROP Gadgets!</a>
@@ -135,15 +189,30 @@ em {
                     A Return-oriented programming attack is when an attacker takes advantage of existing chunks of code in memory, dubbed gadgets, and chains them together to form an attack. We propose an approach to minimize the number of usable gadgets in compiled binaries, extending the methodology of a previous work. 
                   </p>
                 </div>
-                <a href="/pro/dns-b-root">Understanding DNS Query Composition at B-Root</a>
+
+                <a href="/assets/lobpcg.pdf">Effective Preconditioning for LOBPCG</a>
                 <div class="inset">
-                  <p><span class="feat">Jacob Ginesin</span>, Jelena Mirkovic. Presented at <span class="feat">IEEE/ACM BDCAT2022</span></p>
-                  <p>We study the validity of traffic at a DNS root server through analyzing historical data.</p>
+                  <p><span class="feat">Jacob Ginesin</span>, Daniel Yu. Product of a 2024 summer undergraduate research program ran by Northeastern University.</p> 
+                  <p>When finding the algebraic connectivity of a graph using the Fiedler value, the 2nd smallest eigenvalue of the graph Laplacian, exploiting said graphical structure to precondition the eigensolver (LOBPCG) is somewhat effective.</p>
+                </div>
+
+                <a href="/assets/sctp-init-ack.pdf">Insights from CVE-2021-3772, Clarifying SCTP Specification Flaws</a>
+                <div class="inset">
+                <p><span class="feat">Jacob Ginesin</span>. Extended details of an RFC9260 errata.</p> 
+                <p>We demystify a critical ambiguity in the SCTP spec, RFC9260, which if misinterpreted leads to an off-path attack.</p>
+                </div>
+            </div>
+            <div class="col-12">
+                <a href="/assets/buchi_heuristic.pdf">A Simple Heuristic for Deciding Intersection Non-Emptiness for Regular and ω-Regular Automata</a>
+                <div class="inset">
+                  <p><span class="feat">Jacob Ginesin</span>. Product of research done while visiting at Oxford.
+
+                  <p>We define and implement a simple heuristic for deciding the intersection non-emptiness problem for regular and ω-regular automata</p>
                 </div>
             </div>
         </div>
 
-         </div>
+       </div>
     </body>
     
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"

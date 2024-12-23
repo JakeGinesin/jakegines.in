@@ -37,11 +37,11 @@
 CCDC -> Collegiate Cyber Defense Competition
 <br> 
 <br> 
-This post details my experience competing in the Northeast Regional CCDC (<a href="https://neccdl.org/neccdc/" target="_blank">NECCDC</a>) and the National CCDC (<a href="https://www.nationalccdc.org/" target="_blank">NCCDC</a>) competitions. This was a bomb and mega formative experience, and this post has been a long time in the making.
+This post details my experience competing in the Northeast Regional CCDC (<a href="https://neccdl.org/neccdc/" target="_blank">NECCDC</a>) and the National CCDC (<a href="https://www.nationalccdc.org/" target="_blank">NCCDC</a>) competitions. 
 <br> 
 <br> 
 <h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='WhatistheCollegiateCyberDefenseCompetition?'>What is the Collegiate Cyber Defense Competition?</h2> 
-In short, a team of 8 college students are set up in a modeled corporate environment with Linux and Windows machines running various services. Some  <i>professional</i>  red teamers attack the network, and the team defends the network while completing "injects" - random surprise tasks such as writing a report, changing a service, setting up a fileshare, etc. Points are earned by keeping services up and completing injects.
+In short, a team of 8 college students (the blue team) are given a modeled corporate environment with Linux and Windows machines to defend. A few professional red teamers attack the network and try to take down running services. In addition to defending the network, the blue team must complete various "injects" - random surprise tasks such as writing a report, changing a service, setting up a fileshare, etc. Points are earned by keeping services up and completing injects.
 <br> 
 <br> 
 The competition is long and grueling: 8 hours a day, for two days. There are 10 total regions spanning across the US, and the winner of each regional competition advances to nationals. <a href="https://nuccdc.club/" target="_blank">My team</a> is apart of the Northeast region.
@@ -51,10 +51,10 @@ The competition is long and grueling: 8 hours a day, for two days. There are 10 
 We competed in a qualifier in late February, and regionals towards the end of March. We competed against 24 teams in the qualifier, and against 9 teams in regionals.
 <br> 
 <br> 
-The network we had to defend at regionals was pretty interesting: we had various Kubernetes services, various services on a windows domain, a PLC, and FreeIPA. I was on the Linux team; I managed a bunch of Kubernetes services and floated around all the Linux boxes. I kept sessions on all machines via tmux, profusely monitored logs, services, and <code class="highlighter-rouge" data-lang="text">who -a</code>, and ran <a href="https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS" target="_blank">LinPEAS</a> and <code class="highlighter-rouge" data-lang="text">nmap --script=vuln</code> over and over. We did a pretty kick ass job locking down the Linux machines, and for the most part we kept the red team out, modulo a few mistakes... 
+The network we had to defend at regionals was pretty interesting: we had lots of Kubernetes services, various services on a windows domain, a PLC, and FreeIPA. I was on the Linux team; I managed a bunch of Kubernetes services and floated around all the Linux boxes. I kept sessions on all machines via tmux, profusely monitored logs, services, stared at <code class="highlighter-rouge" data-lang="text">watch "who -a"</code> and <code class="highlighter-rouge" data-lang="text">watch "netstat -tunlap"</code>, and ran <a href="https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS" target="_blank">LinPEAS</a> and <code class="highlighter-rouge" data-lang="text">nmap --script=vuln</code> over and over. We did a pretty kick ass job locking down the Linux machines, and for the most part we kept the red team out, modulo a few mistakes... 
 <br> 
 <br> 
-One of the services I was managing, Nextcloud, ended up going down in the last hour. Turns out Docker for some reason had a  <i>remote exec</i>  service running, allowing the red team to access the Docker image hosting Postgresql, use the default password, and drop the tables. I did go into the Postgresql Docker container and change the passwords, but the red team had a persistent session that was created before this. Should have restarted Postgresql first.
+One of the services I was managing, Nextcloud, ended up going down in the last hour. Turns out Docker for some reason had a  <i>remote exec</i>  service running, allowing the red team to access the Docker image hosting Postgresql, use the default password, and drop the tables. I did go into the Postgresql Docker container and change the passwords, but the red team had a persistent session that was created before this. Should have restarted Postgresql first, sux
 <br> 
 <br> 
 Then, just ~40 minutes before the competition was over, the red team got into our AWS instance via an attack chain starting with the same docker remote exec attack vector. Then, they wiped our entire infrastructure. Lol.
@@ -67,7 +67,7 @@ Somehow, we racked in enough points from the injects and services to eek out the
 <br> 
 <br> 
 <h2 class='header unselectable' style='margin-top:2px; margin-bottom:8px;' id='Nationals'>Nationals</h2> 
-CCDC Nationals is a huuge deal. Instead of 8 red teamers for all 10 blue teams like at regionals, at nationals 3 red teamers are assigned to  <i>each team</i>. The network teams defend at nationals is pretty beefy: lots more Linux boxes, more windows domains, and many more services. A big step up from Northeast regionals.
+CCDC Nationals is a huuge deal. Instead of 8 red teamers for all 10 blue teams like at regionals, at nationals each blue team is assigned 3 red teamers. The network blue team must defend at nationals is pretty beefy: lots more Linux boxes, more windows domains, and many more services. A big step up from Northeast regionals.
 <br> 
 <br> 
 The red teams at nationals are also much more powerful and sophisticated; our coach described them to us as "genuinely a nation-state level threat." My teammates who previously competed in CCDC nationals described horror stories of tracing polymorphic malware that injected itself into systemd services. They told me red team has highly sophisticated scripts to instantly probe, compromise, and install persistence on our machines within 30 seconds of the competition starting. I was told red team  <i>will</i>  get in, and shit  <i>will</i>  hit the fan. Needless to say, I was horrified.
@@ -76,15 +76,13 @@ The red teams at nationals are also much more powerful and sophisticated; our co
 <img src="/media/ccdc-horror.png" alt="regionals" class="img">
 <br> 
 <br> 
-Each team is allowed to prepare scripts to be publicized and used during the competition. I prepared to fight tooth and nail to maintain access to our Linux systems. Expecting the absolute worst, I wrote an <a href="https://github.com/JakeGinesin/icmp-backdoor" target="_blank">ICMP Backdoor</a>, a <a href="https://github.com/JakeGinesin/j-rootkit" target="_blank">LKM Rootkit</a>, a <a href="https://github.com/JakeGinesin/tunnelbees" target="_blank">sophisticated honeypot</a>, and various other tools to ensure we never lost access to our boxes. I figured if we lost access to machines hosting the firewall or EXSI (our network virtualiztion software), it's just game over for us. I even included <a href="https://github.com/m0nad/Diamorphine" target="_blank">Diamorphine</a> in our tools repo. I will be real, going into the competition I was expecting the absolute worst.
+Each team is allowed to prepare scripts to be publicized and used during the competition. I prepared to fight tooth and nail to maintain access to our Linux systems: I wrote an <a href="https://github.com/JakeGinesin/icmp-backdoor" target="_blank">ICMP Backdoor</a>, a <a href="https://github.com/JakeGinesin/j-rootkit" target="_blank">LKM Rootkit</a>, a <a href="https://github.com/JakeGinesin/tunnelbees" target="_blank">sophisticated honeypot</a>, and various other tools to ensure we never lost access to our boxes. I figured if we lost access to machines hosting the firewall or EXSI (our network virtualiztion software), it's just game over for us. I even included <a href="https://github.com/m0nad/Diamorphine" target="_blank">Diamorphine</a> in our tools repo. I will be real, going into the competition I was expecting the absolute worst.
 <br> 
 <br> 
-My team designated me to manage the network firewall(s), and in competition I ended up managing a Palo Alto firewall and a Cisco firewall simultaneously. This was a bit unexpected: I thought I'd be put on a few Linux machines, but the competition network had a surprisingly few number of Linux boxes. Nevertheless, the dual firewall management proved to be extraordinarily difficult. My entire team was routed through the firewall, and so mistakes on my end could mean my teammates would be sitting idle until I fixed my mistakes. And boy let me tell you: I made so many mistakes. The competition had a few Palo Alto Networks and Cisco staff on-site to help with issues during the competition, and I was constantly running down the halls to the organizers' room to ask them questions. By the end of the 16 hour competition I had entirely segmented the network and instituted all kinds of rules. I blocked hundreds of IPs. Words cannot describe how draining this was.
+My team designated me to manage the network firewall(s), and in competition I ended up managing a Palo Alto firewall and a Cisco firewall simultaneously. This was a bit unexpected: I thought I'd be put on a few Linux machines, but the competition network had a surprisingly few number of Linux boxes. Nevertheless, the dual firewall management proved to be extraordinarily difficult. My entire team was routed through the firewall, and so mistakes on my end could mean my teammates would be sitting idle until I fixed my mistakes. And boy let me tell you: I made so many mistakes. The competition had a few Palo Alto Networks and Cisco staff on-site to help with issues during the competition, and I was constantly running down the halls to the organizers' room to ask them questions. By the end of the 16 hour competition I had entirely segmented the network, instituted all kinds of specialized rules, and blocked hundreds of IPs. I easily combed through hundreds of thousands of network logs. Words cannot describe how draining this was.
 <br> 
 <br> 
 <img src="/media/ccdc-n1.jpeg" alt="regionals" class="img">
-<br> 
-<img src="/media/ccdc-n2.png" alt="regionals" class="img">
 <br> 
 <br> 
 Besides a certain large-scale incident on my end with the firewall, our network and services had a lot less downtime than I initially expected. Surprisingly, we had no major compromises. The only real damage was self-inflicted. We never had to fight over any boxes; whenever we noticed a compromise or anything off about our machines, we just insta-reset the box to a previous snapshot with EXSI.
@@ -97,7 +95,7 @@ At the dinner after the national comp, our team spoke with our red-teamers, a gr
 • the red team tried to use  <i>my tools</i>  to gain persistence on our Linux machines. Oops. They tried to compile them with the makefiles i provided, but thankfully they ran into some glibc errors? Somehow, they didn't notice I provided statically linked binaries. Oops x2.
 <br> 
 <br> 
-• my firewall-ing helped a lot! The firewall stopped almost all the C2 traffic, and they had tons of trouble pivoting to multiple machines. 
+• my firewall-ing helped a lot! The firewall stopped almost all the C2 traffic, and they had tons of trouble pivoting to different machines due to the segmentation I employed. 
 <br> 
 <br> 
 • they compromised every single Linux box, but whenever the red team made any sort of noise we just insta-reset of the box. Being silent was super hard for them, apparently
@@ -107,10 +105,10 @@ At the dinner after the national comp, our team spoke with our red-teamers, a gr
 At the dinner I got a ton of recruitment swag :] I also talked to <a href="https://alexlevinson.wordpress.com/" target="_blank">Alex Levonson</a> about his insane Linux persistence techniques. He was the guy who authored the aforementioned polymorphic malware.
 <br> 
 <br> 
-At the rewards ceremony the captain of the red team, <a href="https://www.crai.com/our-people/david-cowen/" target="_blank">Dave Cowen</a>, gave a sick address. Interestingly, during the presentation he said something along the lines of, "yeah, the [blue] teams this year had very sophisticated scripts and tools that we [the red team] adapted to and used. We didn't know how to elevate a sudo shell without tty until we saw the blue team tools for this year..." 
+At the rewards ceremony the captain of the red team, <a href="https://www.crai.com/our-people/david-cowen/" target="_blank">Dave Cowen</a>, gave a sick address. Interestingly, during his address he said something along the lines of, "yeah, the [blue] teams this year had very sophisticated scripts and tools that we [the red team] adapted to and learned from. We didn't know how to elevate a sudo shell without tty until we saw the blue team tools for this year..." 
 <br> 
 <br> 
-Uh oh. I spent a ton of time writing a nice guide on how to get full tty on a sudo shell in my <a href="https://github.com/JakeGinesin/icmp-backdoor" target="_blank">ICMP backdoor</a>. The red team totally used that to their advantage. Shit.
+Uh oh. I spent a ton of time writing a nice guide on how to get full tty on a sudo shell in my <a href="https://github.com/JakeGinesin/icmp-backdoor" target="_blank">ICMP backdoor</a>. He was totally talking about me... shit
 <br> 
 <br> 
 Some lessons for next year:
@@ -122,7 +120,7 @@ Some lessons for next year:
 • I prepared a bunch of battle-ready persistence tools that we didn't end up using for a few reasons. (1), we did a great job securing the Linux boxes and never had to battle it out over a system; (2), whenever a machine was compromised we just reset it to a snapshot with EXSI; and (3), the tools were slightly nontrivial to set up and use, making it hard for my teammates to deploy them mid-competition
 <br> 
 <br> 
-• red team  <i>will</i>  study our scripts and adapt their tools around them. It's best to ensure scripts are sufficiently obscured
+• red team  <i>will</i>  study our scripts and adapt their tools around them. It's best to ensure scripts are sufficiently obscured and not very helpful to them
 <br> 
 <br> 
 • Don't include tools in the repos that can be of help to red team, lol
@@ -135,7 +133,7 @@ Some lessons for next year:
 We ended up coming in 7th out of 10 teams, which is okay. The teams at nationals spent much more time, comparatively, preparing for the competition. I specialize in math and computer science theory, after all. Either way, I learned a ton and I'm looking forward to next year!
 <br> 
 <br> 
-:wq
+:wq!
 <br> 
 
           <!--
@@ -143,7 +141,8 @@ We ended up coming in 7th out of 10 teams, which is okay. The teams at nationals
           <div class="calendar">
           <table>
             <tr>
-              <td><a style="text-decoration: none !important; color:#fc0339" href="/blog/2024/spring-reflection" title="spring-reflection">spring-reflection</a></td> 
+              <td><a style="text-decoration: none !important; color:#fc0339" href="/blog/2024/fall-reflection" title="fall-reflection">fall-reflection</a></td> 
+<td><a style="text-decoration: none !important; color:#fc0339" href="/blog/2024/spring-reflection" title="spring-reflection">spring-reflection</a></td> 
 <td><a style="text-decoration: none !important; color:#fc0339" href="/blog/2024/ccdc" title="ccdc">ccdc</a></td> 
 
             </tr>

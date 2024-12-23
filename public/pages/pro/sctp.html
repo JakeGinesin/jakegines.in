@@ -1,0 +1,324 @@
+<head>
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>A Formal Analysis of SCTP: Attack Synthesis and Patch Verification</title>
+</head>
+<style>
+
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text|Roboto:400,700&display=swap");
+.colHighlight {
+  font-family: sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+cite {
+  vertical-align: super;
+  font-size: smaller;
+  margin-left: -5px; }
+
+.atn {
+  margin: 50px;
+  padding: 20px;
+  border: 2px solid #AA2020; }
+
+.container {
+  padding: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500; }
+
+h1, h2, h3, h4 {
+  font-family: 'Crimson Text', serif; }
+
+b {
+  font-weight: 700; }
+
+.vis-inset {
+  height: 20vw; }
+  @media screen and (max-width: 600px) {
+    .vis-inset {
+      height: 20vh; } }
+
+.vis-inset-medium {
+  height: 25vw; }
+  @media screen and (max-width: 600px) {
+    .vis-inset-medium {
+      height: 25vh; } }
+
+.vis-inset-long {
+  height: 35vw; }
+  @media screen and (max-width: 600px) {
+    .vis-inset-long {
+      height: 35vh; } }
+
+.box {
+  height: 1.25em;
+  width: 1.25em;
+  top: -0.125em;
+  margin: 0.125em;
+  display: inline-flex;
+  align-self: center;
+  position: relative; }
+
+.anim svg {
+  border: 2px solid black; }
+
+.figdesc {
+  color: #808080;
+  font-size: 0.8em; }
+
+.fn {
+  vertical-align: super;
+  font-size: smaller;
+  text-align: center; }
+
+.animcontrol:hover {
+  cursor: pointer; }
+
+.animcontrol img {
+  height: 35px;
+  width: 35px; }
+
+.touchable {
+  float: right; }
+
+.pagenav-link {
+  color: black;
+  display: inline;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.inputBtn {
+  touch-action: manipulation;
+  height: 35px;
+  width: 35px;
+  margin: 10px; }
+  .inputBtn:hover {
+    cursor: pointer; }
+
+.ii {
+  font-style: italic;
+}
+
+  .indented-block {
+      margin-left: 20px; /* Adjust the indentation */
+      font-family: monospace; /* This gives it a more code-like font */
+      line-height: 1.5;
+      max-width:600px;
+  }
+  .code {
+      background-color: #706f6f;
+      color: #fff;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+  }
+
+.mobilenav {
+  touch-action: manipulation; }
+  @media screen and (min-width: 600px) {
+    .mobilenav {
+      display: none; } }
+  .mobilenav a {
+    display: block;
+    clear: both;
+    float: right; }
+
+body {
+  touch-action: manipulation; }
+</style>
+<body>
+    <div class="container">
+        <h1>A Formal Analysis of SCTP: Attack Synthesis and Patch Verification</h1>
+        <p><b>Jacob Ginesin*, Max von Hippel*, Evan Defloor, Cristina Nita-Rotaru, Michael Tüxen</b> <br /> <span style="font-size: 12px; color: #808080;">Northeastern University, FH Munster</span></p>
+
+            <div class="pagenav">
+                <p>
+                
+                    <a class="pagenav-link" href="https://github.com/sctpfm/sctpfm">Github Link</a> • 
+                    <a class="pagenav-link" href="https://arxiv.org/abs/2403.05663">Preprint PDF</a> • 
+                    <a class="pagenav-link" href="https://www.usenix.org/system/files/usenixsecurity24-ginesin.pdf">Published PDF</a> • 
+                    <a class="pagenav-link" href="https://www.usenix.org/conference/usenixsecurity24/presentation/ginesin">USENIX Page Link</a> •
+                    <a class="pagenav-link" href="/assets/sctp_slides.pdf">Presentation Slides</a> •
+                    <a class="pagenav-link" href="https://www.rfc-editor.org/errata/rfc9260">RFC Errata</a>
+                </p>
+            </div>
+        <br />
+        <div id="intro">
+          <h2>
+            Introduction
+          </h2>
+          <p>
+          We use formal methods, namely the <a href="https://en.wikipedia.org/wiki/SPIN_model_checker">Spin model checker</a>, to analyze the security of the <a href="https://en.wikipedia.org/wiki/Stream_Control_Transmission_Protocol">Stream Control Transmission Protocol (SCTP)</a>. SCTP underpins many telecommunication protocols including SS7, 4G, and 5G, WebRTC, and several internet architecture protocol including IP, SIP, and WiMAX. We report a symphony of new attacks on SCTP across various attacker models, the automated re-discovery of a previously reported denial of service attack (<a href="https://nvd.nist.gov/vuln/detail/CVE-2021-3772">CVE-2021-3772</a>), and two ambiguities in SCTP RFC that, if misinterpreted, enable attacks.
+          </p>
+        </div>
+        <div id="notes">
+          <h2>
+            Extra Details
+          </h2>
+
+          <p>
+            If you're interested in the main results of this work, please read the paper. Otherwise, here are some footnotes and extra details I've accumulated over the year and a half I've worked on this project.
+          </p>
+          <h4 id="ambig">
+            Context around the first ambiguity
+          </h4>
+          <p>
+          In our paper we claim that section <a href="https://www.rfc-editor.org/rfc/rfc9260.html#section-5.2.1">5.2.1 of RFC9260</a> is textually ambiguous, thus enabling an off-path attack.
+          After completing this paper, a conversation with the SCTP IETF maintainer<span id="fn_dist" class="fn"><a href="#mo_1">1</a></span> revealed that 5.2.1 is not necessarily ambiguous despite appearing to be. This is because significant external context (which is not necessarily made clear) disambiguates the text. For reference, here's the ambiguous section of 5.2.1 with reference labeling from <a href="https://docs.allennlp.org/v0.9.0/api/allennlp.models.coreference_resolution.html">AllenNLP's coreference resolution model</a>:
+
+  <div class="indented-block">
+    Upon receipt of an <span class="code">[1] INIT</span> chunk in the Cookie_Echoed state, 
+    <span class="code">[0] an endpoint</span> MUST respond with an 
+      INIT_ACK chunk using the same parameters 
+      <span class="code">[0] it</span> sent in <span class="code">[0] its</span> original 
+      <span class="code">[1] INIT</span> chunk (including <span class="code">[0] its</span> Initiate Tag, unchanged), 
+      provided that no new address has been added to the forming association.
+  </div>
+  <br>
+
+  I assumed the ambiguous scenario was along the following lines. 
+
+  Suppose two SCTP peers, Peer A and Peer B, intend to establish a connection. Assume an off-channel attacker knows the IP addresses and the ports of the two peers, but not the vtag of the connection. Peer A sends an INIT chunk and moved from CLOSED to COOKIE_WAIT. Peer B receives the INIT chunk and replies with an INIT-ACK chunk. Peer A receives the INIT-ACK chunk, responds with a COOKIE-ECHO chunk, and moves into COOKIE-ECHOED. The attacker then sends an INIT chunk to Peer A. How should peer A respond? Particularly, what parameters should Peer A fill into the INIT-ACK chunk? As you mentioned above Peer A has two choices: (1), use the verification tag that Peer A initially sent to Peer B to initialize the connection, or (2), use the verification tag from the INIT chunk Peer A received from the attacker. The former is the intended interpretation, and the latter interpretation leads to an off-channel attack (which we prove with <a href="https://github.com/sctpfm/sctpfm/blob/main/ambiguity-analyses/ambiguity1/SCTP-9260.pml">our model</a>).
+
+<br><br>
+
+At least from what it seems, "it" and "its" in the above text are nonspecific and ambiguous. The subject of the sentence is Peer A (as opposed to peer B), which would grammatically imply "it" and "its" in the sentence refer to Peer A, which is the wrong interpretation.
+
+<br><br>
+However, the verification tag is not a parameter of a chunk, but rather a part of the common header, and thus not specified by the text from 5.2.1 I quote above. The peer receiving an INIT chunk can choose to fill in the INIT chunk from the handshake initializing the previous connection (the incorrect interpretation), or fill in the verification tag based on the received INIT chunk (the correct interpretation). This behavior is not explicitly specified and rather implied through <a href="https://www.rfc-editor.org/rfc/rfc9260.html#name-sctp-chunk-definitions">3.3.3</a>. This seems to be in contrast to <a href="https://www.rfc-editor.org/rfc/rfc9260.html#name-unexpected-init-chunk-in-st">5.2.2</a>, which chooses to specifically specify how the verification tag should be filled:
+<br><br>
+
+  <div class="indented-block">
+    The outbound SCTP packet containing this INIT ACK chunk MUST carry a
+    Verification Tag value equal to the Initiate Tag found in the
+    unexpected INIT chunk. And the INIT ACK chunk MUST contain a new
+    Initiate Tag (randomly generated)
+  </div>
+  <br>
+
+  Ideally 5.2.1 should be updated with similar text explicitly specifying how the verification tag should be handled, but the IETF SCTP committee didn't seem so motivated. While the FreeBSD and Linux implementations of SCTP seem to behave correctly here (<a href="https://github.com/sctpfm/sctpfm/blob/main/packetdrill-tests/init-in-cookie-echoed.pkt">according to our packetdrill test</a>), it's yet to be seen whether this is the case for the other <a href="https://en.wikipedia.org/wiki/Stream_Control_Transmission_Protocol#Implementations">implementations</a>, including <a href="https://github.com/sctplab/usrsctp">usrsctp</a>. I may eventually file an errata if I find an implementation misinterprets this case.
+          </p>
+
+          <h4>
+            Short independent writeup for the second ambiguity
+          </h4>
+          <p>
+          For my own documentation purposes, I wrote a short independent writeup on the second ambiguity I found in RFC9260. You can find that writeup <a href="/assets/sctp-init-ack.pdf">here</a>.
+          </p>
+
+          <h4>
+Testing multiple LTL properties at once
+          </h4>
+          <p>
+          Spin, by default, does not allow for testing multiple LTL properties at once. Although this limitation <a href="https://spinroot.com/spin/Doc/lics86.pdf">makes sense</a>, as Spin works by translating both the model and the property into Buchi automata and intersecting them, it is annoying for development purposes. So, I wrote this nice <a href="https://github.com/sctpfm/sctpfm/blob/main/utils/tester.sh">shellscript</a> that tests all the properties in a folder against a model, builds a nice report, and saves all the traces. It's useful on its own, so feel free to use it!
+          </p>
+
+
+
+          <h4>
+            Adding replay, drop, and reorder on-channel attacker-models to Korg
+          </h4>
+          <p>
+          In this work we made some modifications to <a href="https://github.com/maxvonhippel/AttackerSynthesis">Korg</a>, our attack synthesis tool. Among other changes, I wrote <a href="https://github.com/sctpfm/sctpfm/blob/main/korg-changes/gen_replay_attacker.py">an extension of Korg</a> to generate an attacker capable of replaying packets. This attacker model is not specific to SCTP and can be applied to any generic Promela model. However, since this paper was published, I've made many additional changes and improvements to this Korg extension. Among other changes, I've added support for the synthesis of an attacker that can drop or reorder messages on an arbitrary Promela channel, as well as some additional search space optimizations. This is unpublished, and will likely appear in a future paper! If you're interested in using Korg with my private (for now) extensions, do reach out and we can chat :-)
+          </p>
+
+          <h4>LKSCTP Experimental Setup</h4>
+          <p>
+          In addition to the <a href="https://github.com/google/packetdrill">packetdrill</a> analysis, having deeply studied the <a href="https://github.com/torvalds/linux/tree/master/net/sctp">Linux Kernel SCTP implementation</a> I created for myself an experimental packet injection setup, which I detailed in this <a href="https://gist.github.com/JakeGinesin/a20a08048e18fb59243cbb18aca2b81d">github gist</a>.
+          </p>
+
+          <h4>
+            On automatically repairing attacks synthesized by Korg
+          </h4>
+          <p>
+          In the conclusion of the paper, we briefly mention our failed attempt to create a pipeline to automatically repair programs whom had attacks successfully generated with Korg. I spent a good amount of effort on this and wrote a brief <a href="/assets/mc_repair.pdf">preliminary report</a> on the theory and methodology (warning: this work is preliminary and likely contains mistakes). 
+
+          <br><br>
+          There are two major problems preventing us from directly applying this approach to Korg. First, our repair algorithm is very expensive and requires very strong heuristics to be usable. Second, our approach is automata-theoretic, and thus would require deriving an automata from a Promela model, repairing the automata, and re-propagating the repaired automata into a new Promela model. While deriving an automata from a Promela model and repairing it is doable via the <a href="https://gitlab.lre.epita.fr/spot/spot">spot toolset</a>, re-propagating an automata to a Promela model is generally infeasible.
+          </p>
+
+        </div>
+<hr />
+<br>
+        <div id="further reading">
+          <h2>
+            Further Reading
+          </h2>
+          If you thought this paper was interesting, here are some other great reads. <br><br>
+          <ol>
+            <li> <a href="https://arxiv.org/abs/2004.01220">Automated Attacker Synthesis for Distributed Protocols</a></li>
+            <li> <a href="https://ltsmin.utwente.nl/">LTSMIN</a>, essentially the modern version of Spin</li>
+            <li> <a href="https://gitlab.lre.epita.fr/spot/spot">The Spot toolset</a> has proven to be fantastic for manipulating and debugging ω-automata and LTL properties</li>
+            <li> <a href="https://youtu.be/wVyu7NB7W6Y">"Exposing The Flaw In Our Phone System"</a> - A Youtube video by Veritasium on exploiting the SS7 protocol, which relies on SCTP</li>
+            
+          </ol>
+        </div>
+
+        <div id="footnotes">
+          <h2> 
+            Footnotes
+          </h2>
+          <p>
+              <div>
+                  <ol>
+                    <li id="mo_1">I'd be happy to share a transcript of the email conversations I had with the IETF people if you're really interested. Feel free to send me an email and we can chat.<a href="#ambig" class="fn_back">↩</a></li>
+                  </ol>
+              </div>
+            </p>
+        </div>
+
+        <div id="citation">
+          <h2>
+            Bibtex Citation
+          </h2>
+          <p>
+          <pre><code>@inproceedings {GinesinSCTP2024,
+  author = {Jacob Ginesin and Max von Hippel and Evan Defloor and Cristina Nita-Rotaru and Michael T{\"u}xen},
+  title = {A Formal Analysis of {SCTP}: Attack Synthesis and Patch Verification},
+  booktitle = {33rd USENIX Security Symposium (USENIX Security 24)},
+  year = {2024},
+  isbn = {978-1-939133-44-1},
+  address = {Philadelphia, PA},
+  pages = {3099--3116},
+  url = {https://www.usenix.org/conference/usenixsecurity24/presentation/ginesin},
+  publisher = {USENIX Association},
+  month = aug
+}</code></pre>
+          </p>
+          <h2>
+            Plaintext Citation
+          </h2>
+          <p>
+          <pre><code>Jacob Ginesin, Max von Hippel, Evan Defloor, Cristina Nita-Rotaru, and Michael Tüxen. "A Formal Analysis of SCTP: Attack Synthesis and Patch Verification." In 33rd USENIX Security Symposium (USENIX Security 24), Philadelphia, PA, 2024, pp. 3099-3116. USENIX Association. August 2024. 
+          </code></pre>
+          </p>
+          
+        </div>
+
+
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: {
+                Macros: {
+                    expected: ["{\\mathbb{E}[#1]}", 1],
+                    expectedunder: ["{\\mathbb{E}_{#1}[#2]}", 2],
+                    xp: ["x^{(#1)}_{#2}", 2],
+                    hvec: ["\\langle {#1} \\rangle", 1]
+                }
+            }
+        });
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</body>

@@ -1,4 +1,4 @@
-A collection of my *favorite* stuff from across the web, loosly assorted into categories. Last updated on April 10th, 2024.
+A collection of my *favorite* stuff from across the web, loosly assorted into categories. If you find any broken links, please let me know!
 
 *This page is way too l o n g, so click the links below to jump to jake's favorite [blank]:*
 
@@ -41,6 +41,9 @@ JUMP -> [Misc.]("#Misc.")
 - [Rosetta Code](https://www.rosettacode.org/wiki/Rosetta_Code) - The Rosetta stone, but for code
 - [PL notes](https://pl.barzilay.org/lec98.txt) - Northeastern's programming languages course notes 
 - [Compiler Explorer](https://alive2.llvm.org/ce/) - Explore compiler behaviors
+- [Headscale](https://headscale.net/stable/) - Self-host tailscale infrastructure 
+- [Pyomo](https://www.pyomo.org/) - My favorite optimization software
+- [Lambda Explorer](https://lambdaexplorer.com/) - Taught me lambda calculus
 
 ### Cybersecurity Tools
 *Critical Reminder*: I am *not* responsible for what you do with this stuff.   
@@ -64,6 +67,7 @@ JUMP -> [Misc.]("#Misc.")
 - [nikto](https://github.com/sullo/nikto) - OP web server scanning
 - [wfuzz](https://github.com/xmendez/wfuzz) - OP webapp fuzzing
 - [winpeas](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS) - OP windows privilege escalation 
+- [The Copenhagen Book](https://thecopenhagenbook.com/) - implement auth right!
 
 ### Misc. Tech Stuff
 - [xkcd comics](https://xkcd.com) - Comics
@@ -108,12 +112,14 @@ JUMP -> [Misc.]("#Misc.")
 - [Libreoffice](https://www.libreoffice.org/) - Genuinely good office suite alternative
 - [SAT competition](http://satcompetition.org/)
 - [LWN.net](https://lwn.net/) - Linux News
+- [Linux Hardening Guide](https://madaidans-insecurities.github.io/guides/linux-hardening.html) - The *ultimate* linux hardening guide, and backbone of some of my [nuccdc](https://nuccdc.club/) scripts
+- [Anti Software Software Club](https://antisoftware.club/)
 
 ### News Sources & Link Aggregators
 - [Hacker News](https://news.ycombinator.com) - Kind of like reddit, but for tech bros  
 - [Phoronix](https://phoronix.com/scan.php?page=home) - Mostly Linux News
 - [Pluralistic](https://pluralistic.net/) - Daily links from [Cory Doctorow](https://en.wikipedia.org/wiki/Cory_Doctorow)
-- [lobste.rs](https://lobste.rs/) - Similar to Hacker News
+- [lobste.rs](https://lobste.rs/) - Similar to Hacker News, but for rust
 - [tildes.net](https://tildes.net/) - Similar to Hacker News and Lobste.rs
 - [news.t0.vc](https://news.t0.vc/) - Tech and science-oriented link aggregation across different sites
 - [Lemmy](https://join-lemmy.org/) - Link aggregator for the fediverse
@@ -134,10 +140,14 @@ JUMP -> [Misc.]("#Misc.")
 - [Erdos Number](https://en.wikipedia.org/wiki/Erd%C5%91s_number)
 - [web.evanchen.cc/napkin.html](https://web.evanchen.cc/napkin.html) - The napkin
 - [15-251 Great Ideas in Theoretical Computer Science](https://www.cs.cmu.edu/~15251/) - Peak CMU course in theoretical computer science
+- [ncatlab](https://ncatlab.org/nlab/show/HomePage) - category theory godsend
+- [1cat](https://1lab.dev/) - essentially, ncat but for agda
 - [Homotopy Type Theory Book](https://homotopytypetheory.org/book/) - Canonical type theory resource
 - [The Knot Atlas](http://katlas.org/wiki/Main_Page) - Knots database
 - [Integer Encyclopedia Database](https://oeis.org/) - Pretty integer sequences
 - [Is Mathematics Obsolete?](https://www.youtube.com/watch?v=lE48QtO4xBQ) - Lovely talk
+- [Number Theory Foundation](https://numbertheoryfoundation.org/)
+- [math.nist.gov](https://math.nist.gov/) - NIST's collection of mathematical algorithms and software. Also, see their [guide](https://gams.nist.gov/)
 
 ### Academia Resources 
 - [CSRankings.org](http://csrankings.org/#/index?all&us) - A website I use to systematically discover interesting professors and PhD students. 
@@ -211,6 +221,11 @@ JUMP -> [Misc.]("#Misc.")
 - [E-Ink is so Retropunk](https://rmkit.dev/eink-is-so-retropunk/)
 - [A Linux Evening](https://fabiensanglard.net/a_linux_evening/index.html)
 - [Search Query](https://www.henrikkarlsson.xyz/p/search-query)
+- [20-person house](https://web.archive.org/web/20210226101821/https://jasonbenn.com/tag/community)
+- [Research As Understanding](https://kanjun.me/writing/research-as-understanding)
+- [Pound for Pound, Taiwan Is the Most Important Place in the World](https://archive.is/qkK8M#selection-417.0-417.64)
+- [Why I attack](https://nicholas.carlini.com/writing/2024/why-i-attack.html)
+- [The Moral Character of Cryptographic Work](https://web.cs.ucdavis.edu/~rogaway/papers/moral-fn.pdf) - Just an incredible piece
 
 ### Personal Websites
 - [Terence Tao's Blog](https://terrytao.wordpress.com/) - The blog of a fantastic mathematician
@@ -272,6 +287,7 @@ JUMP -> [Misc.]("#Misc.")
 - [blog.cjeller.site](https://blog.cjeller.site/) - Classical Guitar by Training, Cloud Engineer by Accident
 - [cass.si](https://cass.si/)
 - [sneak.berlin](https://sneak.berlin/)
+- [moxie.org](https://moxie.org/) - Hope to meet him
 - [stephenfay.xyz](https://stephenfay.xyz/) - Good writing
 - [www.lukeheine.com](https://www.lukeheine.com/)
 - [www.boringcactus.com](https://www.boringcactus.com/) - An immortal programming person who works for the MBTA
@@ -282,6 +298,7 @@ JUMP -> [Misc.]("#Misc.")
 - [electro.pizza](https://electro.pizza/)
 - [ad044.neocities.org](https://ad044.neocities.org/) - Another lain-er
 - [evasive.tech](https://evasive.tech/) - Art
+- [davidovski.xyz](https://davidovski.xyz/) - Vibes
 - [Danish Prakash](https://danishpraka.sh/) - A dev from India
 - [Lisa Lee](https://leelisa.com/) - PhD in ML at CMU who likes pokemon
 - [Maruan Al-Shedivat](https://www.cs.cmu.edu/~mshediva/) - The founding editor of CMU's machine learning blog
@@ -293,6 +310,7 @@ JUMP -> [Misc.]("#Misc.")
 - [Neg Serg](https://github.com/neg-serg) 
 - [Daniel Howe](https://rednoise.org/daniel/pubs.html) - Prof at HKU focusing on privacy, surveillance, and disinformation
 - [Jordan Ellenberg](https://www.jordanellenberg.com/writings/) - Great mathematician and speaker
+- [999eagle.moe/](https://999eagle.moe/)
 - [eta.st](https://eta.st)
 - [sqrtminusone.xyz](https://sqrtminusone.xyz/posts) - emacs freak. I prefer (n)vim, but I respect it
 - [bryndr.sn](https://bryndr.sn)
@@ -305,12 +323,22 @@ JUMP -> [Misc.]("#Misc.")
 - [Jordan Ellenberg](https://people.math.wisc.edu/~ellenberg/) - A mathematician and writer
 - [Justine Tunney](https://justine.lol/)
 - [Erik Demaine](https://erikdemaine.org/) - MIT Professor, computational origami
-- [Xie Yuheng](https://xieyuheng.com/) - Interaction net man
+- [Xie Yuheng](https://xieyuheng.com/) - Interaction net guy
+- [Mazza](https://lipn.univ-paris13.fr/~mazza/) - Interaction net goat
 - [amelia.how](https://amelia.how/) 
+- [Julien Voisin](https://dustri.org/) - A cool reverser, great writer
+- [Alexander Bulekov](https://physics.bu.edu/~alxndr/) - fuzzer
 - [j3s.sh](https://j3s.sh/)
 - [mcyoung](https://mcyoung.xyz) - compiler/math dude
+- [nick-black.com](https://nick-black.com) - Personal website turned cool mediawiki
+- [thel3tterm](https://thel3tterm.com/) - nice art
 - [Evan Chen](https://web.evanchen.cc/) 
 - [Jeremy Avigad](https://www.andrew.cmu.edu/user/avigad/) - Logic prof at CMU. A guy behind Lean's mathlib
+- [Colin James](https://compiler.club/) - compiler.club
+- [nayuki.io/](https://www.nayuki.io/) - the goat
+- [pwn.cat](https://pwn.cat/) - their thesis is okay
+- [maxammann.org](https://maxammann.org/) - fuzzer
+- [David Adrian](https://dadrian.io/) - Security Cryptography Whatever
 
 ### Misc.
 - [Pool Suite](https://poolsuite.net/) - R e t r o Internet Radio Station 
@@ -320,7 +348,9 @@ JUMP -> [Misc.]("#Misc.")
 - [zettelkasten.de](https://zettelkasten.de/posts/overview/) - Organization method
 - [getting-rich-from-zero-to-hero-in-one-blog-post](https://www.mrmoneymustache.com/2013/02/22/getting-rich-from-zero-to-hero-in-one-blog-post)
 - [polyphasic.net](https://www.polyphasic.net/) - Sleep 2 hours a day
+- [Calm Tech](https://calmtech.com/) - Design your websites nicely
 - [Annas Archive](https://annas-archive.org/) - Read anything
 - [listen.moe](https://listen.moe/) - Weeb radio
+- [slowroads](https://slowroads.io/) - d r i v e 
 - [Good Guy Godel](https://ihavenoteeth.com/2014/10/23/good-guy-godel/)
 - [Wikivoyage](https://en.wikivoyage.org/wiki/Main_Page) - Find travel info about any place
